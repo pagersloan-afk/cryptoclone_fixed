@@ -43,3 +43,17 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Firebase service account keys (critical!)
+firebase-admin-tools/serviceAccountKey.json
+
+# Firebase emulators and local state
+.firebase/
+firebase-debug.log
+.firebaserc
+
+# VS Code settings (optional, if you want to exclude them)
+.vscode/
+
+# macOS system files (if you ever zip/share)
+*.DS_Store
