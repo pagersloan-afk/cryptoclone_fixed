@@ -1,38 +1,34 @@
-# cryptoclone_fixed
-<<<<<<< HEAD
+# 💸 CryptoClone — Modular Fintech App
 
-A new Flutter project.
+A flagship Flutter-based fintech experience with secure banking integrations, premium UI/UX, and audit-grade architecture. Built for scale, compliance, and delight.
 
-## Getting Started
+![screenshot](assets/preview_dark_theme.png)
 
-This project is a starting point for a Flutter application.
+---
 
-A few resources to get you started if this is your first Flutter project:
+## ✨ Features
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- 🔐 **Secure Authentication** — Firebase Auth with OTP and biometric support
+- 📈 **Market Data Widgets** — Modular, animated, and theme-aware
+- 💳 **Deposit & Withdrawal Flows** — Fully branded, validated, and error-resilient
+- 🌙 **Dark Mode** — Pixel-perfect theming with smooth transitions
+- 🧱 **Scalable Architecture** — Clean separation of UI, logic, and services
+- 🧾 **Audit-Ready Logging** — Admin tools and service account integration (securely excluded)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-=======
-A flagship Flutter crypto portfolio app with real-time market data, curated news, and premium UI/UX. Built for scale, audit-readiness, and investor-grade presentation.
+---
 
-✨ Features
-Modular architecture with secure API integration
+## 🚀 Getting Started
 
-CoinGecko-powered price and chart data
+### Prerequisites
 
-News feed with full article view and haptic feedback
+- Flutter 3.x
+- Firebase CLI
+- Dart >= 3.0
+- Android Studio / Xcode
 
-Dark theme, branded visuals, and smooth animations
+### Setup
 
-🚀 Tech Stack
-Flutter 3.x
-
-Firebase (optional)
-
-CoinGecko API
-
-RSS parsing with XML
->>>>>>> 1bcc8657bd670a61d1f580a277db9fc1591ebe93
+```bash
+git clone https://github.com/pagersloan-afk/cryptoclone_fixed.git
+cd cryptoclone_fixed
+flutter pub get
