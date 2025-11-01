@@ -1,6 +1,7 @@
 import 'package:ecommerce_app/models/portfolio_item.dart';
 import 'package:ecommerce_app/models/trade_data.dart';
 import 'package:ecommerce_app/models/withdraw_modal.dart';
+import 'package:ecommerce_app/presentation/home/widgets/limited_deposit_history_preview.dart';
 import 'package:ecommerce_app/presentation/home/widgets/news_widget.dart';
 import 'package:ecommerce_app/presentation/wallet/pages/unified_activity_screen.dart';
 import 'package:ecommerce_app/screen/activity_screen.dart';
@@ -95,18 +96,26 @@ class _HomePageState extends State<HomePage> {
       final items = await _loadPortfolio();
       final total = items.fold(0.0, (sum, item) => sum + item.value);
 
+      if (!mounted) return; // ✅ Prevent crash
       setState(() {
-        portfolioItems = items; // ✅ Add this
+        portfolioItems = items;
         _balance = total.toStringAsFixed(2);
         selectedAsset = items.isNotEmpty ? items.first : null;
       });
     } catch (e) {
       print('Error loading portfolio balance: $e');
+      if (!mounted) return; // ✅ Prevent crash in catch block too
+      setState(() {
+        portfolioItems = [];
+        _balance = '0.00';
+        selectedAsset = null;
+      });
     }
   }
 
   Future<void> _loadChangePercent() async {
     final change = await _binance.fetch24hChange();
+    if (!mounted) return; // ✅ Prevent crash if widget is disposed
     setState(() {
       _changePercent = change ?? 0.0;
     });
@@ -145,8 +154,9 @@ class _HomePageState extends State<HomePage> {
   Future<void> _loadMarketData() async {
     if (_lastMarketFetch != null &&
         DateTime.now().difference(_lastMarketFetch!) <
-            const Duration(seconds: 10))
+            const Duration(seconds: 10)) {
       return;
+    }
 
     _lastMarketFetch = DateTime.now();
 
@@ -172,9 +182,12 @@ class _HomePageState extends State<HomePage> {
           chartData = data;
           _changePercent = changePercent;
         });
+      } else {
+        setState(() => chartData = []);
       }
     } catch (e) {
       print('Chart load error: $e');
+      setState(() => chartData = []);
     }
   }
 
@@ -364,9 +377,8 @@ class _HomePageState extends State<HomePage> {
               const Padding(
                 padding: EdgeInsets.all(16),
                 child: Center(child: CircularProgressIndicator()),
-              ),
-
-            if (selectedAsset != null) ...[
+              )
+            else
               RepaintBoundary(
                 child: PortfolioCard(
                   balance: displayBalance,
@@ -374,33 +386,50 @@ class _HomePageState extends State<HomePage> {
                   onDeposit: _openDepositSheet,
                   onSend: _openSendSheet,
                   onWithdraw: _openWithdrawSheet,
-                  asset: selectedAsset!,
+                  asset:
+                      selectedAsset ??
+                      PortfolioItem(
+                        name: 'Bitcoin',
+                        symbol: 'BTC',
+                        amount: 0.0,
+                        value: 0.0,
+                        percent: 0.0,
+                        logoUrl:
+                            'https://cryptologos.cc/logos/bitcoin-btc-logo.png', // or any placeholder
+                      ),
                 ),
               ),
-              const SizedBox(height: 24),
-            ] else ...[
+
+            const SizedBox(height: 24),
+
+            if (chartData.isEmpty)
               const Padding(
                 padding: EdgeInsets.symmetric(vertical: 32),
-                child: Center(child: CircularProgressIndicator()),
+                child: Center(
+                  child: Text(
+                    'No chart data available',
+                    style: TextStyle(color: Colors.white70, fontSize: 14),
+                  ),
+                ),
+              )
+            else
+              RepaintBoundary(
+                child: CandlestickChart(
+                  data: chartData,
+                  asset: '${selectedCoin.toUpperCase()}/USDT',
+                  selectedCoin: selectedCoin,
+                  selectedDays: selectedDays,
+                  onCoinChange: (coin) {
+                    setState(() => selectedCoin = coin);
+                    _loadChartData();
+                  },
+                  onDaysChange: (days) {
+                    setState(() => selectedDays = days);
+                    _loadChartData();
+                  },
+                ),
               ),
-            ],
 
-            RepaintBoundary(
-              child: CandlestickChart(
-                data: chartData,
-                asset: '${selectedCoin.toUpperCase()}/USDT',
-                selectedCoin: selectedCoin,
-                selectedDays: selectedDays,
-                onCoinChange: (coin) {
-                  setState(() => selectedCoin = coin);
-                  _loadChartData();
-                },
-                onDaysChange: (days) {
-                  setState(() => selectedDays = days);
-                  _loadChartData();
-                },
-              ),
-            ),
             const SizedBox(height: 16),
 
             GestureDetector(
@@ -438,6 +467,14 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(height: 24),
             const RepaintBoundary(child: ActivityWidget()),
             const SizedBox(height: 24),
+            const Text(
+              'Deposit Status',
+              style: TextStyle(color: Colors.white),
+            ), // ✅ Add this line
+            const RepaintBoundary(
+              child: LimitedDepositHistoryPreview(),
+            ), // ✅ Already added
+            const SizedBox(height: 24),
             const RepaintBoundary(child: MarketTrends()),
             const SizedBox(height: 24),
             const RepaintBoundary(child: Watchlist()),
@@ -455,7 +492,7 @@ class _HomePageState extends State<HomePage> {
           ),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.3),
+              color: Colors.black.withAlpha(77), // 0.3 * 255 ≈ 77
               blurRadius: 12,
               offset: const Offset(0, -2),
             ),

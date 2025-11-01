@@ -1,8 +1,9 @@
+import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerce_app/screen/activity_screen.dart';
-import 'package:flutter/material.dart';
-import 'activity_tile.dart';
 import 'package:ecommerce_app/models/transaction.dart' as model;
+import 'package:ecommerce_app/widgets/activity_tile.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class ActivityWidget extends StatelessWidget {
   final bool showAll;
@@ -10,9 +11,12 @@ class ActivityWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final uid = FirebaseAuth.instance.currentUser?.uid ?? '';
+
     return StreamBuilder<QuerySnapshot>(
       stream: FirebaseFirestore.instance
           .collection('Transactions')
+          .where('userId', isEqualTo: uid)
           .orderBy('timestamp', descending: true)
           .snapshots(),
       builder: (context, snapshot) {
@@ -36,7 +40,7 @@ class ActivityWidget extends StatelessWidget {
             label: data['label'] ?? '',
             date: data['date'] ?? '',
             amount: data['amount'] ?? '',
-            timestamp: data['timestamp']?.toDate(), // ✅ Add timestamp if needed
+            timestamp: data['timestamp']?.toDate(),
           );
         }).toList();
 
@@ -70,7 +74,7 @@ class ActivityWidget extends StatelessWidget {
                   ],
                 ),
               const SizedBox(height: 8),
-              ...visibleItems.map((tx) => ActivityTile(tx)).toList(),
+              ...visibleItems.map((tx) => ActivityTile(tx)),
             ],
           ),
         );

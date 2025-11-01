@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class DepositSheet extends StatefulWidget {
   const DepositSheet({super.key});
@@ -56,22 +57,43 @@ class _DepositSheetState extends State<DepositSheet> {
       return;
     }
 
+    final uid = FirebaseAuth.instance.currentUser?.uid;
+    if (uid == null) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text('User not authenticated')));
+      return;
+    }
+
+    // ✅ Stage 1: Save deposit request for admin approval
     await FirebaseFirestore.instance.collection('deposits').add({
+      'userId': uid,
       'amount': depositAmount,
       'network': _selectedNetwork,
       'walletAddress': wallet,
+      'status': 'pending', // Admin must approve this
       'timestamp': FieldValue.serverTimestamp(),
     });
 
-    await FirebaseFirestore.instance.collection('Transactions').add({
-      'type': 'deposit',
-      'label': 'Deposit via $_selectedNetwork',
-      'date': DateTime.now().toString(),
-      'amount': '+\$${depositAmount.toStringAsFixed(2)}',
-      'timestamp': FieldValue.serverTimestamp(),
-    });
-
-    Navigator.pop(context, 'success');
+    // ✅ Show success dialog (but no entry in Transactions yet)
+    showDialog(
+      context: context,
+      builder: (_) => AlertDialog(
+        title: const Text('Deposit Submitted'),
+        content: const Text(
+          'Your deposit request has been sent. It will reflect after admin approval.',
+        ),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context); // Close dialog
+              Navigator.pop(context); // Close bottom sheet
+            },
+            child: const Text('OK'),
+          ),
+        ],
+      ),
+    );
   }
 
   @override

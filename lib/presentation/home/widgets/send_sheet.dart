@@ -297,7 +297,7 @@ class _SendSheetState extends State<SendSheet> {
                           ),
                         ),
                         Text(
-                          'Available: $formattedCoin $symbol ≈ USD \$${formattedUsd}',
+                          'Available: $formattedCoin $symbol ≈ USD \$$formattedUsd',
                           style: const TextStyle(
                             color: Colors.white70,
                             fontSize: 14,

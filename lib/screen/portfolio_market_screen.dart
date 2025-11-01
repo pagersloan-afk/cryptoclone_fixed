@@ -84,8 +84,9 @@ class _PortfolioMarketScreenState extends State<PortfolioMarketScreen> {
       body: FutureBuilder(
         future: Future.wait([_coinListFuture, _portfolioFuture]),
         builder: (context, snapshot) {
-          if (!snapshot.hasData)
+          if (!snapshot.hasData) {
             return const Center(child: CircularProgressIndicator());
+          }
 
           final coins = snapshot.data![0] as List<Map<String, dynamic>>;
           final holdings = snapshot.data![1] as List<PortfolioItem>;

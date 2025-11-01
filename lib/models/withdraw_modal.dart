@@ -134,7 +134,7 @@ class _WithdrawModalState extends State<WithdrawModal> {
               ),
               const SizedBox(height: 16),
               DropdownButtonFormField<String>(
-                value: _accountType,
+                initialValue: _accountType,
                 items: const [
                   DropdownMenuItem(value: 'Checking', child: Text('Checking')),
                   DropdownMenuItem(value: 'Savings', child: Text('Savings')),

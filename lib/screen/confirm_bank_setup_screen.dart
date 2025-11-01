@@ -7,10 +7,10 @@ class ConfirmBankSetupButton extends StatelessWidget {
   final String accountId;
 
   const ConfirmBankSetupButton({
-    Key? key,
+    super.key,
     required this.userId,
     required this.accountId,
-  }) : super(key: key);
+  });
 
   Future<void> _confirmBankSetup(BuildContext context) async {
     try {

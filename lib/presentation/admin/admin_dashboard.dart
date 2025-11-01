@@ -1,9 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerce_app/common/helper/navigator/app_navigator.dart';
+import 'package:ecommerce_app/presentation/admin/admin_deposit_approval_screen.dart';
 import 'package:ecommerce_app/presentation/auth/pages/signin.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:ecommerce_app/services/price_service.dart'; // 👈 Update this path if needed
+import 'package:ecommerce_app/services/price_service.dart';
 import 'package:ecommerce_app/services/portfolio_price_service.dart';
 
 class AdminDashboard extends StatelessWidget {
@@ -14,9 +15,38 @@ class AdminDashboard extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text('Admin Dashboard')),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SystemWalletEditor(),
           const Divider(),
+
+          // ✅ Deposit Approval Button
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            child: ElevatedButton.icon(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => const AdminDepositApprovalScreen(),
+                  ),
+                );
+              },
+              icon: const Icon(Icons.account_balance_wallet),
+              label: const Text('Approve Deposits'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.deepPurple,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 24,
+                  vertical: 12,
+                ),
+              ),
+            ),
+          ),
+
+          const Divider(),
+
+          // ✅ User List View
           const Expanded(child: UserListView()),
         ],
       ),
@@ -413,8 +443,8 @@ class _EditUserPageState extends State<EditUserPage> {
             const SizedBox(height: 10),
             ElevatedButton(
               onPressed: deleteUser,
-              child: const Text('Delete Account'),
               style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+              child: const Text('Delete Account'),
             ),
             const SizedBox(height: 10),
             ElevatedButton(
@@ -427,7 +457,7 @@ class _EditUserPageState extends State<EditUserPage> {
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
             DropdownButtonFormField<String>(
-              value: selectedAsset,
+              initialValue: selectedAsset,
               decoration: const InputDecoration(labelText: 'Asset Symbol'),
               items: supportedAssets.map((symbol) {
                 return DropdownMenuItem(

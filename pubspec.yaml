@@ -18,7 +18,7 @@ dependencies:
   intl: ^0.20.2
   qr_flutter: ^4.0.0
   audioplayers: 6.5.1
-  syncfusion_flutter_charts: 31.2.3
+  syncfusion_flutter_charts: ^31.2.4
   syncfusion_flutter_core: ^31.2.3
   flutter_secure_storage: ^9.0.0
   flutter_stripe: ^12.0.2
@@ -74,6 +74,9 @@ flutter:
     - assets/images/success.png
     - assets/animations/blockchain.json
     - assets/images/app_logo.png
+    - assets/data/countries.json
+    - assets/data/states.json
+    - assets/data/states-cities.json
    
     
 color: "#2A52BE"

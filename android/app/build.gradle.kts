@@ -2,7 +2,7 @@ plugins {
     id("com.android.application")
     id("kotlin-android")
     id("dev.flutter.flutter-gradle-plugin")
-    id("com.google.gms.google-services") // Add this line
+    id("com.google.gms.google-services") // Firebase services
 }
 
 android {
@@ -28,11 +28,13 @@ android {
     }
 
     buildTypes {
-        release {
+        getByName("release") {
             signingConfig = signingConfigs.getByName("debug")
+            isMinifyEnabled = false
+            isShrinkResources = false
         }
     }
-}
+} // ✅ ← This was missing
 
 flutter {
     source = "../.."
@@ -42,7 +44,7 @@ dependencies {
     // Firebase BoM: manages versions automatically
     implementation(platform("com.google.firebase:firebase-bom:34.4.0"))
 
-    // Add Firebase SDKs you need — no version required
+    // Firebase SDKs
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.firebase:firebase-firestore")

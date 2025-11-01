@@ -22,7 +22,7 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
     symbol: '\$',
     decimalDigits: 2,
   );
-  double _changePercent = 0.0;
+  final double _changePercent = 0.0;
 
   final Map<String, String> coinIds = {
     'BTC': 'bitcoin',
@@ -209,8 +209,9 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
       body: FutureBuilder<List<PortfolioItem>>(
         future: _portfolioFuture,
         builder: (context, snapshot) {
-          if (!snapshot.hasData)
+          if (!snapshot.hasData) {
             return const Center(child: CircularProgressIndicator());
+          }
 
           final items = snapshot.data!;
           final totalValue = items.fold(0.0, (sum, i) => sum + i.value);
