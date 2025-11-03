@@ -108,22 +108,32 @@ class EnterPasswordPage extends StatelessWidget {
             },
             child: Scaffold(
               appBar: const BasicAppbar(),
-              body: Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 16,
-                  vertical: 30,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    _signinText(context),
-                    const SizedBox(height: 20),
-                    _passwordField(context),
-                    const SizedBox(height: 20),
-                    _continueButton(context),
-                    const SizedBox(height: 20),
-                    _forgotPassword(context),
-                  ],
+              body: SafeArea(
+                child: Center(
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(
+                      maxWidth: 420,
+                    ), // ✅ Desktop-friendly width
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 40,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          _signinText(context),
+                          const SizedBox(height: 24),
+                          _passwordField(context),
+                          const SizedBox(height: 24),
+                          _continueButton(context),
+                          const SizedBox(height: 20),
+                          _forgotPassword(context),
+                        ],
+                      ),
+                    ),
+                  ),
                 ),
               ),
             ),

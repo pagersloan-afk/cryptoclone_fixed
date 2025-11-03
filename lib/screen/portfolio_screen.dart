@@ -216,124 +216,127 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
           final items = snapshot.data!;
           final totalValue = items.fold(0.0, (sum, i) => sum + i.value);
 
-          return Padding(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  'Total Portfolio Value',
-                  style: TextStyle(color: Colors.white70, fontSize: 14),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  currencyFormatter.format(totalValue),
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 28,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  '${_changePercent >= 0 ? '+' : ''}${_changePercent.toStringAsFixed(2)}% Past 24h',
-                  style: TextStyle(
-                    color: _changePercent >= 0
-                        ? Colors.greenAccent
-                        : Colors.redAccent,
-                    fontSize: 13,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                const SizedBox(height: 16),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Available: ${currencyFormatter.format(totalValue)}',
-                      style: const TextStyle(color: Colors.white70),
-                    ),
-                    Text(
-                      'On Order: ${currencyFormatter.format(0.00)}',
-                      style: const TextStyle(color: Colors.white70),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 24),
-                const SizedBox(height: 24),
-                Expanded(
-                  child: ListView.separated(
-                    itemCount: items.length,
-                    separatorBuilder: (_, __) =>
-                        const Divider(color: Colors.white12),
-                    itemBuilder: (context, index) {
-                      final item = items[index];
-                      return InkWell(
-                        onTap: () => _navigateToCoinDetail(item.symbol),
-                        borderRadius: BorderRadius.circular(12),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 8),
-                          child: Row(
-                            children: [
-                              if (item.logoUrl.isNotEmpty)
-                                Padding(
-                                  padding: const EdgeInsets.only(right: 12),
-                                  child: Image.network(
-                                    item.logoUrl,
-                                    width: 32,
-                                    height: 32,
-                                    errorBuilder: (_, __, ___) =>
-                                        const Icon(Icons.error, size: 32),
+          return Center(
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 600),
+              child: ListView.separated(
+                padding: const EdgeInsets.all(16),
+                itemCount: items.length + 1, // +1 for header
+                separatorBuilder: (_, __) =>
+                    const Divider(color: Colors.white12),
+                itemBuilder: (context, index) {
+                  if (index == 0) {
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          'Total Portfolio Value',
+                          style: TextStyle(color: Colors.white70, fontSize: 14),
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          currencyFormatter.format(totalValue),
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 28,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          '${_changePercent >= 0 ? '+' : ''}${_changePercent.toStringAsFixed(2)}% Past 24h',
+                          style: TextStyle(
+                            color: _changePercent >= 0
+                                ? Colors.greenAccent
+                                : Colors.redAccent,
+                            fontSize: 13,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        const SizedBox(height: 16),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'Available: ${currencyFormatter.format(totalValue)}',
+                              style: const TextStyle(color: Colors.white70),
+                            ),
+                            Text(
+                              'On Order: ${currencyFormatter.format(0.00)}',
+                              style: const TextStyle(color: Colors.white70),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 24),
+                      ],
+                    );
+                  }
+
+                  final item = items[index - 1];
+                  return InkWell(
+                    onTap: () => _navigateToCoinDetail(item.symbol),
+                    borderRadius: BorderRadius.circular(12),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8),
+                      child: Row(
+                        children: [
+                          if (item.logoUrl.isNotEmpty)
+                            Padding(
+                              padding: const EdgeInsets.only(right: 12),
+                              child: Image.network(
+                                item.logoUrl,
+                                width: 32,
+                                height: 32,
+                                errorBuilder: (_, __, ___) =>
+                                    const Icon(Icons.error, size: 32),
+                              ),
+                            ),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  item.name,
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 14,
                                   ),
                                 ),
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      item.name,
-                                      style: const TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 14,
-                                      ),
-                                    ),
-                                    Text(
-                                      '${item.percent.toStringAsFixed(2)}%',
-                                      style: const TextStyle(
-                                        color: Colors.white38,
-                                        fontSize: 12,
-                                      ),
-                                    ),
-                                  ],
+                                Text(
+                                  '${item.percent.toStringAsFixed(2)}%',
+                                  style: const TextStyle(
+                                    color: Colors.white38,
+                                    fontSize: 12,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Text(
+                                '${item.amount.toStringAsFixed(2)} ${item.symbol}',
+                                style: const TextStyle(
+                                  color: Colors.white70,
+                                  fontSize: 13,
                                 ),
                               ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                children: [
-                                  Text(
-                                    '${item.amount.toStringAsFixed(2)} ${item.symbol}',
-                                    style: const TextStyle(
-                                      color: Colors.white70,
-                                      fontSize: 13,
-                                    ),
-                                  ),
-                                  Text(
-                                    currencyFormatter.format(item.value),
-                                    style: const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 14,
-                                    ),
-                                  ),
-                                ],
+                              Text(
+                                currencyFormatter.format(item.value),
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 14,
+                                ),
                               ),
                             ],
                           ),
-                        ),
-                      );
-                    },
-                  ),
-                ),
-              ],
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              ),
             ),
           );
         },

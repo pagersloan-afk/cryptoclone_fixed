@@ -22,7 +22,7 @@ class PortfolioCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isPositive = changePercent >= 0;
-    final changeColor = isPositive ? Colors.green : Colors.red;
+    final changeColor = isPositive ? Colors.greenAccent : Colors.redAccent;
     final changePrefix = isPositive ? '+' : '';
 
     return Container(
@@ -136,7 +136,7 @@ class PortfolioCard extends StatelessWidget {
                 child: SizedBox(
                   height: 48,
                   child: ElevatedButton(
-                    onPressed: () => onSend(asset), // ✅ Pass asset to callback
+                    onPressed: () => onSend(asset),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color.fromARGB(255, 219, 69, 87),
                       foregroundColor: Colors.black,

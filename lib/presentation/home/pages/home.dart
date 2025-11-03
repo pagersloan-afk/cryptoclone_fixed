@@ -2,6 +2,7 @@ import 'package:ecommerce_app/models/portfolio_item.dart';
 import 'package:ecommerce_app/models/trade_data.dart';
 import 'package:ecommerce_app/models/withdraw_modal.dart';
 import 'package:ecommerce_app/presentation/home/widgets/limited_deposit_history_preview.dart';
+import 'package:ecommerce_app/presentation/home/widgets/live_portfolio_card.dart';
 import 'package:ecommerce_app/presentation/home/widgets/news_widget.dart';
 import 'package:ecommerce_app/presentation/wallet/pages/unified_activity_screen.dart';
 import 'package:ecommerce_app/screen/activity_screen.dart';
@@ -19,7 +20,6 @@ import 'package:ecommerce_app/presentation/auth/pages/signin.dart';
 import 'package:ecommerce_app/presentation/auth/pages/trade_screen.dart';
 import 'package:ecommerce_app/presentation/home/widgets/market_trends.dart';
 import 'package:ecommerce_app/presentation/home/widgets/watchlist.dart';
-import 'package:ecommerce_app/presentation/home/widgets/portfolio_card.dart';
 import 'package:ecommerce_app/presentation/home/widgets/deposit_sheet.dart';
 import 'package:ecommerce_app/presentation/home/widgets/send_sheet.dart';
 import 'package:ecommerce_app/services/crypto_service.dart';
@@ -49,12 +49,13 @@ class _HomePageState extends State<HomePage> {
   int selectedDays = 1;
 
   String _balance = '0.00';
-  double _changePercent = 0.0;
   int _selectedIndex = 0;
 
   DateTime? _lastMarketFetch;
   String? _marketData;
   List<TradeData> btcData = [];
+
+  double _changePercent = 0.0;
 
   @override
   void initState() {
@@ -176,17 +177,20 @@ class _HomePageState extends State<HomePage> {
       if (data.isNotEmpty) {
         final open = data.first.open;
         final close = data.last.close;
-        final changePercent = ((close - open) / open) * 100;
+        final changePercent = open != 0 ? ((close - open) / open) * 100 : 0.0;
 
+        if (!mounted) return;
         setState(() {
           chartData = data;
           _changePercent = changePercent;
         });
       } else {
+        if (!mounted) return;
         setState(() => chartData = []);
       }
     } catch (e) {
-      print('Chart load error: $e');
+      debugPrint('Chart load error: $e');
+      if (!mounted) return;
       setState(() => chartData = []);
     }
   }
@@ -298,8 +302,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final displayBalance = formatBalance(_balance);
-
     return Scaffold(
       backgroundColor: AppColors.dashboardBackground,
       appBar: AppBar(
@@ -369,120 +371,113 @@ class _HomePageState extends State<HomePage> {
       ),
       body: RefreshIndicator(
         onRefresh: _refreshData,
-        child: ListView(
-          physics: const AlwaysScrollableScrollPhysics(),
-          padding: const EdgeInsets.all(16),
-          children: [
-            if (isLoading)
-              const Padding(
-                padding: EdgeInsets.all(16),
-                child: Center(child: CircularProgressIndicator()),
-              )
-            else
-              RepaintBoundary(
-                child: PortfolioCard(
-                  balance: displayBalance,
-                  changePercent: _changePercent,
-                  onDeposit: _openDepositSheet,
-                  onSend: _openSendSheet,
-                  onWithdraw: _openWithdrawSheet,
-                  asset:
-                      selectedAsset ??
-                      PortfolioItem(
-                        name: 'Bitcoin',
-                        symbol: 'BTC',
-                        amount: 0.0,
-                        value: 0.0,
-                        percent: 0.0,
-                        logoUrl:
-                            'https://cryptologos.cc/logos/bitcoin-btc-logo.png', // or any placeholder
+        child: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 600),
+            child: ListView(
+              physics: const AlwaysScrollableScrollPhysics(),
+              padding: const EdgeInsets.all(16),
+              children: [
+                if (isLoading)
+                  const Padding(
+                    padding: EdgeInsets.all(16),
+                    child: Center(child: CircularProgressIndicator()),
+                  )
+                else
+                  RepaintBoundary(
+                    child: LivePortfolioCard(
+                      onDeposit: _openDepositSheet,
+                      onWithdraw: _openWithdrawSheet,
+                      onSend: _openSendSheet,
+                    ),
+                  ),
+
+                const SizedBox(height: 24),
+
+                if (chartData.isEmpty)
+                  const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 32),
+                    child: Center(
+                      child: Text(
+                        'No chart data available',
+                        style: TextStyle(color: Colors.white70, fontSize: 14),
                       ),
-                ),
-              ),
-
-            const SizedBox(height: 24),
-
-            if (chartData.isEmpty)
-              const Padding(
-                padding: EdgeInsets.symmetric(vertical: 32),
-                child: Center(
-                  child: Text(
-                    'No chart data available',
-                    style: TextStyle(color: Colors.white70, fontSize: 14),
-                  ),
-                ),
-              )
-            else
-              RepaintBoundary(
-                child: CandlestickChart(
-                  data: chartData,
-                  asset: '${selectedCoin.toUpperCase()}/USDT',
-                  selectedCoin: selectedCoin,
-                  selectedDays: selectedDays,
-                  onCoinChange: (coin) {
-                    setState(() => selectedCoin = coin);
-                    _loadChartData();
-                  },
-                  onDaysChange: (days) {
-                    setState(() => selectedDays = days);
-                    _loadChartData();
-                  },
-                ),
-              ),
-
-            const SizedBox(height: 16),
-
-            GestureDetector(
-              onTap: () {
-                if (_marketData != null) {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) =>
-                          MarketDataScreen(marketData: _marketData!),
                     ),
-                  );
-                } else {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Market data not loaded yet')),
-                  );
-                }
-              },
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
-                  Text(
-                    '📈 Market Data',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
+                  )
+                else
+                  RepaintBoundary(
+                    child: CandlestickChart(
+                      data: chartData,
+                      asset: '${selectedCoin.toUpperCase()}/USDT',
+                      selectedCoin: selectedCoin,
+                      selectedDays: selectedDays,
+                      onCoinChange: (coin) {
+                        setState(() => selectedCoin = coin);
+                        _loadChartData();
+                      },
+                      onDaysChange: (days) {
+                        setState(() => selectedDays = days);
+                        _loadChartData();
+                      },
                     ),
                   ),
-                  Icon(Icons.chevron_right, color: Colors.white),
-                ],
-              ),
+
+                const SizedBox(height: 16),
+
+                GestureDetector(
+                  onTap: () {
+                    if (_marketData != null) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) =>
+                              MarketDataScreen(marketData: _marketData!),
+                        ),
+                      );
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Market data not loaded yet'),
+                        ),
+                      );
+                    }
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: const [
+                      Text(
+                        '📈 Market Data',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Icon(Icons.chevron_right, color: Colors.white),
+                    ],
+                  ),
+                ),
+
+                const SizedBox(height: 24),
+                const RepaintBoundary(child: ActivityWidget()),
+                const SizedBox(height: 24),
+                const Text(
+                  'Deposit Status',
+                  style: TextStyle(color: Colors.white),
+                ),
+                const RepaintBoundary(child: LimitedDepositHistoryPreview()),
+                const SizedBox(height: 24),
+                const RepaintBoundary(child: MarketTrends()),
+                const SizedBox(height: 24),
+                const RepaintBoundary(child: Watchlist()),
+                const SizedBox(height: 24),
+                const RepaintBoundary(child: NewsWidget()),
+              ],
             ),
-
-            const SizedBox(height: 24),
-            const RepaintBoundary(child: ActivityWidget()),
-            const SizedBox(height: 24),
-            const Text(
-              'Deposit Status',
-              style: TextStyle(color: Colors.white),
-            ), // ✅ Add this line
-            const RepaintBoundary(
-              child: LimitedDepositHistoryPreview(),
-            ), // ✅ Already added
-            const SizedBox(height: 24),
-            const RepaintBoundary(child: MarketTrends()),
-            const SizedBox(height: 24),
-            const RepaintBoundary(child: Watchlist()),
-            const SizedBox(height: 24),
-            const RepaintBoundary(child: NewsWidget()),
-          ],
+          ),
         ),
       ),
+
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
           gradient: const LinearGradient(

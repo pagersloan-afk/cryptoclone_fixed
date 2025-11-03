@@ -112,95 +112,123 @@ class _SignupPageState extends State<SignupPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Form(
-          key: _formKey,
-          child: ListView(
-            children: [
-              const Text(
-                'Create Account',
-                style: TextStyle(fontSize: 24, color: Colors.white),
-              ),
-              const SizedBox(height: 20),
-              _buildField('First Name', controller: _firstNameCon),
-              _buildField('Last Name', controller: _lastNameCon),
-              _buildField('Email', controller: _emailCon),
-              _buildField('Password', controller: _passwordCon, obscure: true),
-              _buildField('Phone Number', controller: _phoneCon),
-              _buildField('Address Line 1', controller: _addressLine1Con),
-              _buildField(
-                'Address Line 2',
-                controller: _addressLine2Con,
-                requiredField: false,
-              ),
-
-              // ✅ Country Dropdown
-              _buildDropdown(
-                'Country',
-                selectedCountry,
-                allCountries.map((c) => c['name'] as String).toList(),
-                (value) {
-                  setState(() {
-                    selectedCountry = value;
-                    selectedState = null;
-                    selectedCity = null;
-                  });
-                },
-              ),
-
-              // ✅ State Dropdown
-              _buildDropdown(
-                'State',
-                selectedState,
-                allStates
-                    .where(
-                      (s) =>
-                          s['country_code'] == getCountryCode(selectedCountry),
-                    )
-                    .map((s) => s['name'] as String)
-                    .toList(),
-                (value) {
-                  setState(() {
-                    selectedState = value;
-                    selectedCity = null;
-                  });
-                },
-              ),
-
-              // ✅ City Dropdown
-              _buildDropdown(
-                'City',
-                selectedCity,
-                getCitiesForState(selectedCountry, selectedState),
-                (value) {
-                  setState(() => selectedCity = value);
-                },
-              ),
-
-              _buildField('Postal Code', controller: _postalCodeCon),
-              const SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: isLoading ? null : _submitForm,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.tealAccent[700],
-                  padding: const EdgeInsets.symmetric(vertical: 14),
-                ),
-                child: isLoading
-                    ? const SizedBox(
-                        width: 20,
-                        height: 20,
-                        child: CircularProgressIndicator(
-                          strokeWidth: 2,
-                          color: Colors.black,
-                        ),
-                      )
-                    : const Text(
-                        'Register',
-                        style: TextStyle(color: Colors.black),
+      body: SafeArea(
+        child: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(
+              maxWidth: 480,
+            ), // ✅ Desktop-friendly width
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 40),
+              child: Form(
+                key: _formKey,
+                child: ListView(
+                  shrinkWrap: true,
+                  children: [
+                    const Text(
+                      'Create Account',
+                      style: TextStyle(
+                        fontSize: 28,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
                       ),
+                    ),
+                    const SizedBox(height: 24),
+                    _buildField('First Name', controller: _firstNameCon),
+                    _buildField('Last Name', controller: _lastNameCon),
+                    _buildField('Email', controller: _emailCon),
+                    _buildField(
+                      'Password',
+                      controller: _passwordCon,
+                      obscure: true,
+                    ),
+                    _buildField('Phone Number', controller: _phoneCon),
+                    _buildField('Address Line 1', controller: _addressLine1Con),
+                    _buildField(
+                      'Address Line 2',
+                      controller: _addressLine2Con,
+                      requiredField: false,
+                    ),
+
+                    const SizedBox(height: 16),
+                    _buildDropdown(
+                      'Country',
+                      selectedCountry,
+                      allCountries.map((c) => c['name'] as String).toList(),
+                      (value) {
+                        setState(() {
+                          selectedCountry = value;
+                          selectedState = null;
+                          selectedCity = null;
+                        });
+                      },
+                    ),
+
+                    const SizedBox(height: 16),
+                    _buildDropdown(
+                      'State',
+                      selectedState,
+                      allStates
+                          .where(
+                            (s) =>
+                                s['country_code'] ==
+                                getCountryCode(selectedCountry),
+                          )
+                          .map((s) => s['name'] as String)
+                          .toList(),
+                      (value) {
+                        setState(() {
+                          selectedState = value;
+                          selectedCity = null;
+                        });
+                      },
+                    ),
+
+                    const SizedBox(height: 16),
+                    _buildDropdown(
+                      'City',
+                      selectedCity,
+                      getCitiesForState(selectedCountry, selectedState),
+                      (value) {
+                        setState(() => selectedCity = value);
+                      },
+                    ),
+
+                    _buildField('Postal Code', controller: _postalCodeCon),
+                    const SizedBox(height: 24),
+                    SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        onPressed: isLoading ? null : _submitForm,
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.tealAccent[700],
+                          padding: const EdgeInsets.symmetric(vertical: 14),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                        ),
+                        child: isLoading
+                            ? const SizedBox(
+                                width: 20,
+                                height: 20,
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 2,
+                                  color: Colors.black,
+                                ),
+                              )
+                            : const Text(
+                                'Register',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ],
+            ),
           ),
         ),
       ),

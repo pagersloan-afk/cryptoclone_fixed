@@ -242,88 +242,107 @@ class _TradeScreenState extends State<TradeScreen> {
         elevation: 0,
       ),
       body: SafeArea(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _buildCurrencyCard('From', _fromCurrency, (String? val) {
-                if (val != null) {
-                  setState(() => _fromCurrency = val);
-                  _fetchRate();
-                }
-              }),
-              const SizedBox(height: 12),
-              _buildCurrencyCard('To', _toCurrency, (String? val) {
-                if (val != null) {
-                  setState(() => _toCurrency = val);
-                  _fetchRate();
-                }
-              }),
-              const SizedBox(height: 20),
-              TextField(
-                controller: _amountController,
-                keyboardType: TextInputType.number,
-                style: const TextStyle(color: Colors.white),
-                decoration: InputDecoration(
-                  hintText: 'Enter amount',
-                  hintStyle: const TextStyle(color: Colors.white54),
-                  filled: true,
-                  fillColor: Colors.white10,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            final isDesktop = constraints.maxWidth > 700;
+
+            return SingleChildScrollView(
+              padding: const EdgeInsets.all(20),
+              child: Center(
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                    maxWidth: isDesktop ? 600 : double.infinity,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _buildCurrencyCard('From', _fromCurrency, (String? val) {
+                        if (val != null) {
+                          setState(() => _fromCurrency = val);
+                          _fetchRate();
+                        }
+                      }),
+                      const SizedBox(height: 12),
+                      _buildCurrencyCard('To', _toCurrency, (String? val) {
+                        if (val != null) {
+                          setState(() => _toCurrency = val);
+                          _fetchRate();
+                        }
+                      }),
+                      const SizedBox(height: 20),
+                      TextField(
+                        controller: _amountController,
+                        keyboardType: TextInputType.number,
+                        style: const TextStyle(color: Colors.white),
+                        decoration: InputDecoration(
+                          hintText: 'Enter amount',
+                          hintStyle: const TextStyle(color: Colors.white54),
+                          filled: true,
+                          fillColor: Colors.white10,
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      if (_loading)
+                        Shimmer.fromColors(
+                          baseColor: Colors.grey[800]!,
+                          highlightColor: Colors.grey[500]!,
+                          child: Container(
+                            height: 20,
+                            width: 200,
+                            color: Colors.white,
+                          ),
+                        )
+                      else ...[
+                        AnimatedSwitcher(
+                          duration: const Duration(milliseconds: 300),
+                          transitionBuilder: (child, animation) =>
+                              FadeTransition(opacity: animation, child: child),
+                          child: Text(
+                            (_rate > 0)
+                                ? '1 $_fromCurrency ≈ ${_rate.toStringAsFixed(4)} $_toCurrency'
+                                : 'Exchange rate unavailable',
+                            key: ValueKey(_rate),
+                            style: const TextStyle(color: Colors.white70),
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                        if (_amountController.text.isNotEmpty && _rate > 0)
+                          Text(
+                            '≈ $formattedUsd USD',
+                            style: const TextStyle(color: Colors.white54),
+                          ),
+                        if (_lastUpdated != null)
+                          Text(
+                            'Last updated: ${DateFormat.yMd().add_jm().format(_lastUpdated!)}',
+                            style: const TextStyle(color: Colors.white38),
+                          ),
+                      ],
+                      const SizedBox(height: 40),
+                      Center(
+                        child: ElevatedButton(
+                          onPressed: _showConfirmation,
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.blueAccent,
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 40,
+                              vertical: 16,
+                            ),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                          ),
+                          child: const Text('Exchange'),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
-              const SizedBox(height: 20),
-              if (_loading)
-                Shimmer.fromColors(
-                  baseColor: Colors.grey[800]!,
-                  highlightColor: Colors.grey[500]!,
-                  child: Container(height: 20, width: 200, color: Colors.white),
-                )
-              else ...[
-                AnimatedSwitcher(
-                  duration: const Duration(milliseconds: 300),
-                  transitionBuilder: (child, animation) =>
-                      FadeTransition(opacity: animation, child: child),
-                  child: Text(
-                    '1 $_fromCurrency ≈ ${_rate.toStringAsFixed(4)} $_toCurrency',
-                    key: ValueKey(_rate),
-                    style: const TextStyle(color: Colors.white70),
-                  ),
-                ),
-                const SizedBox(height: 8),
-                if (_amountController.text.isNotEmpty && _rate > 0)
-                  Text(
-                    '≈ $formattedUsd USD',
-                    style: const TextStyle(color: Colors.white54),
-                  ),
-                if (_lastUpdated != null)
-                  Text(
-                    'Last updated: ${DateFormat.yMd().add_jm().format(_lastUpdated!)}',
-                    style: const TextStyle(color: Colors.white38),
-                  ),
-              ],
-              const SizedBox(height: 40), // ✅ Replaces Spacer
-              Center(
-                child: ElevatedButton(
-                  onPressed: _showConfirmation,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blueAccent,
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 40,
-                      vertical: 16,
-                    ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),
-                  child: const Text('Exchange'),
-                ),
-              ),
-            ],
-          ),
+            );
+          },
         ),
       ),
     );

@@ -48,6 +48,7 @@ dev_dependencies:
 
   
   flutter_lints: ^6.0.0
+  flutter_launcher_icons: ^0.13.1
 
 
 flutter:
@@ -77,6 +78,13 @@ flutter:
     - assets/data/countries.json
     - assets/data/states.json
     - assets/data/states-cities.json
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  web: true
+  image_path: "assets/images/app_logo.png"
+  android_adaptive_icon_background: "#2A52BE"
    
     
 color: "#2A52BE"

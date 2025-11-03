@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:ecommerce_app/models/chart_point.dart';
 import 'package:http/http.dart' as http;
 
 class CoinService {
@@ -57,5 +58,30 @@ class CoinService {
     } else {
       throw Exception('Failed to load coin details');
     }
+  }
+
+  static Future<List<ChartPoint>> fetchOHLCV(
+    String coinId,
+    String interval,
+    int limit,
+  ) async {
+    final uri = Uri.parse(
+      'https://api.coingecko.com/api/v3/coins/$coinId/ohlc?vs_currency=usd&days=1',
+    );
+
+    final response = await http.get(uri);
+    if (response.statusCode != 200)
+      throw Exception('Failed to fetch OHLCV data');
+
+    final raw = jsonDecode(response.body) as List<dynamic>;
+    return raw.map((e) {
+      return ChartPoint(
+        time: DateTime.fromMillisecondsSinceEpoch(e[0]),
+        open: (e[1] as num).toDouble(),
+        high: (e[2] as num).toDouble(),
+        low: (e[3] as num).toDouble(),
+        close: (e[4] as num).toDouble(),
+      );
+    }).toList();
   }
 }

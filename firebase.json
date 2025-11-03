@@ -1,16 +1,10 @@
 {
   "hosting": {
-    "public": "build/web",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
+    "public": "landing",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
+      { "source": "/app/**", "destination": "/app/index.html" },
+      { "source": "**", "destination": "/index.html" }
     ]
   },
   "functions": [
@@ -25,9 +19,30 @@
         "firebase-debug.*.log",
         "*.local"
       ],
-      "predeploy": [
-        "npm --prefix \"$RESOURCE_DIR\" run lint"
-      ]
+      "predeploy": ["npm --prefix \"$RESOURCE_DIR\" run lint"]
     }
-  ]
+  ],
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "igeg-vault",
+          "appId": "1:503575450443:android:d9baebea5f578d0871cece",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "igeg-vault",
+          "configurations": {
+            "android": "1:503575450443:android:d9baebea5f578d0871cece",
+            "ios": "1:503575450443:ios:584b2c89b7ad483671cece",
+            "macos": "1:503575450443:ios:584b2c89b7ad483671cece",
+            "web": "1:503575450443:web:bb88ad351b01d6d771cece",
+            "windows": "1:503575450443:web:45109424fdba4df071cece"
+          }
+        }
+      }
+    }
+  }
 }

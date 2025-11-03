@@ -58,19 +58,27 @@ class _SigninPageState extends State<SigninPage> {
       appBar: const BasicAppbar(hideBackButton: true),
       resizeToAvoidBottomInset: true,
       body: SafeArea(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 40),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _signinText(context),
-              const SizedBox(height: 20),
-              _emailField(context),
-              const SizedBox(height: 20),
-              _continueButton(context),
-              const SizedBox(height: 20),
-              _createAccount(context),
-            ],
+        child: Center(
+          // ✅ Center the form horizontally
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(
+              maxWidth: 420,
+            ), // ✅ Cap width on desktop
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 40),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _signinText(context),
+                  const SizedBox(height: 20),
+                  _emailField(context),
+                  const SizedBox(height: 20),
+                  _continueButton(context),
+                  const SizedBox(height: 20),
+                  _createAccount(context),
+                ],
+              ),
+            ),
           ),
         ),
       ),
@@ -100,23 +108,31 @@ class _SigninPageState extends State<SigninPage> {
   }
 
   Widget _createAccount(BuildContext context) {
-    return RichText(
-      text: TextSpan(
-        children: [
-          const TextSpan(text: "Don't you have an account? "),
-          TextSpan(
-            text: 'Create one',
-            recognizer: TapGestureRecognizer()
-              ..onTap = () {
-                AppNavigator.push(context, SignupPage());
-              },
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              color: Theme.of(context).colorScheme.primary,
-              decoration: TextDecoration.underline,
-            ),
+    return Center(
+      child: RichText(
+        text: TextSpan(
+          style: const TextStyle(
+            fontSize: 14,
+            color: Colors.white70, // ✅ Soft contrast on dark background
           ),
-        ],
+          children: [
+            const TextSpan(text: "Don't you have an account? "),
+            TextSpan(
+              text: 'Create one',
+              recognizer: TapGestureRecognizer()
+                ..onTap = () {
+                  AppNavigator.push(context, SignupPage());
+                },
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Theme.of(
+                  context,
+                ).colorScheme.primary, // ✅ Branded highlight
+                decoration: TextDecoration.underline,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

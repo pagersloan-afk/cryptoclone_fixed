@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IGEG Vault</title>
+  <meta name="description" content="IGEG Vault — Your trusted financial hub for banking, loans, and investing." />
+  <meta name="keywords" content="banking, fintech, loans, credit, savings, checking, IGEG Vault" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- 🔴 Top Header -->
+  <header class="top-header" role="banner">
+    <div class="header-wrapper">
+      <div class="logo-container">
+        <img src="https://www17.wellsfargomedia.com/assets/images/rwd/wf_logo_220x23.png" alt="IGEG Vault Logo" />
+      </div>
+      <nav class="nav-links" aria-label="Header Navigation" role="navigation">
+        <ul>
+          <li><a href="#">ATM/Locations</a></li>
+          <li><a href="#">Help</a></li>
+          <li><a href="#">Español</a></li>
+          <li><a href="#" class="search-icon" aria-label="Search"></a></li>
+          <li><a href="/app/#/fivecome" class="signon-button">Sign In</a></li>
+        </ul>
+      </nav>
+<button class="hamburger-menu" aria-label="Toggle Navigation" aria-expanded="false">
+  <span class="bar"></span>
+  <span class="bar"></span>
+  <span class="bar"></span>
+  <span class="menu-label">MENU</span>
+</button>
+
+    </div>
+  </header>
+
+  <!-- ⚪ Main Navigation -->
+  <nav class="main-nav" aria-label="Main Categories" role="navigation">
+    <ul>
+      <li class="active">Personal</li>
+      <li>Investing & Wealth</li>
+      <li>Business</li>
+      <li>Commercial</li>
+      <li>Corporate Banking</li>
+      <li>About IGEG</li>
+    </ul>
+  </nav>
+
+  <!-- 🔵 Sub Navigation -->
+  <nav class="sub-nav" aria-label="Product Links" role="navigation">
+    <a href="#">Checking</a>
+    <a href="#">Savings & CDs</a>
+    <a href="#">Credit Cards</a>
+    <a href="#">Home Loans</a>
+    <a href="#">Personal Loans</a>
+    <a href="#">Auto Loans</a>
+    <a href="#">Premier</a>
+    <a href="#">Education Tools</a>
+  </nav>
+
+  <!-- 🔴 Hero Banner -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Banking made simple.</h1>
+      <p>Open a checking account and get up to $300 bonus.</p>
+      <a href="#" class="cta-button">Get Started</a>
+    </div>
+  </section>
+
+  <!-- 🟠 Product Grid -->
+  <section class="products">
+    <h2>Explore Our Products</h2>
+    <div class="product-grid">
+      <div class="product-card">
+        <h3>Checking & Savings</h3>
+        <p>Manage your money with ease.</p>
+      </div>
+      <div class="product-card">
+        <h3>Credit Cards</h3>
+        <p>Find the card that fits your lifestyle.</p>
+      </div>
+      <div class="product-card">
+        <h3>Loans & Mortgages</h3>
+        <p>Finance your home or vehicle.</p>
+      </div>
+      <div class="product-card">
+        <h3>Investing & Retirement</h3>
+        <p>Plan for your future with confidence.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🟡 Rates Section -->
+  <section class="rates">
+    <h2>Current Rates</h2>
+    <ul>
+      <li><strong>Home Mortgage:</strong> 6.75% APR</li>
+      <li><strong>Savings Account:</strong> 4.25% APY</li>
+      <li><strong>Credit Card APR:</strong> 19.99% Variable</li>
+    </ul>
+  </section>
+
+  <!-- 🟢 Mobile App Promo -->
+  <section class="mobile-app">
+    <div class="mobile-content">
+      <h2>Bank on the go</h2>
+      <p>Download our app to manage your accounts, track spending, and more.</p>
+      <a href="#" class="cta-button">Download App</a>
+    </div>
+    <div class="mobile-image">
+      <img src="app/mobile_app.png" alt="Mobile App Screenshot" />
+    </div>
+  </section>
+
+  <!-- 🔵 Brand & Community -->
+  <section class="brand">
+    <h2>Who We Are</h2>
+    <p>We’re committed to financial wellness, community impact, and sustainable growth.</p>
+    <p>Learn about our values, careers, and how we support local communities.</p>
+  </section>
+
+  <!-- ⚫ Footer -->
+  <footer>
+    <p>© 2025 IGEG LLC. All rights reserved.</p>
+    <p><a href="#">Privacy</a> | <a href="#">Accessibility</a> | <a href="#">Terms</a> | <a href="#">Contact</a></p>
+  </footer>
+
+  <!-- 🔧 Mobile Nav Toggle Script -->
+ <script>
+  const hamburger = document.querySelector('.hamburger-menu');
+  const navList = document.querySelector('.nav-links ul');
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = navList.classList.contains('active');
+    navList.classList.toggle('active');
+    hamburger.setAttribute('aria-expanded', !isOpen);
+  });
+</script>
+
+
+
+
+</body>
+</html>
