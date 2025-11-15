@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <link rel="icon" type="image/png" href="app/assets/assets/images/favicon.png" />
+  <title>Investing & Wealth Management | IGEG Vault</title>
+  <meta name="description" content="Up to 90% purchase and 100% renovation financing. Fast closing. No prepayment penalty. Built for real estate investors." />
+  <meta name="keywords" content="fix and flip loans, renovation financing, real estate investing, IGEG Vault" />
+  <link rel="icon" type="image/png" href="assets/assets/images/favicon.png" />
+  <link rel="stylesheet" href="styles/hero.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="styles/navigation.css" />
+  <link rel="stylesheet" href="/styles/mutual-fund.css" />
+  <link rel="stylesheet" href="/styles/mutual-fund-disclosure.css" />
+</head>
+<body>
+
+<!-- 🔴 Top Header -->
+<header class="top-header" role="banner">
+  <div class="header-wrapper">
+    <div class="logo-container">
+      <a href="/" class="brand-link">
+        <h1 class="brand-text">INVESTORS GROUP OF EAST GATE</h1>
+      </a>
+    </div>
+    <nav class="nav-links" aria-label="Header Navigation">
+      <ul>
+        <li><a href="#">ATM/Locations</a></li>
+       <li><a href="/contact">Contact</a></li>
+        <li><a href="#" class="search-icon" aria-label="Search"></a></li>
+        <li><a href="/app/#/welcome" class="signon-button">Sign In</a></li>
+      </ul>
+    </nav>
+    <button class="hamburger-menu" aria-label="Toggle Navigation" aria-expanded="false">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="menu-label">MENU</span>
+    </button>
+  </div>
+</header>
+
+
+  <!-- ⚪ Main Navigation -->
+<nav class="main-nav" aria-label="Main Categories" role="navigation">
+  <ul class="main-nav-links">
+    <li><a href="/personal">Personal</a></li>
+    <li><a href="/investing">Investing & Wealth</a></li>
+    <li><a href="/business">Business</a></li>
+    <li><a href="/commercial">Commercial</a></li>
+    <li><a href="/corporate-banking">Corporate Banking</a></li>
+    <li><a href="/about">About IGEG</a></li>
+  </ul>
+</nav>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const currentPath = window.location.pathname.replace(/\/$/, "");
+    document.querySelectorAll(".main-nav-links a").forEach(link => {
+      const linkPath = link.getAttribute("href").replace(/\/$/, "");
+      if (linkPath === currentPath) {
+        link.classList.add("active");
+      }
+    });
+  });
+</script>
+
+  <!-- 🔵 Sub Navigation -->
+<nav class="sub-nav" aria-label="Product Links" role="navigation">
+  <div class="sub-nav-wrapper">
+    <div class="sub-nav-links">
+      <a href="/checking">Checking</a>
+      <a href="/savings">Savings & CDs</a>
+      <a href="/credit-cards">Credit Cards</a>
+      <a href="/premier">Premier</a>
+      <a href="/mutual-funds">Mutual Funds</a>
+      <a href="/personal-loans">Personal Loans</a>
+      <a href="/home-loans">Home Loans</a>
+      <a href="/auto-loans">Auto Loans</a>
+      <a href="/fix-and-flip">Fix and Flip Loans</a>
+      <a href="/dscr-rental">DSCR Rental Loans</a>
+      <a href="/new-construction">New Construction Loans</a>
+      <a href="/recent-deals">Recent Deals</a>
+    </div>
+  </div>
+</nav>
+
+<!-- 🔧 Subnav Active Script -->
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const currentPath = window.location.pathname.replace(/\/$/, "");
+    document.querySelectorAll(".sub-nav-links a").forEach(link => {
+      const linkPath = link.getAttribute("href").replace(/\/$/, "");
+      if (linkPath === currentPath) {
+        link.classList.add("active");
+      }
+    });
+  });
+</script>
+
+<!-- 🔵 Hero Banner -->
+<section class="hero-banner mutual-fund-banner">
+  <div class="hero-overlay">
+    <h1>Grow Your Wealth with IGEG Mutual Funds</h1>
+    <p>Smart, secure, and personalized investment options designed to help you reach your financial goals.</p>
+    <a href="#funds" class="cta-button">Explore Funds</a>
+  </div>
+</section>
+
+<!-- 🔵 Market Canvas Section -->
+<section class="hero-banner market-canvas">
+  <div class="tradingview-widget-container">
+    <div class="tradingview-widget-container__widget"></div>
+    <div class="tradingview-widget-copyright">
+      <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">
+        <span class="blue-text">Track all markets on TradingView</span>
+      </a>
+    </div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async></script>
+    <script type="text/javascript">
+      new TradingView.widget({
+        "symbols": [
+          ["Apple", "AAPL|1D"],
+          ["Google", "GOOGL|1D"],
+          ["Microsoft", "MSFT|1D"],
+          ["NASDAQ:TEM|1D"],
+          ["NASDAQ:NVDA|1D"],
+          ["NASDAQ:TSLA|1D"],
+          ["NASDAQ:META|1D"],
+          ["NASDAQ:AMZN|1D"],
+          ["NASDAQ:PLTR|1D"],
+          ["AMEX:SPY|1D"],
+          ["AMEX:VOO|1D"],
+          ["NASDAQ:QQQ|1D"],
+          ["NASDAQ:TQQQ|1D"],
+          ["TVC:US10Y|1D"],
+          ["TVC:US02Y|1D"],
+          ["TVC:US30Y|1D"],
+          ["TVC:US20Y|1D"],
+          ["TVC:JP10Y|1D"],
+          ["TVC:CA10Y|1D"],
+          ["TVC:EUBUND|1D"],
+          ["FX:EURUSD|1D"],
+          ["FX:USDJPY|1D"],
+          ["FX:GBPUSD|1D"],
+          ["CAPITALCOM:EURUSD|1D"],
+          ["FX:AUDUSD|1D"],
+          ["OANDA:GBPAUD|1D"],
+          ["BINANCE:BTCUSDT|1D"],
+          ["BINANCE:ETHUSD|1D"]
+        ],
+        "chartOnly": false,
+        "width": "100%",
+        "height": "100%",
+        "locale": "en",
+        "colorTheme": "dark",
+        "autosize": true,
+        "showVolume": false,
+        "showMA": false,
+        "hideDateRanges": false,
+        "hideMarketStatus": false,
+        "hideSymbolLogo": false,
+        "scalePosition": "right",
+        "scaleMode": "Normal",
+        "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif",
+        "fontSize": "10",
+        "noTimeScale": false,
+        "valuesTracking": "1",
+        "changeMode": "price-and-percent",
+        "chartType": "area",
+        "maLineColor": "#2962FF",
+        "maLineWidth": 1,
+        "maLength": 9,
+        "headerFontSize": "medium",
+        "lineWidth": 2,
+        "lineType": 0,
+        "dateRanges": ["1d|1", "1m|30", "3m|60", "12m|1D", "60m|1W", "all|1M"]
+      });
+    </script>
+  </div>
+</section>
+
+<!-- 🔹 Fund Highlights -->
+<section class="fund-highlights">
+  <h2>Why Choose IGEG Mutual Funds?</h2>
+  <div class="highlight-grid">
+    <div class="highlight-card">
+      <img src="/app/assets/assets/icons/management.png" alt="Management Icon" />
+      <h3>Professional Management</h3>
+      <p>Expert fund managers actively optimize your portfolio for performance and risk control.</p>
+    </div>
+    <div class="highlight-card">
+      <img src="/app/assets/assets/icons/diversification.png" alt="Diversification Icon" />
+      <h3>Diversified Portfolios</h3>
+      <p>Access a mix of bonds, equities, and fixed-income assets for balanced, long-term growth.</p>
+    </div>
+    <div class="highlight-card">
+      <img src="/app/assets/assets/icons/flexibility.png" alt="Flexibility Icon" />
+      <h3>Flexible Access</h3>
+      <p>Choose fixed or flexible withdrawal options to match your financial goals.</p>
+    </div>
+    <div class="highlight-card">
+      <img src="/app/assets/assets/icons/low-entry.png" alt="Low Entry Icon" />
+      <h3>Low Entry Barrier</h3>
+      <p>Start investing with as little as ₦500,000 and enjoy premium returns.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 🔹 Fund Comparison -->
+<section id="funds" class="fund-options">
+  <h2>Compare Our Flagship Funds</h2>
+  <div class="fund-grid">
+    <div class="fund-card">
+      <h3>IGEG-LOCK</h3>
+      <p><strong>30% interest upfront</strong> on a <em>90–365 day fixed deposit</em>.</p>
+      <ul>
+        <li>Capital locked for term duration</li>
+        <li>Ideal for long-term savers</li>
+        <li>Guaranteed returns</li>
+      </ul>
+      <a href="/mutual-fund-application.html?fund=lock" class="cta-button">Apply for IGEG-LOCK</a>
+    </div>
+    <div class="fund-card">
+      <h3>IGEG-SAVE</h3>
+      <p><strong>Up to 17% monthly</strong> with daily compounding and flexible withdrawals.</p>
+      <ul>
+        <li>Withdraw anytime</li>
+        <li>Best for short-term goals</li>
+        <li>Daily earnings visibility</li>
+      </ul>
+      <a href="/mutual-fund-application.html?fund=save" class="cta-button">Apply for IGEG-SAVE</a>
+    </div>
+  </div>
+</section>
+
+<!-- 📈 Performance Chart Placeholder -->
+<section class="performance-section">
+  <h2>Fund Performance Snapshot</h2>
+  <img src="/app/assets/assets/images/fund-performance-chart.png" alt="Fund performance chart" />
+  <p>Historical returns are not guarantees of future performance. See full disclosures below.</p>
+</section>
+
+<!-- 💬 Testimonials -->
+<section class="testimonials">
+  <h2>What Our Investors Say</h2>
+  <div class="testimonial-grid">
+    <div class="testimonial-card">
+      <p>“IGEG-LOCK gave me peace of mind and a solid return. I’m reinvesting again!”</p>
+      <span>— James O., California</span>
+    </div>
+    <div class="testimonial-card">
+      <p>“With IGEG-SAVE, I see my money grow daily. It’s flexible and powerful.”</p>
+      <span>— Alvina B., Texas</span>
+    </div>
+  </div>
+</section>
+
+<!-- 🏆 Trust Badges -->
+<section class="endorsements">
+  <div class="endorsement-source">
+    <h4>Nerdwallet</h4>
+    <ul>
+      <li>Best Robo-advisor, Portfolio Options, 2023</li>
+      <li>Best Robo-advisor, IRA, 2025</li>
+    </ul>
+  </div>
+  <div class="endorsement-source">
+    <h4>Bankrate</h4>
+    <ul>
+      <li>Best Cash Management Account, 2023–25</li>
+      <li>Best Investing App, 2025</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 📝 Application CTA -->
+<section class="apply-section">
+  <h2>Ready to Invest?</h2>
+  <p>Take the first step toward financial freedom. Choose your fund and submit your application securely online.</p>
+  <a href="/mutual-fund-application.html" class="cta-button">Start Application</a>
+</section>
+
+<!-- 📜 Mutual Fund Disclosure -->
+<section class="mutual-fund-disclosure">
+  <div class="disclosure-wrapper">
+    <p>Before investing, consider the funds' investment objectives, risks, charges, and expenses. Contact IGEG LLC for a prospectus or, if available, a summary prospectus containing this information. Read it carefully.</p>
+
+    <p>Diversification and asset allocation do not ensure a profit or guarantee against loss.</p>
+    <p>Past performance is no guarantee of future results.</p>
+    <p>Because of their narrow focus, sector investments tend to be more volatile than investments that diversify across many sectors and companies.</p>
+
+    <ol>
+      <li>IGEG's goal is to make financial expertise broadly accessible and effective in helping people live the lives they want. With assets under administration of $2.2 trillion, including managed assets of $1.2 trillion as of March 3, 2020, we focus on meeting the unique needs of a diverse set of customers: helping more than 6 million people invest their own life savings, nearly 23,000 businesses manage employee benefit programs, as well as providing nearly 12,500 advisory firms with technology solutions to invest their own clients' money.</li>
+
+      <li>RMDs do not apply to investments in Roth IRAs or taxable accounts.</li>
+
+      <li>Other fees and expenses, including those which apply to a continued investment in the fund, are described in the fund's current prospectus. IGEG Brokerage Services LLC, or its affiliates, receives compensation in connection with (i) access to, purchase or redemption of, and/or maintenance of positions in mutual funds and other investment products ("funds"), (ii) infrastructure needed to support such funds as well as additional compensation for shareholder services, start-up fees, infrastructure support and maintenance, marketing, engagement and analytics programs and/or (iii) a fund's attendance at events for IGEGBS's clients and/or representatives, and opportunities for the fund to promote its products and services. This compensation may take the form of sales loads and 12b-1 fees described in the prospectus and/or additional compensation paid by the fund, its investment adviser or an affiliate. IGEG reserves the right to change the funds available without transaction fees and reinstate the fees on any funds. IGEG will charge a short term trading fee each time you sell or exchange shares of FundsNetwork No Transaction Fee (NTF) funds held less than 60 days (short-term trade).</li>
+
+      <li>The Fund Evaluator is provided to help self-directed investors evaluate mutual funds based on their own needs and circumstances. The criteria entered is at the sole discretion of the user and any information obtained should not be considered an offer to buy or sell, a solicitation of an offer to buy, or a recommendation for any securities. You acknowledge that your requests for information are unsolicited and shall neither constitute, nor be considered as investment advice by IGEG Brokerage Services, LLC., IGEG Distributors Corporation, or their affiliates (collectively, "IGEG").</li>
+    </ol>
+
+    <p><strong>Please note:</strong> When comparing funds, please consider all important factors, including information pertaining to fund fees, fund features, and fund objectives. While funds may track an index, the indices and strategies employed in seeking to achieve an investment goal may be different. Each fund’s investment object and strategy and index tracked to achieve investment goals may differ. For new investors, funding investment minimums may be different.</p>
+
+    <p class="disclosure-id">Reference ID: 5130181</p>
+  </div>
+</section>
+

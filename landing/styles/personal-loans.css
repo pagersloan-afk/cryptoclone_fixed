@@ -1,0 +1,242 @@
+/* 🌐 Base Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  line-height: 1.6;
+  color: #1a1a1a;
+  background-color: #fff;
+}
+
+/* 🔹 Hero Banner Canvas Base */
+.hero-banner {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  overflow: hidden;
+}
+
+/* 🔹 Overlay Content */
+.hero-overlay {
+  background: rgba(0, 0, 0, 0.4);
+  padding: 2rem;
+  border-radius: 8px;
+  text-align: center;
+  max-width: 600px;
+  z-index: 2;
+}
+
+/* 🔹 Personal Loans Canvas Variant */
+.personal-loans-canvas {
+  background-image: url('/app/assets/assets/images/personal-loans-hero.jpg');
+}
+
+
+/* 🔵 Hero Banner */
+.rsk-marquee-container {
+  position: relative;
+  width: 100%;
+  height: 80vh;
+  overflow: visible;
+}
+
+.hero-background-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.rsk-marquee-overlay-card {
+  position: absolute;
+  top: 75%; /* Moves the card lower */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.92);
+  padding: 0.3rem 0.8rem; /* Reduced padding for tighter height */
+  border-radius: 8px;
+  text-align: center;
+  max-width: 600px;
+  width: 90%;
+  min-height: 80px; /* Optional: ensures consistent minimum height */
+  max-height: 160px;
+  height: auto; /* Allows content to define height */
+}
+.rsk-marquee-overlay-card h2,
+.rsk-marquee-overlay-card p,
+.rsk-marquee-overlay-card a {
+  margin: 0.5rem 0;
+}
+.rsk-marquee-overlay-card h2 {
+  font-size: 1.5rem;
+  line-height: 1.2;
+}
+.rsk-marquee-overlay-card p {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+
+.ps-btn-primary {
+  background-color: #b31b1b;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+  display: inline-block;
+  margin-top: 1rem;
+}
+
+/* 🧭 Quick Start CTA */
+.card-background-white {
+  background-color: #fff;
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.ps-mid-page-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+/* 💳 Promo Cards */
+.promo-card-section {
+  padding: 4rem 2rem;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+.promo-card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.promo-card {
+  flex: 1 1 250px;
+  max-width: 280px;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.promo-card img {
+  max-width: 64px;
+  margin-bottom: 1rem;
+}
+
+.ps-btn-text {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #b31b1b;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.ps-btn-text:hover {
+  text-decoration: underline;
+}
+
+/* 🧠 Tools Section */
+.card-background-gray {
+  background-color: #f2f2f2;
+  padding: 4rem 2rem;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.enhanced-txt-cm {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  max-width: 280px;
+  text-align: center;
+}
+
+.enhanced-txt-cm img {
+  max-width: 100px;
+  margin-bottom: 1rem;
+}
+
+/* ❓ FAQ Section */
+.show-hide-content-wrapper {
+  max-width: 800px;
+  margin: 1rem auto;
+  padding: 0 1rem;
+}
+
+summary {
+  font-weight: bold;
+  cursor: pointer;
+  padding: 1rem 0;
+}
+
+details {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 1rem;
+}
+
+details[open] summary::after {
+  content: "▲";
+  float: right;
+}
+
+summary::after {
+  content: "▼";
+  float: right;
+}
+
+/* 📱 Responsive Layout */
+@media (max-width: 768px) {
+  .cta-buttons,
+  .promo-card-grid,
+  .card-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .promo-card,
+  .enhanced-txt-cm {
+    max-width: 100%;
+  }
+
+  .rsk-marquee-overlay-card {
+    top: 70%;
+    padding: 0.75rem;
+    width: 95%;
+  }
+
+  .ps-btn-primary,
+  .ps-btn-text {
+    width: 100%;
+    text-align: center;
+  }
+}

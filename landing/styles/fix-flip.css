@@ -1,0 +1,328 @@
+/* 🔴 Fix & Flip Loans Styles — IGEG Vault */
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f9f9f9;
+  color: #222;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 2rem;
+}
+
+/* 🔥 Hero Section */
+.rsk-marquee-container {
+  background: linear-gradient(rgba(240, 143, 143, 0.6), rgba(194, 0, 0, 0.6)), url('/landing/app/assets/images/fix-flip-hero.jpg') center/cover no-repeat;
+  color: #fff;
+  padding: 6rem 2rem;
+  text-align: center;
+}
+
+.rsk-marquee-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.rsk-marquee-content p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+/* 🔵 Hero Banner Image Styling */
+
+.rsk-marquee-img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.rsk-marquee-img-container img {
+  max-width: 100%;
+  height: auto;
+  width: 500px; /* Adjust this value as needed */
+  border-radius: 8px; /* Optional: adds subtle rounding */
+  object-fit: cover;
+}
+
+.ps-btn-primary {
+  background-color: #c20000;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-weight: bold;
+  display: inline-block;
+  transition: background 0.3s ease;
+}
+
+.ps-btn-primary:hover {
+  background-color: #a00000;
+}
+
+.ps-btn-secondary {
+  border: 2px solid #c20000;
+  color: #c20000;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-weight: bold;
+  display: inline-block;
+  background: #fff;
+  transition: background 0.3s ease;
+}
+
+.ps-btn-secondary:hover {
+  background-color: #fbeaea;
+}
+
+/* 🧭 Step Cards */
+.card-background-white {
+  background-color: #fff;
+  padding: 4rem 2rem;
+}
+
+.ps-mid-page-title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.enhanced-txt-cm {
+  flex: 1 1 220px;
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  text-align: center;
+}
+
+.enhanced-txt-cm h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.enhanced-txt-cm .headline {
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+/* 💰 Promo Section */
+.ps-large-promo-full-container {
+  background-color: #f5f5f5;
+  padding: 4rem 2rem;
+}
+
+.ps-promo-full-content h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.ps-promo-full-content p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* 🧠 Tools Section */
+.card-background-gray {
+  background-color: #eee;
+  padding: 4rem 2rem;
+}
+
+/* ❓ FAQ Accordion */
+details {
+  margin: 1rem auto;
+  max-width: 800px;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.05);
+  padding: 1rem;
+}
+
+summary {
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+.show-hide-content-text-wrapper-collapsible {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+}
+
+/* 🧭 Footer */
+.ps-footer {
+  background-color: #222;
+  color: #fff;
+  padding: 2rem;
+  text-align: center;
+}
+
+.ps-footer a {
+  color: #fff;
+  margin: 0 1rem;
+  font-size: 0.9rem;
+}
+/* 🧭 Top Navigation Bar */
+
+.ps-masthead {
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  padding: 1rem 2rem;
+}
+
+.ps-masthead-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.ps-logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #c20000;
+}
+
+.ps-nav-links {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.ps-nav-links a {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.ps-nav-links a:hover {
+  color: #c20000;
+}
+
+.ps-menu-button {
+  display: none; /* Hide unless using mobile toggle */
+}
+/* 🔴 Top Header Styles — Match Landing Page */
+
+.top-header {
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  padding: 1rem 2rem;
+}
+.top-header .brand-text {
+  color: #ffffff !important;
+}
+
+
+.header-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.brand-logo {
+  width: 35px; /* Adjust size as needed */
+  height: auto;
+}
+
+.logo-container .brand-text {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #c20000;
+  margin: 0;
+}
+.brand-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav-links ul {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.nav-links a:hover {
+  color: #c20000;
+}
+
+.signon-button {
+  background-color: #c20000;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.signon-button:hover {
+  background-color: #a00000;
+}
+
+.hamburger-menu {
+  display: none; /* Hide unless using mobile toggle */
+  background: none;
+  border: none;
+  font-size: 1rem;
+  color: #c20000;
+}
+
+.hamburger-menu .bar {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background-color: #333;
+  margin: 4px 0;
+}
+
+.menu-label {
+  display: block;
+  font-size: 0.85rem;
+  margin-top: 4px;
+  color: #333;
+}
+@media (max-width: 768px) {
+  .nav-links ul {
+    display: none;
+  }
+
+  .hamburger-menu {
+    display: block;
+  }
+}

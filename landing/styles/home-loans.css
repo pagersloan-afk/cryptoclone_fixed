@@ -1,0 +1,267 @@
+/* 🌐 Base Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  line-height: 1.6;
+  color: #1a1a1a;
+  background-color: #fff;
+}
+
+/* 🔹 Hero Banner Canvas */
+.hero-banner {
+  position: relative;
+  width: 100%;
+  height: 80vh; /* full viewport height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  overflow: hidden;
+}
+
+/* 🔹 Overlay Content */
+.hero-overlay {
+  background: rgba(0, 0, 0, 0.4); /* semi-transparent canvas overlay */
+  padding: 2rem;
+  border-radius: 8px;
+  text-align: center;
+  max-width: 600px;
+  z-index: 2;
+}
+
+/* 🔹 Specific Canvas Variant */
+.home-loans-canvas {
+  background-image: url('/app/assets/assets/images/home-loans-hero.png');
+}
+
+
+/* 🔵 Hero Banner */
+.rsk-marquee-container {
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  overflow: visible;
+}
+
+.hero-background-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.rsk-marquee-overlay-card {
+  position: absolute;
+  top: 60%; /* ⬇ Moves the card lower on the screen */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.9);
+  padding: 1.5rem 2rem; /* ⬇ Reduces internal height */
+  border-radius: 8px;
+  text-align: center;
+  max-width: 600px;
+  width: 90%;
+  max-height: 250px;
+  overflow: hidden;
+  z-index: 2;
+}
+
+
+.ps-btn-primary {
+  background-color: #b31b1b;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+  display: inline-block;
+  margin-top: 1rem;
+}
+
+/* 🧭 Quick Start CTA */
+.card-background-white {
+  background-color: #fff;
+  padding: 3rem 2rem;
+}
+
+.ps-mid-page-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+/* 🏡 Promo Cards */
+.promo-card-section {
+  padding: 4rem 2rem;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+.promo-card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.promo-card {
+  flex: 1 1 250px;
+  max-width: 280px;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.promo-card img {
+  max-width: 64px;
+  margin-bottom: 1rem;
+  display: block;
+  margin: 0 auto 1rem auto; /* centers horizontally and adds bottom spacing */
+}
+
+.ps-btn-text {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #b31b1b;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.ps-btn-text:hover {
+  text-decoration: underline;
+}
+
+/* 🧠 Mortgage Tools */
+.card-background-gray {
+  background-color: #f2f2f2;
+  padding: 4rem 2rem;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.enhanced-txt-cm {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  max-width: 280px;
+  text-align: center;
+}
+
+.enhanced-txt-cm img {
+  max-width: 100px;
+  margin-bottom: 1rem;
+}
+
+/* ❓ FAQ Section */
+.show-hide-content-wrapper {
+  max-width: 800px;
+  margin: 1rem auto;
+  padding: 0 1rem;
+}
+
+summary {
+  font-weight: bold;
+  cursor: pointer;
+  padding: 1rem 0;
+}
+
+details {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 1rem;
+}
+
+details[open] summary::after {
+  content: "▲";
+  float: right;
+}
+
+summary::after {
+  content: "▼";
+  float: right;
+}
+
+/* 🧭 Footer */
+.ps-footer {
+  background-color: #1a1a1a;
+  color: #fff;
+  padding: 2rem;
+  text-align: center;
+}
+
+.footer-links a {
+  color: #fff;
+  margin: 0 1rem;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* 📱 Responsive Layout */
+@media (max-width: 768px) {
+  .header-wrapper,
+  .nav-links ul,
+  .main-nav ul,
+  .sub-nav,
+  .cta-buttons,
+  .promo-card-grid,
+  .card-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .promo-card,
+  .enhanced-txt-cm {
+    max-width: 100%;
+  }
+
+  .rsk-marquee-overlay-card {
+    width: 90%;
+    padding: 1.5rem;
+  }
+
+  .ps-btn-primary,
+  .ps-btn-text {
+    width: 100%;
+    text-align: center;
+  }
+
+  .hamburger-menu {
+    display: flex;
+  }
+
+  .nav-links ul {
+    display: none;
+  }
+
+  .nav-links ul.active {
+    display: flex;
+    flex-direction: column;
+    background-color: #b31b1b;
+    padding: 1rem;
+    position: absolute;
+    top: 60px;
+    right: 2rem;
+    z-index: 1000;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+}

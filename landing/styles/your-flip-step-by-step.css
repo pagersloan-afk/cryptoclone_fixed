@@ -1,0 +1,34 @@
+.card-container.three-card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 2rem auto;
+}
+
+.enhanced-txt-cm {
+  flex: 1 1 30%;
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.headline {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.ps-btn-text {
+  display: inline-block;
+  color: #c20000;
+  font-weight: bold;
+  text-decoration: none;
+  margin-top: 0.5rem;
+}
+
+.ps-btn-text:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,52 @@
+/* 🏡 Mortgage Promo Section */
+.mortgage-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 64px 32px;
+  background-color: #fff;
+  gap: 48px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #eee;
+}
+
+.mortgage-content {
+  max-width: 480px;
+}
+
+.mortgage-content h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #b31b1b;
+  margin-bottom: 12px;
+}
+
+.mortgage-content p {
+  font-size: 1.1rem;
+  color: #444;
+  margin-bottom: 24px;
+}
+
+.mortgage-image img {
+  max-width: 480px;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+/* 🔘 CTA Button */
+.cta-button {
+  display: inline-block;
+  background-color: #b31b1b;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #8e1414;
+  transform: scale(1.05);
+}

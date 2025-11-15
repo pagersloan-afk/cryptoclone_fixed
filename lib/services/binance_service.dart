@@ -45,4 +45,25 @@ class BinanceService {
       throw Exception('Failed to load OHLCV data from Binance');
     }
   }
+
+  Future<double?> fetchDynamicChange(String coinName) async {
+    final symbol = getBinanceSymbol(coinName);
+    final url = Uri.parse(
+      'https://api.binance.com/api/v3/ticker/24hr?symbol=$symbol',
+    );
+
+    try {
+      final response = await http.get(url);
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+        return double.tryParse(data['priceChangePercent'] ?? '0');
+      } else {
+        print('Failed to fetch dynamic change: ${response.statusCode}');
+        return null;
+      }
+    } catch (e) {
+      print('Error fetching dynamic change: $e');
+      return null;
+    }
+  }
 }

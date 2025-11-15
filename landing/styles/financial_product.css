@@ -1,0 +1,58 @@
+/* 🧮 Financial Product Highlights */
+.product-highlights {
+  max-width: 1200px;
+  margin: auto;
+  padding: 64px 32px;
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+.highlight-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 32px;
+}
+
+.highlight-card {
+  background-color: #f9f9f9;
+  padding: 32px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.highlight-icon img {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 16px;
+}
+
+.highlight-card h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #b31b1b;
+  margin-bottom: 12px;
+}
+
+.highlight-card p {
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 16px;
+}
+
+.highlight-link {
+  font-size: 0.95rem;
+  color: #b31b1b;
+  font-weight: 600;
+  text-decoration: none;
+  margin-top: auto;
+  transition: color 0.3s ease;
+}
+
+.highlight-link:hover {
+  color: #8e1414;
+  text-decoration: underline;
+}

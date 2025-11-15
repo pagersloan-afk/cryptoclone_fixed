@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <link rel="icon" type="image/png" href="app/assets/assets/images/favicon.png" />
+  <title>Home Loans | IGEG Vault</title>
+  <meta name="description" content="Up to 90% purchase and 100% renovation financing. Fast closing. No prepayment penalty. Built for real estate investors." />
+  <meta name="keywords" content="fix and flip loans, renovation financing, real estate investing, IGEG Vault" />
+  <link rel="icon" type="image/png" href="assets/assets/images/favicon.png" />
+  <link rel="stylesheet" href="styles/fix-flip.css" />
+  <link rel="stylesheet" href="styles/hero.css" />
+  <link rel="stylesheet" href="styles/your-flip-step-by-step.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="styles/navigation.css" />
+  <link rel="stylesheet" href="styles/home-loans.css" />
+</head>
+<body>
+
+<!-- 🔴 Top Header -->
+<header class="top-header" role="banner">
+  <div class="header-wrapper">
+    <div class="logo-container">
+      <a href="/" class="brand-link">
+        <h1 class="brand-text">INVESTORS GROUP OF EAST GATE</h1>
+      </a>
+    </div>
+    <nav class="nav-links" aria-label="Header Navigation">
+      <ul>
+        <li><a href="#">ATM/Locations</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="#" class="search-icon" aria-label="Search"></a></li>
+        <li><a href="/app/#/welcome" class="signon-button">Sign In</a></li>
+      </ul>
+    </nav>
+    <button class="hamburger-menu" aria-label="Toggle Navigation" aria-expanded="false">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="menu-label">MENU</span>
+    </button>
+  </div>
+</header>
+
+
+ <!-- ⚪ Main Navigation -->
+<nav class="main-nav" aria-label="Main Categories" role="navigation">
+  <ul class="main-nav-links">
+    <li><a href="/personal">Personal</a></li>
+    <li><a href="/investing">Investing & Wealth</a></li>
+    <li><a href="/business">Business</a></li>
+    <li><a href="/commercial">Commercial</a></li>
+    <li><a href="/corporate-banking">Corporate Banking</a></li>
+    <li><a href="/about">About IGEG</a></li>
+  </ul>
+</nav>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const currentPath = window.location.pathname.replace(/\/$/, "");
+    document.querySelectorAll(".main-nav-links a").forEach(link => {
+      const linkPath = link.getAttribute("href").replace(/\/$/, "");
+      if (linkPath === currentPath) {
+        link.classList.add("active");
+      }
+    });
+  });
+</script>
+
+  <!-- 🔵 Sub Navigation -->
+<nav class="sub-nav" aria-label="Product Links" role="navigation">
+  <div class="sub-nav-wrapper">
+    <div class="sub-nav-links">
+      <a href="/checking">Checking</a>
+      <a href="/savings">Savings & CDs</a>
+      <a href="/credit-cards">Credit Cards</a>
+      <a href="/premier">Premier</a>
+      <a href="/mutual-funds">Mutual Funds</a>
+      <a href="/personal-loans">Personal Loans</a>
+      <a href="/home-loans">Home Loans</a>
+      <a href="/auto-loans">Auto Loans</a>
+      <a href="/fix-and-flip">Fix and Flip Loans</a>
+      <a href="/dscr-rental">DSCR Rental Loans</a>
+      <a href="/new-construction">New Construction Loans</a>
+      <a href="/recent-deals">Recent Deals</a>
+    </div>
+  </div>
+</nav>
+
+<!-- 🔧 Subnav Active Script -->
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const currentPath = window.location.pathname.replace(/\/$/, "");
+    document.querySelectorAll(".sub-nav-links a").forEach(link => {
+      const linkPath = link.getAttribute("href").replace(/\/$/, "");
+      if (linkPath === currentPath) {
+        link.classList.add("active");
+      }
+    });
+  });
+</script>
+
+
+<!-- 🔵 Hero Banner Canvas Style -->
+<section class="hero-banner home-loans-canvas">
+  <div class="hero-overlay">
+    <h1>Thinking of buying or refinancing?</h1>
+    <p>Low down payment options. Fixed-rate stability. Personalized quotes in minutes.</p>
+    <a href="/apply.html" class="cta-button">Apply Now</a>
+  </div>
+</section>
+
+
+<!-- 🧭 Quick Start CTA -->
+<div class="card-background-white text-aligned-center">
+  <div class="ps-mid-page-title-wrapper">
+    <h2 class="ps-mid-page-title">Get Started with a Personalized Quote</h2>
+    <p>It takes just a few minutes. No commitment. No credit impact.</p>
+    <div class="cta-buttons">
+      <a href="/apply.html" class="ps-btn-primary">Home Purchase</a>
+      <a href="/apply.html" class="ps-btn-primary">Refinance</a>
+    </div>
+  </div>
+</div>
+
+<!-- 🏡 Homebuying Promo Cards -->
+<section class="promo-card-section">
+  <h2>Homebuying starts here</h2>
+  <div class="promo-card-grid">
+    <div class="promo-card">
+      <img src="/app/assets/assets/icons/afford.png" alt="">
+      <h3>See what you can afford</h3>
+      <p>Get a customized mortgage estimate — no credit impact.</p>
+      <a href="/tools/affordability" class="ps-btn-text">Check price range &gt;</a>
+    </div>
+    <div class="promo-card">
+      <img src="/app/assets/assets/icons/search.png" alt="">
+      <h3>Shop for homes</h3>
+      <p>Access exclusive real estate tools for IGEG LLC’s customers.</p>
+      <a href="/tools/home-search" class="ps-btn-text">Start home shopping &gt;</a>
+    </div>
+    <div class="promo-card">
+      <img src="/app/assets/assets/icons/compass.png" alt="">
+      <h3>First-time buyer tips</h3>
+      <p>Learn the key steps and get guided support.</p>
+      <a href="/learn/first-home" class="ps-btn-text">Begin your journey &gt;</a>
+    </div>
+    <div class="promo-card">
+      <img src="/app/assets/assets/icons/checkmark.png" alt="">
+      <h3>Ready to apply?</h3>
+      <p>Submit your mortgage application and take the final steps to homeownership.</p>
+      <a href="/mortgage/apply" class="ps-btn-text">Apply now &gt;</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- 🧠 Mortgage Tools -->
+<div class="card-background-gray text-aligned-center">
+  <div class="ps-mid-page-title-wrapper">
+    <h2 class="ps-mid-page-title">Mortgage Tools</h2>
+  </div>
+  <div class="card-container three-card card-left card-theme2">
+    <div class="enhanced-txt-cm text-aligned-center">
+      <img src="app/assets/assets/images/tool-arv.jpg" alt="">
+      <h3>Mortgage Calculators</h3>
+      <p><a href="/mortgage/calculators" class="ps-btn-text">Run the numbers &gt;</a></p>
+    </div>
+    <div class="enhanced-txt-cm text-aligned-center">
+      <img src="app/assets/assets/images/tool-budget.jpg" alt="">
+      <h3>Today’s Rates</h3>
+      <p><a href="/mortgage/rates" class="ps-btn-text">Check current APRs &gt;</a></p>
+    </div>
+    <div class="enhanced-txt-cm text-aligned-center">
+      <img src="app/assets/assets/images/tool-compare.jpg" alt="">
+      <h3>Learning Center</h3>
+      <p><a href="/mortgage/learn" class="ps-btn-text">Explore articles &gt;</a></p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ❓ FAQ Section -->
+<div class="card-background-white text-aligned-center">
+  <div class="ps-mid-page-title-wrapper">
+    <h2 class="ps-mid-page-title">Home Loans FAQs</h2>
+  </div>
+</div>
+
+<details class="show-hide-content-wrapper">
+  <summary class="show-hide-content-title"><span>How much home can I afford?</span></summary>
+  <div class="show-hide-content-text-wrapper-collapsible">
+    <p>Start with 25% of your gross monthly income. Use our calculator to refine.</p>
+  </div>
+</details>
+
+<details class="show-hide-content-wrapper">
+  <summary class="show-hide-content-title"><span>What does a lender review?</span></summary>
+  <div class="show-hide-content-text-wrapper-collapsible">
+    <p>Credit score, debt-to-income ratio, and savings history.</p>
+  </div>
+</details>
+
+<details class="show-hide-content-wrapper">
+  <summary class="show-hide-content-title"><span>Minimum down payments?</span></summary>
+  <div class="show-hide-content-text-wrapper-collapsible">
+    <p>Conventional: 3%, FHA: 3.5%, VA: up to 100% financing.</p>
+  </div>
+</details>
+
+
+<!-- 🧭 Footer -->
+<footer class="ps-footer">
+  <div class="footer-links">
+    <a href="/privacy-security-legal-cookies.html#privacy">Privacy</a>
+    <a href="/privacy-security-legal-cookies.html#security">Security</a>
+    <a href="/privacy-security-legal-cookies.html#legal">Legal</a>
+    <a href="/privacy-security-legal-cookies.html#cookies">Cookies</a>
+  </div>
+</footer>
+
+</body>
+</html>
+

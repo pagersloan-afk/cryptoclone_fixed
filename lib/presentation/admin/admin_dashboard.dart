@@ -14,10 +14,14 @@ class AdminDashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Admin Dashboard')),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      body: ListView(
+        padding: const EdgeInsets.all(0), // optional, adjust as needed
         children: [
           const SystemWalletEditor(),
+          const Divider(),
+
+          // ✅ IBM Keys Editor section
+          const IBMKeysEditor(),
           const Divider(),
 
           // ✅ Deposit Approval Button
@@ -47,7 +51,10 @@ class AdminDashboard extends StatelessWidget {
           const Divider(),
 
           // ✅ User List View
-          const Expanded(child: UserListView()),
+          SizedBox(
+            height: 400, // give it a fixed height so ListView can render it
+            child: const UserListView(),
+          ),
         ],
       ),
     );
@@ -142,6 +149,88 @@ class _SystemWalletEditorState extends State<SystemWalletEditor> {
           ),
         ],
       ),
+    );
+  }
+}
+
+class IBMKeysEditor extends StatefulWidget {
+  const IBMKeysEditor({super.key});
+
+  @override
+  State<IBMKeysEditor> createState() => _IBMKeysEditorState();
+}
+
+class _IBMKeysEditorState extends State<IBMKeysEditor> {
+  final List<TextEditingController> keyControllers = List.generate(
+    5,
+    (_) => TextEditingController(),
+  );
+
+  @override
+  void initState() {
+    super.initState();
+    FirebaseFirestore.instance
+        .collection('SystemConfig')
+        .doc('ibmKeys')
+        .get()
+        .then((doc) {
+          if (doc.exists) {
+            final keys = List<String>.from(doc['keys'] ?? []);
+            for (int i = 0; i < keys.length && i < 5; i++) {
+              keyControllers[i].text = keys[i];
+            }
+          }
+        });
+  }
+
+  Future<void> saveKeys() async {
+    final keys = keyControllers
+        .map((c) => c.text.trim())
+        .where((k) => k.isNotEmpty)
+        .toList();
+
+    if (keys.length > 5) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text('Maximum 5 keys allowed')));
+      return;
+    }
+
+    await FirebaseFirestore.instance
+        .collection('SystemConfig')
+        .doc('ibmKeys')
+        .set({'keys': keys});
+
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(const SnackBar(content: Text('IBM Keys updated')));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text(
+          'IBM Product Keys',
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+        ),
+        const SizedBox(height: 12),
+        ...List.generate(5, (i) {
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8),
+            child: TextField(
+              controller: keyControllers[i],
+              decoration: InputDecoration(
+                labelText: 'Key ${i + 1}',
+                border: const OutlineInputBorder(),
+              ),
+            ),
+          );
+        }),
+        const SizedBox(height: 16),
+        ElevatedButton(onPressed: saveKeys, child: const Text('Save Keys')),
+      ],
     );
   }
 }

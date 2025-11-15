@@ -1,0 +1,349 @@
+/* 🔧 Base Reset */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+}
+h1, h2, h3, h4 {
+  margin: 0 0 8px;
+}
+p {
+  margin: 0 0 12px;
+}
+button {
+  cursor: pointer;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+/* 🔵 Header Navigation */
+.investing-header {
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+}
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+}
+.top-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+}
+.top-nav li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+.top-nav li.active a {
+  color: #00704A;
+}
+.nav-actions {
+  display: flex;
+  gap: 16px;
+}
+.sign-on {
+  background-color: #00704A;
+  color: #fff;
+}
+.brand-link {
+  text-decoration: none;
+}
+
+.brand-text {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+
+/* 🔵 Hero Banner */
+.hero-banner {
+  background-image: url('../app/assets/assets/images/commercial-hero.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 500px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;  /* ⬅️ Aligns overlay to the left */
+  padding: 0 40px;
+}
+.hero-overlay-card {
+  background-color: #fff;
+  padding: 32px;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+  max-width: 400px;
+  text-align: center;
+  align-self: flex-start; /* ⬅️ Optional: top-align vertically */
+  margin: 0; /* ⬅️ Prevent centering */
+}
+
+.hero-overlay {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 24px;
+  max-width: 400px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  text-align: left;
+}
+
+.hero-overlay h1 {
+  font-size: 1.8rem;
+  color: #00704A;
+  margin-bottom: 12px;
+}
+
+.hero-overlay p {
+  font-size: 1rem;
+  margin-bottom: 16px;
+}
+
+.hero-overlay-card h1 {
+  font-size: 1.6rem;
+  color: #333;
+  margin-bottom: 24px;
+}
+
+.sign-on-button {
+  background-color: #c4001d;
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 24px;
+}
+
+.support-links {
+  background-color: #f8f4ef;
+  padding: 16px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.support-links a {
+  color: #333;
+  font-size: 0.9rem;
+  text-align: left;
+  text-decoration: none;
+}
+
+.support-links a:hover {
+  text-decoration: underline;
+}
+
+.cta-button {
+  background-color: #6A1B9A;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-weight: 600;
+  border-radius: 4px;
+}
+
+/*Explore recent perspectives and insights */
+.commercial-insights {
+  padding: 40px 24px;
+  background-color: #f9f9f9;
+}
+
+.commercial-insights h2 {
+  font-size: 1.8rem;
+  color: #00704A;
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.insight-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.insight-card {
+  background-color: #fff;
+  padding: 0;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.insight-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.insight-card h3 {
+  font-size: 1.2rem;
+  margin: 16px 20px 8px;
+  color: #333;
+}
+
+.insight-card p {
+  font-size: 0.95rem;
+  margin: 0 20px 12px;
+  color: #555;
+}
+
+.insight-card a {
+  margin: 0 20px 16px;
+  color: #6A1B9A;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.insight-card a:hover {
+  text-decoration: underline;
+}
+
+
+
+/* 🔹 Investment Products */
+.investment-products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  padding: 40px 24px;
+  background-color: #fff;
+}
+.product-card {
+  background-color: #f8f8f8;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+.product-card span {
+  font-weight: bold;
+  color: #00704A;
+}
+.card-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.card-icon img {
+  width: 64px;       /* ⬅️ Adjust size here */
+  height: 64px;
+  object-fit: contain;
+}
+
+
+/* 🔘 Compare Button */
+.compare-button-container {
+  text-align: center;
+  padding: 24px;
+}
+.compare-button {
+  background-color: #6A1B9A;
+  color: #fff;
+}
+
+/* 🧠 Strategy & Insights */
+.strategy-insights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  padding: 40px 24px;
+  background-color: #f4f4f4;
+}
+.insight-card {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+.insight-card img {
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+.insight-card button {
+  background-color: #00704A;
+  color: #fff;
+}
+
+/* 🔐 Security Center */
+.security-center {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 40px 24px;
+  background-color: #fff;
+  gap: 24px;
+}
+.security-image img {
+  max-width: 300px;
+  border-radius: 8px;
+}
+.security-text {
+  flex: 1;
+}
+.app-store-icons img {
+  height: 40px;
+  margin-right: 12px;
+}
+
+/* 🧭 Benefits & Resources */
+.benefits-resources {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  padding: 40px 24px;
+  background-color: #f4fdf8;
+}
+.benefit-left, .benefit-right {
+  flex: 1;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+.benefit-left img, .benefit-right img {
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+.benefit-left button, .benefit-right button {
+  background-color: #00704A;
+  color: #fff;
+}
+
+/* 📜 Disclosure Block */
+.disclosure {
+  padding: 40px 24px;
+  background-color: #fff;
+  font-size: 0.9em;
+  color: #555;
+}
+.disclosure h4 {
+  color: #B00020;
+}
+.disclosure ul {
+  padding-left: 20px;
+  margin-bottom: 16px;
+}
+.disclosure li {
+  margin-bottom: 6px;
+}
+.legal-note {
+  margin-bottom: 12px;
+}

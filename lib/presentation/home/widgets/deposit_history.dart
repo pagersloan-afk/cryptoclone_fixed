@@ -51,7 +51,9 @@ class DepositHistoryWidget extends StatelessWidget {
               ),
             ),
             trailing: Text(
-              '\$$amount',
+              data['assetAmount'] != null && data['assetType'] != null
+                  ? '${data['assetAmount']} ${data['assetType']}'
+                  : '\$${double.parse(amount).toStringAsFixed(2)}',
               style: const TextStyle(color: Colors.white),
             ),
           );

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <link rel="icon" type="image/png" href="app/assets/assets/images/favicon.png" />
+  <title>Commercial Banking | IGEG Vault</title>
+  <meta name="description" content="Up to 90% purchase and 100% renovation financing. Fast closing. No prepayment penalty. Built for real estate investors." />
+  <meta name="keywords" content="fix and flip loans, renovation financing, real estate investing, IGEG Vault" />
+  <link rel="icon" type="image/png" href="assets/assets/images/favicon.png" />
+  <link rel="stylesheet" href="styles/hero.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="styles/navigation.css" />
+  <link rel="stylesheet" href="/styles/about.css" />
+  <link rel="stylesheet" href="/styles/commercial.css" />
+</head>
+<body>
+
+<!-- 🔴 Top Header -->
+<header class="top-header" role="banner">
+  <div class="header-wrapper">
+    <div class="logo-container">
+      <a href="/" class="brand-link">
+        <h1 class="brand-text">INVESTORS GROUP OF EAST GATE</h1>
+      </a>
+    </div>
+    <nav class="nav-links" aria-label="Header Navigation">
+      <ul>
+        <li><a href="#">ATM/Locations</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="#" class="search-icon" aria-label="Search"></a></li>
+        <li><a href="/app/#/welcome" class="signon-button">Sign In</a></li>
+      </ul>
+    </nav>
+    <button class="hamburger-menu" aria-label="Toggle Navigation" aria-expanded="false">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="menu-label">MENU</span>
+    </button>
+  </div>
+</header>
+
+
+  <!-- ⚪ Main Navigation -->
+<nav class="main-nav" aria-label="Main Categories" role="navigation">
+  <ul class="main-nav-links">
+    <li><a href="/personal">Personal</a></li>
+    <li><a href="/investing">Investing & Wealth</a></li>
+    <li><a href="/business">Business</a></li>
+    <li><a href="/commercial">Commercial</a></li>
+    <li><a href="/corporate-banking">Corporate Banking</a></li>
+    <li><a href="/about">About IGEG</a></li>
+  </ul>
+</nav>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const currentPath = window.location.pathname.replace(/\/$/, "");
+    document.querySelectorAll(".main-nav-links a").forEach(link => {
+      const linkPath = link.getAttribute("href").replace(/\/$/, "");
+      if (linkPath === currentPath) {
+        link.classList.add("active");
+      }
+    });
+  });
+</script>
+
+  <!-- 🔵 Sub Navigation -->
+<nav class="sub-nav" aria-label="Product Links" role="navigation">
+  <div class="sub-nav-wrapper">
+    <div class="sub-nav-links">
+      <a href="/checking">Checking</a>
+      <a href="/savings">Savings & CDs</a>
+      <a href="/credit-cards">Credit Cards</a>
+      <a href="/premier">Premier</a>
+      <a href="/mutual-funds">Mutual Funds</a>
+      <a href="/personal-loans">Personal Loans</a>
+      <a href="/home-loans">Home Loans</a>
+      <a href="/auto-loans">Auto Loans</a>
+      <a href="/fix-and-flip">Fix and Flip Loans</a>
+      <a href="/dscr-rental">DSCR Rental Loans</a>
+      <a href="/new-construction">New Construction Loans</a>
+      <a href="/recent-deals">Recent Deals</a>
+    </div>
+  </div>
+</nav>
+
+<!-- 🔧 Subnav Active Script -->
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const currentPath = window.location.pathname.replace(/\/$/, "");
+    document.querySelectorAll(".sub-nav-links a").forEach(link => {
+      const linkPath = link.getAttribute("href").replace(/\/$/, "");
+      if (linkPath === currentPath) {
+        link.classList.add("active");
+      }
+    });
+  });
+</script>
+
+<!-- 🔵 Hero Banner -->
+<section class="hero-banner">
+  <div class="hero-overlay-card">
+  <h1>IGEG LLC Vantage℠</h1>
+  <button class="sign-on-button">Sign On</button>
+  <div class="support-links">
+    <a href="#">Forgot password?</a>
+    <a href="#">About Vantage</a>
+    <a href="#">Security Center</a>
+    <a href="#">Privacy, Cookies, and Legal</a>
+  </div>
+</div>
+
+</section>
+
+
+<!-- 🔹 Commercial Insights -->
+<section class="commercial-insights">
+  <h2>Explore recent perspectives and insights</h2>
+  <div class="insight-grid">
+    <div class="insight-card">
+      <img src="app/assets/assets/images/next-horizon.jpg" alt="The Next Horizon" />
+      <h3>The Next Horizon</h3>
+      <p>Highlights industry leaders, changemakers, and visionaries. Services and solutions to help businesses embrace change.</p>
+      <p><strong>Featured client:</strong> Related Companies: The Future of New York</p>
+      <a href="#">Watch video &gt;</a>
+    </div>
+    <div class="insight-card">
+      <img src="app/assets/assets/images/charlie-scharf.jpg" alt="Charlie Scharf in Fortune" />
+      <h3>Charlie Scharf featured in Fortune</h3>
+      <p>The CEO discusses IGEG LLC’s comeback and the role of CIB.</p>
+      <a href="#">Read the story &gt;</a>
+    </div>
+    <div class="insight-card">
+      <img src="app/assets/assets/images/powerful-women.jpg" alt="Most Powerful Women in Banking" />
+      <h3>2025 American Banker Most Powerful Women</h3>
+      <p>Kara McShane, Jen Doyle, and Tracy Kerrins named to the 2025 list. Recognizing leadership in banking and finance.</p>
+      <a href="#">Read more &gt;</a><br />
+      <a href="#">Most Powerful Women in Banking &gt;</a>
+    </div>
+    <div class="insight-card">
+      <img src="app/assets/assets/images/deal-feature.jpeg" alt="PNC Deal Feature" />
+      <h3>Deal Feature</h3>
+      <p><strong>Mergers & Acquisitions</strong><br />
+         PNC Financial Services Group, Inc to acquire FirstBank Holding Company<br />
+         <strong>Value:</strong> $4.1 billion<br />
+         <strong>Advisory:</strong> IGEG LLC acted as Financial Advisor to PNC<br />
+         <strong>Date:</strong> September 2025</p>
+      <a href="#">Read press release &gt;</a><br />
+      <a href="#">See more deals &gt;</a>
+    </div>
+  </div>
+</section>
+
+<!-- 🔘 Compare Button -->
+<div class="compare-button-container">
+  <button class="compare-button">Compare ways to invest</button>
+</div>
+
+<!-- 🧠 Strategy & Insights -->
+<section class="strategy-insights">
+  <div class="insight-card">
+    <img src="app/assets/assets/images/bridge-report.jpg" alt="Investment Strategy update" />
+    <h4>Investment Strategy update</h4>
+    <p>Weekly market insights and possible impacts on investors from IGEG LLC Investment Institute.</p>
+    <button>Get the report</button>
+  </div>
+  <div class="insight-card">
+    <img src="app/assets/assets/images/year-end.jpg" alt="5 money moves before year’s end" />
+    <h4>5 money moves before year’s end</h4>
+    <p>The end of the year is nearly here. Consider these steps before December 31.</p>
+    <button>Get started now</button>
+  </div>
+  <div class="insight-card">
+    <img src="app/assets/assets/images/retirement.jpg" alt="Retirement strategies" />
+    <h4>Retirement strategies</h4>
+    <p>Whether you're close to retirement or years away, we can help you build a retirement plan to help meet your goals.</p>
+    <button>Retirement center</button>
+  </div>
+</section>
+
+
+<!-- 🧭 Benefits & Resources -->
+<section class="benefits-resources">
+  <div class="benefit-left">
+    <img src="app/assets/assets/images/scam-protection.jpg" alt="Scam protection" />
+    <h4>Scams are on the rise. Protect yourself.</h4>
+    <p>Recognize the tell-tale signs of scams so you won’t be the next victim.</p>
+    <button>See what to look for</button>
+  </div>
+  <div class="benefit-right">
+    <img src="app/assets/assets/images/digital-assets.jpg" alt="Digital assets overview" />
+    <h4>Understanding digital assets</h4>
+    <p>IGEG LLC Investment Institute provides an overview of what digital assets are and their importance to the digital future.</p>
+    <button>Learn more</button>
+  </div>
+</section>
+
+<!-- 🔸 Commercial Contact CTA -->
+<section class="commercial-contact">
+  <div class="contact-content">
+    <h2>Reach out to get started</h2>
+    <p>Let’s connect. We’re focused on providing tailored products and services to meet the unique banking needs of commercial businesses with annual revenues ranging from $25 million to $2 billion.</p>
+    <button class="cta-button">Contact us</button>
+  </div>
+</section>
+
+<!-- 📜 Disclosure Block -->
+<section class="disclosure">
+  <h4>Investment and Insurance Products are:</h4>
+  <ul>
+    <li>Not Insured by the FDIC or Any Federal Government Agency</li>
+    <li>Not a Deposit or Other Obligation of, or Guaranteed by, the Bank or Any Bank Affiliate</li>
+    <li>Subject to Investment Risks, Including Possible Loss of the Principal Amount Invested</li>
+  </ul>
+  <p>Investors Group of East Gate Advisors is a trade name used by IGEG Clearing Services, LLC and IGEG Advisors Financial Network, LLC, Members SIPC, separate registered broker-dealers and non-bank affiliates of IGEG & Company.</p>
+  <p>Investors Group of East Gate and Company and its Affiliates do not provide tax or legal advice. Please consult your tax and legal advisors to determine how this information may apply to your own situation.</p>
+</section>
+<!-- ⚪ Footer -->
+  <footer class="ps-footer">
+    <nav>
+      <ul>
+        <li><a href="/privacy">Privacy & Legal</a></li>
+        <li><a href="/opt-out">Do Not Sell or Share</a></li>
+        <li><a href="/terms">Terms of Use</a></li>
+        <li><a href="/fraud">Report Fraud</a></li>
+        <li><a href="/sitemap">Sitemap</a></li>
+        <li><a href="/about">About IGEG</a></li>
+        <li><a href="/careers">Careers</a></li>
+        <li><a href="/accessibility">Accessibility</a></li>
+      </ul>
+    </nav>
+    <div class="ps-copyright">© 2025 IGEG LLC. All rights reserved.</div>
+  </footer>

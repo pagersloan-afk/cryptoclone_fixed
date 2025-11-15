@@ -1,0 +1,40 @@
+/* 📜 Mutual Fund Disclosure */
+.mutual-fund-disclosure {
+  background-color: #f8f8fc;
+  padding: 3rem 2rem;
+  border-top: 1px solid #ddd;
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+}
+
+.disclosure-wrapper {
+  max-width: 900px;
+  margin: auto;
+}
+
+.mutual-fund-disclosure h3 {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  color: #6a1b9a;
+}
+
+.mutual-fund-disclosure p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.mutual-fund-disclosure ol {
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.mutual-fund-disclosure li {
+  margin-bottom: 1rem;
+}
+
+.disclosure-id {
+  font-size: 0.7rem;
+  color: #888;
+  margin-top: 2rem;
+}

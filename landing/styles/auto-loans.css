@@ -1,0 +1,204 @@
+a {
+  text-decoration: none;
+}
+/* 🚗 Auto Loans Hero Banner */
+.auto-loans-canvas {
+  background-image: url('/app/assets/assets/images/auto-loans-hero.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.auto-loans-canvas .hero-overlay {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 3rem;
+  border-radius: 12px;
+  max-width: 650px;
+  text-align: center;
+  box-shadow: 0 0 30px rgba(0,0,0,0.2);
+}
+
+.auto-loans-canvas h1 {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+}
+
+.auto-loans-canvas p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+/* 🧭 Quick Start CTA Section */
+.card-background-white.text-aligned-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 4rem 2rem;
+  background-color: #fff;
+}
+
+.ps-mid-page-title-wrapper {
+  max-width: 700px;
+  width: 100%;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.ps-btn-primary {
+  background-color: #b31b1b;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+  display: inline-block;
+  min-width: 160px;
+  text-align: center;
+}
+
+.ps-btn-primary:hover {
+  background-color: #8e1414;
+}
+
+
+/* 🚗 Auto Loan Promo Cards */
+.promo-card-section h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.promo-card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.promo-card {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  max-width: 280px;
+  text-align: center;
+}
+
+.promo-card img {
+  max-width: 64px;
+  margin-bottom: 1rem;
+  display: block;
+  margin: 0 auto 1rem auto; /* centers horizontally and adds bottom spacing */
+}
+
+.promo-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #b31b1b;
+}
+
+.promo-card p {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.ps-btn-text {
+  color: #b31b1b;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.ps-btn-text:hover {
+  text-decoration: underline;
+}
+
+/* 🧠 Auto Loan Tools */
+.card-background-gray {
+  background-color: #f2f2f2;
+  padding: 4rem 2rem;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.enhanced-txt-cm {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  max-width: 280px;
+  text-align: center;
+}
+
+.enhanced-txt-cm img {
+  max-width: 100px;
+  margin-bottom: 1rem;
+}
+
+/* ❓ Auto Loan FAQs */
+.show-hide-content-wrapper {
+  max-width: 800px;
+  margin: 1rem auto;
+  padding: 0 1rem;
+}
+
+summary {
+  font-weight: bold;
+  cursor: pointer;
+  padding: 1rem 0;
+}
+
+details {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 1rem;
+}
+
+details[open] summary::after {
+  content: "▲";
+  float: right;
+}
+
+summary::after {
+  content: "▼";
+  float: right;
+}
+
+/* 📱 Responsive Adjustments */
+@media (max-width: 768px) {
+  .auto-loans-canvas {
+    height: auto;
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .auto-loans-canvas .hero-overlay {
+    padding: 2rem;
+    max-width: 90%;
+  }
+
+  .promo-card,
+  .enhanced-txt-cm {
+    max-width: 100%;
+  }
+
+  .cta-button,
+  .ps-btn-text {
+    width: 100%;
+    text-align: center;
+  }
+}

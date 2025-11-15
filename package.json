@@ -1,5 +1,33 @@
 {
   "dependencies": {
+    "body-parser": "^2.2.0",
+    "express": "^5.1.0",
+    "firebase-admin": "^13.6.0",
+    "multer": "^2.0.2",
+    "nodemailer": "^7.0.10",
     "stripe": "^19.1.0"
-  }
+  },
+  "name": "cryptoclone_fixed",
+  "version": "1.0.0",
+  "description": "<<<<<<< HEAD",
+  "main": "server.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pagersloan-afk/cryptoclone_fixed.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pagersloan-afk/cryptoclone_fixed/issues"
+  },
+  "homepage": "https://github.com/pagersloan-afk/cryptoclone_fixed#readme"
 }

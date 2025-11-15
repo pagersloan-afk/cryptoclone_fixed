@@ -57,6 +57,11 @@ class FullDepositHistoryScreen extends StatelessWidget {
               final assetAmount = data['assetAmount'];
               final assetType = data['assetType'];
               final isCrypto = assetAmount != null && assetType != null;
+              final network = data['network'] ?? 'N/A';
+
+              final amountText = network == 'N/A'
+                  ? data['amount'].toString()
+                  : '\$${data['amount'].toString()}';
 
               return Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8),
@@ -64,7 +69,7 @@ class FullDepositHistoryScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Deposit via ${data['network'] ?? 'N/A'}',
+                      'Deposit via $network',
                       style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w600,
@@ -86,9 +91,7 @@ class FullDepositHistoryScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      isCrypto
-                          ? '$assetAmount $assetType'
-                          : '\$${data['amount'].toString()}',
+                      isCrypto ? '$assetAmount $assetType' : amountText,
                       style: const TextStyle(fontSize: 14, color: Colors.white),
                     ),
                     if (timestamp != null) ...[

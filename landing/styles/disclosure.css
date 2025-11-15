@@ -1,0 +1,33 @@
+/* ⚖️ Disclosure Section */
+.disclosure-section {
+  background-color: #f9f9f9;
+  padding: 3rem 2rem;
+  font-size: 0.95rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+.disclosure-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.disclosure-lead {
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.disclosure-list {
+  margin: 1rem 0 2rem 1.5rem;
+  padding-left: 0;
+}
+
+.disclosure-list li {
+  margin-bottom: 1rem;
+}
+
+.disclosure-id {
+  font-size: 0.85rem;
+  color: #777;
+  margin-top: 2rem;
+}

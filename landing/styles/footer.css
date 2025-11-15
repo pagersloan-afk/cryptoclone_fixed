@@ -1,0 +1,20 @@
+/* ⚫ Footer */
+footer {
+  text-align: center;
+  padding: 24px;
+  background-color: #eee;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+footer a {
+  color: #555;
+  text-decoration: none;
+  margin: 0 8px;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: #b31b1b;
+  text-decoration: underline;
+}

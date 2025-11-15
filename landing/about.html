@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About IGEG</title>
+  <meta name="description" content="IGEG Vault — Your trusted financial hub for banking, loans, and investing." />
+  <meta name="keywords" content="banking, fintech, loans, credit, savings, checking, IGEG Vault" />
+  <link rel="icon" type="image/png" href="app/assets/assets/images/favicon.png" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="styles/header.css" />
+  <link rel="stylesheet" href="styles/navigation.css" />
+  <link rel="stylesheet" href="/styles/about.css" />
+</head>
+<body>
+
+  <!-- 🔴 Top Header -->
+<header class="top-header" role="banner">
+  <div class="header-wrapper">
+    <div class="logo-container">
+      <a href="/" class="brand-link">
+        <h1 class="brand-text">INVESTORS GROUP OF EAST GATE</h1>
+      </a>
+    </div>
+    <nav class="nav-links" aria-label="Header Navigation">
+      <ul>
+        <li><a href="#">ATM/Locations</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="#" class="search-icon" aria-label="Search"></a></li>
+        <li><a href="/app/#/welcome" class="signon-button">Sign In</a></li>
+      </ul>
+    </nav>
+    <button class="hamburger-menu" aria-label="Toggle Navigation" aria-expanded="false">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="menu-label">MENU</span>
+    </button>
+  </div>
+</header>
+
+
+  <!-- ⚪ Main Navigation -->
+<nav class="main-nav" aria-label="Main Categories" role="navigation">
+  <ul class="main-nav-links">
+    <li><a href="/personal">Personal</a></li>
+    <li><a href="/investing">Investing & Wealth</a></li>
+    <li><a href="/business">Business</a></li>
+    <li><a href="/commercial">Commercial</a></li>
+    <li><a href="/corporate-banking">Corporate Banking</a></li>
+    <li><a href="/about">About IGEG</a></li>
+  </ul>
+</nav>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const currentPath = window.location.pathname.replace(/\/$/, "");
+    document.querySelectorAll(".main-nav-links a").forEach(link => {
+      const linkPath = link.getAttribute("href").replace(/\/$/, "");
+      if (linkPath === currentPath) {
+        link.classList.add("active");
+      }
+    });
+  });
+</script>
+
+  <!-- 🔵 Sub Navigation -->
+<nav class="sub-nav" aria-label="Product Links" role="navigation">
+  <div class="sub-nav-wrapper">
+    <div class="sub-nav-links">
+      <a href="/checking">Checking</a>
+      <a href="/savings">Savings & CDs</a>
+      <a href="/credit-cards">Credit Cards</a>
+      <a href="/premier">Premier</a>
+      <a href="/mutual-funds">Mutual Funds</a>
+      <a href="/personal-loans">Personal Loans</a>
+      <a href="/home-loans">Home Loans</a>
+      <a href="/auto-loans">Auto Loans</a>
+      <a href="/fix-and-flip">Fix and Flip Loans</a>
+      <a href="/dscr-rental">DSCR Rental Loans</a>
+      <a href="/new-construction">New Construction Loans</a>
+      <a href="/recent-deals">Recent Deals</a>
+    </div>
+  </div>
+</nav>
+
+<!-- 🔧 Subnav Active Script -->
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const currentPath = window.location.pathname.replace(/\/$/, "");
+    document.querySelectorAll(".sub-nav-links a").forEach(link => {
+      const linkPath = link.getAttribute("href").replace(/\/$/, "");
+      if (linkPath === currentPath) {
+        link.classList.add("active");
+      }
+    });
+  });
+</script>
+
+
+
+  <!-- ⚫ Hero Marquee -->
+  <section class="rsk-marquee-container">
+    <div class="rsk-marquee-wrap">
+      <picture>
+        <source media="(min-width: 1080px)" srcset="/app/assets/assets/images/about-hero-lg.jpg">
+        <source media="(min-width: 570px)" srcset="/app/assets/assets/images/about-hero-md.jpg">
+        <img src="/app/assets/assets/images/about-hero-sm.jpg" alt="Putting people and communities first">
+      </picture>
+      <div class="rsk-marquee-content">
+        <h2>Putting people and communities first</h2>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🟣 Three-Card Section -->
+  <section class="card-container three-card">
+    <div class="card">
+      <img src="/app/assets/assets/icons/card-investor-relations.png" alt="Investor Relations">
+      <h3>Investor Relations</h3>
+      <p>Providing investors with information about our financial performance.</p>
+      <a href="/about/investor-relations" class="ps-btn-secondary">Learn more</a>
+    </div>
+    <div class="card">
+      <img src="/app/assets/assets/icons/card-leadership.png" alt="Leadership and Governance">
+      <h3>Leadership and Governance</h3>
+      <p>Earning trust by doing the right thing for our customers, communities, and employees.</p>
+      <a href="/about/governance" class="ps-btn-secondary">Learn more</a>
+    </div>
+    <div class="card">
+      <img src="/app/assets/assets/icons/card-accessibility.png" alt="Inclusion and Accessibility">
+      <h3>Inclusion and Accessibility</h3>
+      <p>Championing inclusion and accessibility in every aspect of our business.</p>
+      <a href="/about/accessibility" class="ps-btn-secondary">Learn more</a>
+    </div>
+  </section>
+
+  <!-- 🟡 Career Promo -->
+  <section class="ps-large-promo-full">
+    <img src="/app/assets/assets/icons/career-promo.png" alt="Career Promo">
+    <div class="ps-promo-full-content">
+      <h2>Imagine a rewarding career with great work-life balance</h2>
+      <p>Wherever you may be on your journey, discover your sweet spot at IGEG.</p>
+      <a href="/about/careers" class="ps-btn-secondary">Join us</a>
+    </div>
+  </section>
+
+  <!-- 🔵 Additional Cards -->
+<section class="card-container three-card">
+  <div class="card">
+    <img src="/app/assets/assets/icons/responsibility-icon.png" alt="Responsibility and Impact Icon" class="card-icon">
+    <h3>Responsibility and Impact</h3>
+    <p>Focusing on making a positive impact by supporting a sustainable and inclusive future.</p>
+    <a href="/about/responsibility" class="ps-btn-text">Learn more ></a>
+  </div>
+  <div class="card">
+    <img src="/app/assets/assets/icons/news-icon.png" alt="News Releases Icon" class="card-icon">
+    <h3>News Releases</h3>
+    <p>Keeping you informed with the latest updates from IGEG.</p>
+    <a href="/about/news" class="ps-btn-text">Learn more ></a>
+  </div>
+  <div class="card">
+    <img src="/app/assets/assets/icons/stories-icon.png" alt="IGEG Stories Icon" class="card-icon">
+    <h3>IGEG Stories</h3>
+    <p>Expert tips, real stories, and customer spotlights to empower communities and spark ideas.</p>
+    <a href="/about/stories" class="ps-btn-text">Get inspired ></a>
+  </div>
+</section>
+
+
+  <!-- 🟠 History Section -->
+  <section class="history-section">
+    <h2>History in the Making</h2>
+    <p>We’ve helped people go further with their money since our founding. With innovative solutions that evolve with the times, we continue to help our customers get ahead.</p>
+    <a href="/about/history" class="ps-btn-text">Explore our history</a>
+  </section>
+
+  <!-- ⚪ Footer -->
+  <footer class="ps-footer">
+    <nav>
+      <ul>
+        <li><a href="/privacy">Privacy & Legal</a></li>
+        <li><a href="/opt-out">Do Not Sell or Share</a></li>
+        <li><a href="/terms">Terms of Use</a></li>
+        <li><a href="/fraud">Report Fraud</a></li>
+        <li><a href="/sitemap">Sitemap</a></li>
+        <li><a href="/about">About IGEG</a></li>
+        <li><a href="/careers">Careers</a></li>
+        <li><a href="/accessibility">Accessibility</a></li>
+      </ul>
+    </nav>
+    <div class="ps-copyright">© 2025 IGEG Vault. All rights reserved.</div>
+  </footer>
+
+</body>
+</html>

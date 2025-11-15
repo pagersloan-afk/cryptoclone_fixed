@@ -1,0 +1,68 @@
+/* 🔵 Hero Banner Layout */
+
+.rsk-marquee-container {
+  position: relative;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.rsk-marquee-card {
+  position: relative;
+  width: 100%;
+  margin: 0 auto; /* ✅ Ensures full-width alignment */
+  padding: 0;      /* ✅ Removes any default padding */
+}
+
+
+
+.hero-background-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  max-height: 600px;
+  margin: 0 auto;
+}
+
+/* ✅ Overlay Card Styling */
+.rsk-marquee-overlay-card {
+  position: absolute;
+  bottom: -54%; /* Adjust to move card lower */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 500px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.rsk-marquee-overlay-card h2 {
+  font-size: 1.75rem;
+  font-weight: bold;
+  color: #c20000;
+  margin-bottom: 1rem;
+}
+
+.rsk-marquee-overlay-card p {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.ps-btn-primary {
+  display: inline-block;
+  background-color: #c20000;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.ps-btn-primary:hover {
+  background-color: #a00000;
+}

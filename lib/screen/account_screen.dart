@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/screen/ibm_kuberneteslink_screen.dart';
 import 'package:flutter/material.dart';
 import 'bank_setup_screen.dart'; // ✅ Adjust path if needed
 
@@ -39,6 +40,18 @@ class AccountScreen extends StatelessWidget {
                 );
               },
               child: Text('Link Bank Account'),
+            ),
+            SizedBox(height: 24),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => const IBMKubernetesLinkScreen(),
+                  ),
+                );
+              },
+              child: const Text('Link IBM Kubernetes'),
             ),
           ],
         ),

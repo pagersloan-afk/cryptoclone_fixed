@@ -57,3 +57,4 @@ firebase-debug.log
 
 # macOS system files (if you ever zip/share)
 *.DS_Store
+.vercel

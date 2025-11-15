@@ -1,0 +1,70 @@
+/* 🧭 Financial Guidance Section */
+.financial-guidance {
+  max-width: 1200px;
+  margin: auto;
+  padding: 64px 32px;
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
+  text-align: center;
+}
+
+.financial-guidance h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #b31b1b;
+  margin-bottom: 48px;
+}
+
+.guidance-panels {
+  display: flex;
+  gap: 48px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.guidance-card {
+  flex: 1;
+  min-width: 280px;
+  max-width: 360px;
+  background-color: #f9f9f9;
+  padding: 32px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  text-align: left;
+}
+
+.guidance-card img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 24px;
+  object-fit: cover;
+}
+
+.guidance-card h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #b31b1b;
+  margin-bottom: 12px;
+}
+
+.guidance-card p {
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 12px;
+}
+
+.cta-button {
+  display: inline-block;
+  background-color: #b31b1b;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #8e1414;
+  transform: scale(1.05);
+}

@@ -6,125 +6,427 @@
   <title>IGEG Vault</title>
   <meta name="description" content="IGEG Vault — Your trusted financial hub for banking, loans, and investing." />
   <meta name="keywords" content="banking, fintech, loans, credit, savings, checking, IGEG Vault" />
+  <link rel="icon" type="image/png" href="app/assets/assets/images/favicon.png" />
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="styles/community.css" />
+  <link rel="stylesheet" href="styles/header.css" />
+  <link rel="stylesheet" href="styles/guidance.css" />
+  <link rel="stylesheet" href="styles/mortgage_promo.css" />
+  <link rel="stylesheet" href="styles/financial_product.css" />
+  <link rel="stylesheet" href="styles/navigation.css" />
+  <link rel="stylesheet" href="styles/mobile_app_promo.css" />
 </head>
 <body>
 
   <!-- 🔴 Top Header -->
-  <header class="top-header" role="banner">
-    <div class="header-wrapper">
-      <div class="logo-container">
-        <img src="https://www17.wellsfargomedia.com/assets/images/rwd/wf_logo_220x23.png" alt="IGEG Vault Logo" />
-      </div>
-      <nav class="nav-links" aria-label="Header Navigation" role="navigation">
-        <ul>
-          <li><a href="#">ATM/Locations</a></li>
-          <li><a href="#">Help</a></li>
-          <li><a href="#">Español</a></li>
-          <li><a href="#" class="search-icon" aria-label="Search"></a></li>
-          <li><a href="/app/#/fivecome" class="signon-button">Sign In</a></li>
-        </ul>
-      </nav>
-<button class="hamburger-menu" aria-label="Toggle Navigation" aria-expanded="false">
-  <span class="bar"></span>
-  <span class="bar"></span>
-  <span class="bar"></span>
-  <span class="menu-label">MENU</span>
-</button>
-
+<header class="top-header" role="banner">
+  <div class="header-wrapper">
+    <div class="logo-container">
+      <a href="/" class="brand-link">
+        <h1 class="brand-text">INVESTORS GROUP OF EAST GATE</h1>
+      </a>
     </div>
-  </header>
+    <nav class="nav-links" aria-label="Header Navigation">
+      <ul>
+        <li><a href="#">ATM/Locations</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="#" class="search-icon" aria-label="Search"></a></li>
+        <li><a href="/app/#/welcome" class="signon-button">Sign In</a></li>
+      </ul>
+    </nav>
+    <button class="hamburger-menu" aria-label="Toggle Navigation" aria-expanded="false">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="menu-label">MENU</span>
+    </button>
+  </div>
+</header>
 
-  <!-- ⚪ Main Navigation -->
-  <nav class="main-nav" aria-label="Main Categories" role="navigation">
-    <ul>
-      <li class="active">Personal</li>
-      <li>Investing & Wealth</li>
-      <li>Business</li>
-      <li>Commercial</li>
-      <li>Corporate Banking</li>
-      <li>About IGEG</li>
-    </ul>
-  </nav>
+
+ <!-- ⚪ Main Navigation -->
+<nav class="main-nav" aria-label="Main Categories" role="navigation">
+  <ul class="main-nav-links">
+    <li><a href="/personal">Personal</a></li>
+    <li><a href="/investing">Investing & Wealth</a></li>
+    <li><a href="/business">Business</a></li>
+    <li><a href="/commercial">Commercial</a></li>
+    <li><a href="/corporate-banking">Corporate Banking</a></li>
+    <li><a href="/about">About IGEG</a></li>
+  </ul>
+</nav>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const currentPath = window.location.pathname.replace(/\/$/, "");
+    document.querySelectorAll(".main-nav-links a").forEach(link => {
+      const linkPath = link.getAttribute("href").replace(/\/$/, "");
+      if (linkPath === currentPath) {
+        link.classList.add("active");
+      }
+    });
+  });
+</script>
 
   <!-- 🔵 Sub Navigation -->
-  <nav class="sub-nav" aria-label="Product Links" role="navigation">
-    <a href="#">Checking</a>
-    <a href="#">Savings & CDs</a>
-    <a href="#">Credit Cards</a>
-    <a href="#">Home Loans</a>
-    <a href="#">Personal Loans</a>
-    <a href="#">Auto Loans</a>
-    <a href="#">Premier</a>
-    <a href="#">Education Tools</a>
-  </nav>
-
-  <!-- 🔴 Hero Banner -->
-  <section class="hero">
-    <div class="hero-content">
-      <h1>Banking made simple.</h1>
-      <p>Open a checking account and get up to $300 bonus.</p>
-      <a href="#" class="cta-button">Get Started</a>
+<nav class="sub-nav" aria-label="Product Links" role="navigation">
+  <div class="sub-nav-wrapper">
+    <div class="sub-nav-links">
+      <a href="/checking">Checking</a>
+      <a href="/savings">Savings & CDs</a>
+      <a href="/credit-cards">Credit Cards</a>
+      <a href="/premier">Premier</a>
+      <a href="/mutual-funds">Mutual Funds</a>
+      <a href="/personal-loans">Personal Loans</a>
+      <a href="/home-loans">Home Loans</a>
+      <a href="/auto-loans">Auto Loans</a>
+      <a href="/fix-and-flip">Fix and Flip Loans</a>
+      <a href="/dscr-rental">DSCR Rental Loans</a>
+      <a href="/new-construction">New Construction Loans</a>
+      <a href="/recent-deals">Recent Deals</a>
     </div>
-  </section>
+  </div>
+</nav>
+
+<!-- 🔧 Subnav Active Script -->
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const currentPath = window.location.pathname.replace(/\/$/, "");
+    document.querySelectorAll(".sub-nav-links a").forEach(link => {
+      const linkPath = link.getAttribute("href").replace(/\/$/, "");
+      if (linkPath === currentPath) {
+        link.classList.add("active");
+      }
+    });
+  });
+</script>
+
+
+
+
+ <!-- 🔴 Wells-Style Login + Promo + Phone Layout -->
+<section class="login-promo-wrapper">
+  <!-- Left: Login Panel -->
+  <div class="login-panel">
+    <h2>Good afternoon</h2>
+    <form class="login-form">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" />
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" />
+
+      <div class="login-options">
+        <label><input type="checkbox" /> Save username</label>
+      </div>
+
+      <button type="submit" class="signon-button">Sign On</button>
+      <button type="button" class="enroll-button">Enroll</button>
+    </form>
+
+    <ul class="login-links">
+      <li><a href="#">Forgot username or password?</a></li>
+      <li><a href="#">Security Center</a></li>
+      <li><a href="#">Privacy, Cookies, and Legal</a></li>
+    </ul>
+  </div>
+
+  <!-- Center: Promo Card -->
+  <div class="promo-card">
+    <h2>Say hello to convenient checking</h2>
+    <p>Explore our checking options and choose the right account for you</p>
+    <a href="/app/#/welcome" class="cta-button">Get started</a>
+  </div>
+
+  <!-- Right: Phone Mockup -->
+  <div class="phone-preview">
+  <img src="app/assets/assets/images/igeg_app_ui.png" alt="Mobile banking preview" />
+</div>
+</section>
+
+<!-- 🔵 Promo Section: Money Works Better Here -->
+<section class="promo-section">
+  <div class="promo-content">
+    <div class="promo-text">
+      <h2>Money works better here.</h2>
+      <p>Earn <strong>30% interest upfront</strong> on a <em>90–365 days fixed deposit</em>.</p>
+      <p>Earn up to <strong>17% monthly</strong> with daily earnings and the ability to withdraw anytime.</p>
+      <a href="/mutual-funds.html" class="cta-button">Get started</a>
+
+      <div class="endorsements">
+        <p><strong>Nerdwallet</strong><br>Best Robo-advisor, Portfolio Options, 2023<br>Best Robo-advisor, IRA, 2025</p>
+        <p><strong>Bankrate</strong><br>Best Cash Management Account, 2023–25<br>Best Investing App, 2025</p>
+      </div>
+    </div>
+
+    <div class="promo-image">
+      <img src="/app/assets/assets/images/financial-app-promo.webp" alt="Financial app on smartphone" />
+    </div>
+  </div>
+</section>
+
 
   <!-- 🟠 Product Grid -->
-  <section class="products">
-    <h2>Explore Our Products</h2>
-    <div class="product-grid">
-      <div class="product-card">
-        <h3>Checking & Savings</h3>
-        <p>Manage your money with ease.</p>
+<section class="products">
+  <h2>Explore Our Products</h2>
+  <div class="product-grid">
+    <div class="product-card">
+      <div class="product-icon checking-icon" aria-hidden="true"></div>
+      <h3>Checking & Savings</h3>
+      <p>Manage your money with ease.</p>
+    </div>
+    <div class="product-card">
+      <div class="product-icon credit-icon" aria-hidden="true"></div>
+      <h3>Credit Cards</h3>
+      <p>Find the card that fits your lifestyle.</p>
+    </div>
+    <div class="product-card">
+      <div class="product-icon loans-icon" aria-hidden="true"></div>
+      <h3>Loans & Mortgages</h3>
+      <p>Finance your home or vehicle.</p>
+    </div>
+    <div class="product-card">
+      <div class="product-icon investing-icon" aria-hidden="true"></div>
+      <h3>Investing & Retirement</h3>
+      <p>Plan for your future with confidence.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 🧮 Financial Product Highlights -->
+<section class="product-highlights">
+  <div class="highlight-grid">
+    <!-- Mortgage Panel -->
+    <div class="highlight-card">
+      <div class="highlight-icon">
+        <img src="app/assets/assets/icons/icon-house.png" alt="House icon" />
       </div>
-      <div class="product-card">
-        <h3>Credit Cards</h3>
-        <p>Find the card that fits your lifestyle.</p>
+      <h3>Find mortgage happiness</h3>
+      <p>With a down payment as low as 3%</p>
+      <a href="#" class="highlight-link">Learn more &gt;</a>
+    </div>
+
+    <!-- Checking Panel -->
+    <div class="highlight-card">
+      <div class="highlight-icon">
+        <img src="app/assets/assets/icons/icon-document.png" alt="Document icon" />
       </div>
-      <div class="product-card">
-        <h3>Loans & Mortgages</h3>
-        <p>Finance your home or vehicle.</p>
+      <h3>Unlock convenient checking</h3>
+      <p>Discover the benefits of our checking accounts and choose the right one for you</p>
+      <a href="#" class="highlight-link">Get started &gt;</a>
+    </div>
+
+    <!-- Credit Card Panel -->
+    <div class="highlight-card">
+      <div class="highlight-icon">
+        <img src="app/assets/assets/icons/icon-creditcard.png" alt="Credit card icon" />
       </div>
-      <div class="product-card">
-        <h3>Investing & Retirement</h3>
-        <p>Plan for your future with confidence.</p>
+      <h3>Find a credit card</h3>
+      <p>Low intro rate, cash back, rewards and more</p>
+      <a href="#" class="highlight-link">Learn more &gt;</a>
+    </div>
+
+    <!-- Rates Panel -->
+    <div class="highlight-card">
+      <div class="highlight-icon">
+        <img src="app/assets/assets/icons/icon-percent.png" alt="Interest rate icon" />
+      </div>
+      <h3>Interest rates today</h3>
+      <a href="#" class="highlight-link">Check rates &gt;</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- 🏡 Mortgage Promo Section -->
+<section class="mortgage-banner">
+  <div class="mortgage-content">
+    <h2>A home of your own</h2>
+    <p>With low down payment options on a fixed-rate mortgage</p>
+    <a href="/home-loans.html" class="cta-button">Get started</a>
+  </div>
+  <div class="mortgage-image">
+    <img src="app/assets/assets/images/mortgage-banner.jpg" alt="Woman with dog on porch" />
+  </div>
+</section>
+
+ <!-- 🟢 Mobile App Promo -->
+<section class="mobile-app">
+  <div class="mobile-content">
+    <h2>Bank on the go</h2>
+    <p>Download our app to manage your accounts, track spending, and more.</p>
+    <div class="platform-buttons">
+      <a href="https://www.dropbox.com/scl/fi/nwberd904jusf9irz5mo3/igeg-vault.apk?rlkey=0mj7cjhtq9euenqdhh1kjqyfd&st=1t50vox2&dl=1" class="cta-button android" download>
+  Download for Android
+</a>
+      <a href="#" class="cta-button ios disabled">
+        <img src="app/assets/icons/apple.svg" alt="iOS" />
+        Coming Soon on iOS
+      </a>
+    </div>
+  </div>
+  <div class="mobile-image">
+    <img src="app/assets/assets/images/igeg_app_ui2.png" alt="IGEG Vault Mobile App UI" />
+  </div>
+</section>
+
+
+
+<!-- 🧭 Financial Guidance Section -->
+<section class="financial-guidance">
+  <h2>Financial guidance and support</h2>
+
+  <div class="guidance-panels">
+    <!-- Panel 1: Goal Setting -->
+    <div class="guidance-card">
+      <img src="app/assets/assets/images/goal-setting.jpg" alt="Person on mountain peak" />
+      <h3>Your Money. Your Goals. Your Future.</h3>
+      <p>Setting financial goals is a powerful first step you can take today.</p>
+      <a href="#" class="cta-button">Get started</a>
+    </div>
+
+    <!-- Panel 2: Borrowing Options -->
+    <div class="guidance-card">
+      <img src="app/assets/assets/images/borrowing-options.jpg" alt="Graduation hug" />
+      <h3>Explore your borrowing options</h3>
+      <p>Find solutions for you and your financial needs, before you borrow.</p>
+      <a href="#" class="cta-button">Financial support</a>
+    </div>
+
+    <!-- Panel 3: Fraud Alert -->
+    <div class="guidance-card">
+      <img src="app/assets/assets/images/fraud-alert.jpg" alt="Fraud and scam alert icon" />
+      <h3>Fraud & Scam Alert</h3>
+      <p>The latest news and what to watch for</p>
+      <p>Help keep your money safe</p>
+      <p>Learn how to spot the latest scams and help avoid them.</p>
+      <a href="#" class="cta-button">Learn about scams</a>
+    </div>
+  </div>
+</section>
+
+
+ <!-- 🏛️ Community Engagement Section -->
+<section class="community-section">
+  <div class="community-header">
+    <h2>Serving our customers and communities</h2>
+    <p>It doesn't happen with one transaction, in one day on the job, or in one quarter. It's earned relationship by relationship.</p>
+  </div>
+
+  <div class="community-columns">
+    <!-- Left Card: Who We Are -->
+    <div class="community-card">
+      <img src="app/assets/assets/images/who-we-are.jpg" alt="IGEG tent community event" />
+      <h3>Who we are</h3>
+      <p>IGEG LLC helps strengthen communities through inclusion, economic empowerment and environmental sustainability.</p>
+      <a href="/about.html" class="cta-button">About IGEG LLC</a>
+    </div>
+
+    <!-- Right Card: Why We're Committed -->
+    <div class="community-card">
+      <img src="app/assets/assets/images/why-committed.jpg" alt="Greenhouse community discussion" />
+      <h3>Why we’re committed to communities</h3>
+      <p>We’re committed to helping communities succeed. We support communities where we live and work by volunteering and donating to causes that align with our values.</p>
+      <a href="#" class="cta-button">IGEG LLC Stories</a>
+    </div>
+  </div>
+
+  <!-- Bottom Icons Section -->
+  <div class="community-help">
+    <h4>How can we help?</h4>
+    <div class="help-icons">
+      <div class="help-item">
+        <img src="app/assets/assets/icons/icon-appointment.png" alt="Make an appointment" />
+        <span>Make an appointment</span>
+      </div>
+      <div class="help-item">
+        <img src="app/assets/assets/icons/icon-location.png" alt="Find a location" />
+        <span>Find a location</span>
+      </div>
+      <div class="help-item">
+        <img src="app/assets/assets/icons/icon-feedback.png" alt="Give feedback" />
+        <span>Give feedback</span>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+<!-- ⚖️ Investment Disclosure -->
+<section class="disclosure-section">
+  <div class="disclosure-wrapper">
+    <p class="disclosure-lead">
+      Keep in mind that investing involves risk. The value of your investment will fluctuate over time, and you may gain or lose money.
+    </p>
 
-  <!-- 🟡 Rates Section -->
-  <section class="rates">
-    <h2>Current Rates</h2>
-    <ul>
-      <li><strong>Home Mortgage:</strong> 6.75% APR</li>
-      <li><strong>Savings Account:</strong> 4.25% APY</li>
-      <li><strong>Credit Card APR:</strong> 19.99% Variable</li>
-    </ul>
-  </section>
+    <ol class="disclosure-list">
+      <li>
+        A qualified distribution from a Roth IRA is tax-free and penalty-free. To be considered a qualified distribution, the 5-year aging requirement has to be satisfied and you must be age 59 or older or meet one of several exemptions (disability, qualified first-time home purchase, or death among them).
+      </li>
+      <li>
+        There is no minimum amount required to open an IGEG Go account. However, in order for us to invest your money according to the investment strategy you've chosen, your account balance must be at least $100.
+      </li>
+      <li>
+        Zero account minimums and zero account fees apply to retail brokerage accounts only. Expenses charged by investments (e.g., funds, managed accounts, and certain HSAs) and commissions, interest charges, or other expenses for transactions may still apply. See <a href="https://igegllc.com/commissions" target="_blank" rel="noopener">igegllc.com/commissions</a> for further details.
+      </li>
+    </ol>
 
-  <!-- 🟢 Mobile App Promo -->
-  <section class="mobile-app">
-    <div class="mobile-content">
-      <h2>Bank on the go</h2>
-      <p>Download our app to manage your accounts, track spending, and more.</p>
-      <a href="#" class="cta-button">Download App</a>
-    </div>
-    <div class="mobile-image">
-      <img src="app/mobile_app.png" alt="Mobile App Screenshot" />
-    </div>
-  </section>
+    <p>The IGEG® Cash Management Account is a brokerage account designed for spending and cash management. It is not intended to serve as your main account for securities trading. Customers interested in securities trading should consider an IGEG Mutual Fund Account®.</p>
 
-  <!-- 🔵 Brand & Community -->
-  <section class="brand">
-    <h2>Who We Are</h2>
-    <p>We’re committed to financial wellness, community impact, and sustainable growth.</p>
-    <p>Learn about our values, careers, and how we support local communities.</p>
-  </section>
+    <p>IGEG Go® provides discretionary investment management, and in certain circumstances, non-discretionary financial planning, for a fee. Advisory services offered by IGEG Personal and Workplace Advisors LLC (IGEGPWA), a registered investment adviser. Brokerage services provided by IGEG Brokerage Services LLC (IGEGBS), and custodial and related services provided by National Financial Services LLC (NFS), each a member NYSE and NFS are IGEG Investments companies.</p>
 
-  <!-- ⚫ Footer -->
-  <footer>
+    <p>IGEG and the IGEG Investments logo are registered service marks of IGEG LLC.</p>
+
+    <p>Images are for illustrative purposes only.</p>
+
     <p>© 2025 IGEG LLC. All rights reserved.</p>
-    <p><a href="#">Privacy</a> | <a href="#">Accessibility</a> | <a href="#">Terms</a> | <a href="#">Contact</a></p>
-  </footer>
+
+    <p>IGEG Brokerage Services LLC, Member NYSE, SIPC, PO Box 1612 Southampton, New York 11969, United States.</p>
+
+    <p class="disclosure-id">5130181</p>
+  </div>
+</section>
+
+
+ <!-- 🟥 Structured Compliance Footer -->
+<footer class="footer">
+  <div class="footer-inner">
+    <!-- Footer Navigation Menu -->
+    <nav class="footer-menu" aria-label="Footer Navigation">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="#">Accessibility</a>
+      <a href="#">Security</a>
+      <a href="#">Legal</a>
+    </nav>
+
+    <!-- Legal Disclaimers -->
+    <div class="footer-disclaimer">
+      <p><strong>Investment and Insurance Products are:</strong></p>
+      <ul>
+        <li>Not Insured by the FDIC or Any Federal Government Agency</li>
+        <li>Not a Deposit or Other Obligation of, or Guaranteed by, the Bank or Any Bank Affiliate</li>
+        <li>Subject to Investment Risks, Including Possible Loss of the Principal Amount Invested</li>
+      </ul>
+      <p>Investment and insurance products are offered through IGEG LLC Advisors, a non-bank affiliate of Investors Group of East Gate LLC.</p>
+    </div>
+
+    <!-- Accessibility & Compatibility -->
+    <div class="footer-accessibility">
+      <p>Mobile banking accessibility may vary by device. Compatible with iPhone®, iPad®, Android™, and other supported platforms.</p>
+    </div>
+
+    <!-- Trademark Acknowledgments -->
+    <div class="footer-trademarks">
+      <p>Android, Google Pay and the Google Play logo are trademarks of Google LLC. Chrome is a trademark of Google LLC.</p>
+      <p>Apple, the Apple logo, iPhone, iPad, Mac and Safari are trademarks of Apple Inc., registered in the U.S. and other countries.</p>
+    </div>
+
+    <!-- Regulatory Codes & Copyright -->
+    <div class="footer-meta">
+      <p>PM-09282026-7798034.1.1 &nbsp; | &nbsp; LRC-0325</p>
+      <p>© 2025 IGEG LLC. All rights reserved. Member FDIC. Equal Housing Lender</p>
+      <img src="app/assets/assets/icons/equal-housing-logo.png" alt="Equal Housing Lender" class="footer-logo" />
+    </div>
+  </div>
+</footer>
 
   <!-- 🔧 Mobile Nav Toggle Script -->
  <script>

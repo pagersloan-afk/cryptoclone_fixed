@@ -1,0 +1,1484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <link rel="icon" type="image/png" href="app/assets/assets/images/favicon.png" />
+  <title>Loan Application Portal</title>
+  <link rel="stylesheet" href="styles/applications.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    .app-wrapper {
+      max-width: 900px;
+      margin: 4rem auto;
+      padding: 2rem;
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    .app-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .app-header h1 {
+      font-size: 2rem;
+      color: #c20000;
+    }
+
+    .loan-selector {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .loan-selector button {
+      padding: 0.75rem 1.5rem;
+      border: 1px solid #c20000;
+      background-color: #fff;
+      color: #c20000;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .loan-selector button:hover {
+      background-color: #c20000;
+      color: #fff;
+    }
+
+    .loan-form {
+      display: none;
+    }
+
+    .loan-form.active {
+      display: block;
+    }
+
+    .loan-form h2 {
+      color: #c20000;
+      margin-bottom: 1rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    .ps-btn-primary {
+      background-color: #c20000;
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .ps-btn-primary:hover {
+      background-color: #a00000;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app-wrapper">
+    <div class="app-header">
+      <h1>Start Your Loan Application</h1>
+      <p>Select a loan type to begin</p>
+    </div>
+
+    <!-- Loan Type Selector -->
+<div class="loan-selector">
+  <button onclick="showForm('fixFlip')">Fix & Flip</button>
+  <button onclick="showForm('dscr')">DSCR Rental</button>
+  <button onclick="showForm('newConstruction')">New Construction</button>
+  <button onclick="showForm('rental')">Rental Loan</button>
+  <button onclick="showForm('personal')">Personal Loan</button>
+  <button onclick="showForm('auto')">Auto Loan</button>
+  <button onclick="showForm('business')">Business Loan</button>
+  <button onclick="showForm('equity')">Equity Loan</button>
+</div>
+
+
+    <!-- Fix & Flip Form -->
+<form id="fixFlip" class="loan-form active" action="/submit-fix-flip" method="POST">
+  <input type="hidden" name="loanType" value="Fix & Flip" />
+  <h2>Fix & Flip Loan</h2>
+
+  <!-- Basic Info -->
+  <div class="form-group">
+    <label for="ffName">Full Name*</label>
+    <input type="text" id="ffName" name="fullName" required />
+  </div>
+  <div class="form-group">
+    <label for="ffEmail">Email*</label>
+    <input type="email" id="ffEmail" name="email" required />
+  </div>
+  <div class="form-group">
+    <label for="ffLocation">Property Location*</label>
+    <input type="text" id="ffLocation" name="propertyLocation" required />
+  </div>
+  <div class="form-group">
+    <label for="ffARV">Estimated ARV ($)*</label>
+    <input type="number" id="ffARV" name="estimatedARV" required />
+  </div>
+
+  <!-- Loan Amount -->
+<div class="form-group">
+  <label for="loanAmount">Requested Loan Amount ($)*</label>
+  <input type="number" id="loanAmount" name="loanAmount" required />
+</div>
+
+<!-- Repayment Structure -->
+<div class="form-group">
+  <label for="repaymentType">Repayment Type*</label>
+  <select id="repaymentType" name="repaymentType" required>
+    <option value="">- Select -</option>
+    <option value="interestOnly">Interest Only</option>
+    <option value="principalInterest">Principal & Interest</option>
+  </select>
+</div>
+
+<!-- Repayment Frequency -->
+<div class="form-group">
+  <label for="repaymentFrequency">Repayment Frequency*</label>
+  <select id="repaymentFrequency" name="repaymentFrequency" required>
+    <option value="">- Select -</option>
+    <option value="weekly">Weekly</option>
+    <option value="monthly">Monthly</option>
+    <option value="quarterly">Quarterly</option>
+    <option value="semiAnnual">Semi-Annual</option>
+    <option value="annual">Annual</option>
+    <option value="balloon">Balloon Payment</option>
+  </select>
+</div>
+<!-- New Repayment Term Field -->
+<div class="form-group">
+  <label for="repaymentTerm">Repayment Term (up to 25 years)*</label>
+  <input
+    type="number"
+    id="repaymentTerm"
+    name="repaymentTerm"
+    min="1"
+    max="25"
+    required
+    placeholder="Enter number of years"
+  />
+</div>
+
+
+  <!-- Broker Info -->
+  <div class="form-group">
+    <label for="broker">Broker/Referring Party</label>
+    <input type="text" id="broker" name="broker" />
+  </div>
+
+  <!-- Borrower Info -->
+  <div class="form-group">
+    <label for="firstName">First Name</label>
+    <input type="text" id="firstName" name="firstName" />
+  </div>
+  <div class="form-group">
+    <label for="lastName">Last Name</label>
+    <input type="text" id="lastName" name="lastName" />
+  </div>
+  <div class="form-group">
+    <label for="homePhone">Home Phone</label>
+    <input type="tel" id="homePhone" name="homePhone" placeholder="(xxx) xxx - xxxx Ext xxxx" />
+  </div>
+  <div class="form-group">
+    <label for="cellPhone">Cell Phone</label>
+    <input type="tel" id="cellPhone" name="cellPhone" placeholder="(xxx) xxx - xxxx" />
+  </div>
+  <div class="form-group">
+    <label>Is there a Co-borrower?</label>
+    <select name="coBorrower">
+      <option value="no">No</option>
+      <option value="yes">Yes</option>
+    </select>
+  </div>
+
+  <!-- Personal Info -->
+  <div class="form-group">
+    <label>Citizenship</label>
+    <select name="citizenship">
+      <option value="us">U.S. Citizen</option>
+      <option value="perm">Perm Resident</option>
+      <option value="nonperm">Non-Perm Resident</option>
+      <option value="foreign">Foreign National</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Credit Score Range</label>
+    <select name="creditScore">
+      <option>- Select -</option>
+      <option>600–649</option>
+      <option>650–699</option>
+      <option>700+</option>
+    </select>
+  </div>
+
+  <!-- Borrower Type -->
+  <div class="form-group">
+    <label>Borrower Type</label>
+    <select name="borrowerType">
+      <option>- Select -</option>
+      <option>Individual</option>
+      <option>LLC</option>
+      <option>Corporation</option>
+    </select>
+  </div>
+
+  <!-- Borrower Background -->
+  <div class="form-group">
+    <label>Has the borrower been declared bankrupt within the past 7 years?</label>
+    <select name="bankrupt">
+      <option value="no">No</option>
+      <option value="yes">Yes</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Do you have any active lawsuits against you?</label>
+    <select name="lawsuits">
+      <option value="no">No</option>
+      <option value="yes">Yes</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Have you ever been convicted of a felony or other fraud related crimes?</label>
+    <select name="felony">
+      <option value="no">No</option>
+      <option value="yes">Yes</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Have you had property foreclosed upon in the last 7 years?</label>
+    <select name="foreclosure">
+      <option value="no">No</option>
+      <option value="yes">Yes</option>
+    </select>
+  </div>
+
+  <!-- Borrower Experience -->
+  <div class="form-group">
+    <label>Does borrower have Fix & Flip or Buy & Hold experience?</label>
+    <select name="experience">
+      <option value="no">No</option>
+      <option value="yes">Yes</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Does borrower have ground up construction experience?</label>
+    <select name="constructionExperience">
+      <option value="no">No</option>
+      <option value="yes">Yes</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Do you have any professional licenses?</label>
+    <select name="licenses">
+      <option value="no">No</option>
+      <option value="yes">Yes</option>
+    </select>
+  </div>
+
+  <!-- Transaction Details -->
+  <div class="form-group">
+    <label>Is there an accepted purchase agreement?</label>
+    <select name="purchaseAgreement">
+      <option value="no">No</option>
+      <option value="yes">Yes</option>
+    </select>
+  </div>
+
+  <button type="submit" class="ps-btn-primary">Submit Fix & Flip</button>
+</form>
+
+
+
+
+    <!-- DSCR Form -->
+    <form id="dscr" class="loan-form" action="/submit-dscr" method="POST">
+      <input type="hidden" name="loanType" value="DSCR Rental" />
+
+      <h2>DSCR Rental Loan</h2>
+      <!-- Basic Info -->
+  <div class="form-group">
+    <label for="ffName">Full Name*</label>
+    <input type="text" id="ffName" name="fullName" required />
+  </div>
+  <div class="form-group">
+    <label for="ffEmail">Email*</label>
+    <input type="email" id="ffEmail" name="email" required />
+  </div>
+  <div class="form-group">
+    <label for="ffLocation">Property Location*</label>
+    <input type="text" id="ffLocation" name="propertyLocation" required />
+  </div>
+  <div class="form-group">
+    <label for="ffARV">Estimated ARV ($)*</label>
+    <input type="number" id="ffARV" name="estimatedARV" required />
+  </div>
+
+  <!-- Loan Amount -->
+<div class="form-group">
+  <label for="loanAmount">Requested Loan Amount ($)*</label>
+  <input type="number" id="loanAmount" name="loanAmount" required />
+</div>
+
+<!-- Repayment Structure -->
+<div class="form-group">
+  <label for="repaymentType">Repayment Type*</label>
+  <select id="repaymentType" name="repaymentType" required>
+    <option value="">- Select -</option>
+    <option value="interestOnly">Interest Only</option>
+    <option value="principalInterest">Principal & Interest</option>
+  </select>
+</div>
+
+<!-- Repayment Frequency -->
+<div class="form-group">
+  <label for="repaymentFrequency">Repayment Frequency*</label>
+  <select id="repaymentFrequency" name="repaymentFrequency" required>
+    <option value="">- Select -</option>
+    <option value="weekly">Weekly</option>
+    <option value="monthly">Monthly</option>
+    <option value="quarterly">Quarterly</option>
+    <option value="semiAnnual">Semi-Annual</option>
+    <option value="annual">Annual</option>
+    <option value="balloon">Balloon Payment</option>
+  </select>
+</div>
+<!-- New Repayment Term Field -->
+<div class="form-group">
+  <label for="repaymentTerm">Repayment Term (up to 25 years)*</label>
+  <input
+    type="number"
+    id="repaymentTerm"
+    name="repaymentTerm"
+    min="1"
+    max="25"
+    required
+    placeholder="Enter number of years"
+  />
+</div>
+
+  <!-- Broker Info -->
+  <div class="form-group">
+    <label for="broker">Broker/Referring Party</label>
+    <input type="text" id="broker" name="broker" />
+  </div>
+
+  <!-- Borrower Info -->
+  <div class="form-group">
+    <label for="firstName">First Name</label>
+    <input type="text" id="firstName" name="firstName" />
+  </div>
+  <div class="form-group">
+    <label for="lastName">Last Name</label>
+    <input type="text" id="lastName" name="lastName" />
+  </div>
+  <div class="form-group">
+    <label for="homePhone">Home Phone</label>
+    <input type="tel" id="homePhone" name="homePhone" placeholder="(xxx) xxx - xxxx Ext xxxx" />
+  </div>
+  <div class="form-group">
+    <label for="cellPhone">Cell Phone</label>
+    <input type="tel" id="cellPhone" name="cellPhone" placeholder="(xxx) xxx - xxxx" />
+  </div>
+  <div class="form-group">
+    <label>Is there a Co-borrower?</label>
+    <select name="coBorrower">
+      <option value="no">No</option>
+      <option value="yes">Yes</option>
+    </select>
+  </div>
+
+  <!-- Personal Info -->
+  <div class="form-group">
+    <label>Citizenship</label>
+    <select name="citizenship">
+      <option value="us">U.S. Citizen</option>
+      <option value="perm">Perm Resident</option>
+      <option value="nonperm">Non-Perm Resident</option>
+      <option value="foreign">Foreign National</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Credit Score Range</label>
+    <select name="creditScore">
+      <option>- Select -</option>
+      <option>600–649</option>
+      <option>650–699</option>
+      <option>700+</option>
+    </select>
+  </div>
+
+  <!-- Borrower Type -->
+  <div class="form-group">
+    <label>Borrower Type</label>
+    <select name="borrowerType">
+      <option>- Select -</option>
+      <option>Individual</option>
+      <option>LLC</option>
+      <option>Corporation</option>
+    </select>
+  </div>
+
+  <!-- Borrower Background -->
+  <div class="form-group">
+    <label>Has the borrower been declared bankrupt within the past 7 years?</label>
+    <select name="bankrupt">
+      <option value="no">No</option>
+      <option value="yes">Yes</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Do you have any active lawsuits against you?</label>
+    <select name="lawsuits">
+      <option value="no">No</option>
+      <option value="yes">Yes</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Have you ever been convicted of a felony or other fraud related crimes?</label>
+    <select name="felony">
+      <option value="no">No</option>
+      <option value="yes">Yes</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Have you had property foreclosed upon in the last 7 years?</label>
+    <select name="foreclosure">
+      <option value="no">No</option>
+      <option value="yes">Yes</option>
+    </select>
+  </div>
+
+  <!-- Borrower Experience -->
+  <div class="form-group">
+    <label>Does borrower have Fix & Flip or Buy & Hold experience?</label>
+    <select name="experience">
+      <option value="no">No</option>
+      <option value="yes">Yes</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Does borrower have ground up construction experience?</label>
+    <select name="constructionExperience">
+      <option value="no">No</option>
+      <option value="yes">Yes</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Do you have any professional licenses?</label>
+    <select name="licenses">
+      <option value="no">No</option>
+      <option value="yes">Yes</option>
+    </select>
+  </div>
+
+  <!-- Transaction Details -->
+  <div class="form-group">
+    <label>Is there an accepted purchase agreement?</label>
+    <select name="purchaseAgreement">
+      <option value="no">No</option>
+      <option value="yes">Yes</option>
+    </select>
+  </div>
+
+  <button type="submit" class="ps-btn-primary">Submit DSCR Rental</button>
+</form>
+
+
+
+    <!-- New Construction Form -->
+    <form id="newConstruction" class="loan-form" action="/submit-construction" method="POST">
+      <input type="hidden" name="loanType" value="New Construction" />
+      <h2>New Construction Loan</h2>
+      <!-- Basic Info -->
+  <div class="form-group">
+    <label for="ffName">Full Name*</label>
+    <input type="text" id="ffName" name="fullName" required />
+  </div>
+  <div class="form-group">
+    <label for="ffEmail">Email*</label>
+    <input type="email" id="ffEmail" name="email" required />
+  </div>
+  <div class="form-group">
+    <label for="ffLocation">Property Location*</label>
+    <input type="text" id="ffLocation" name="propertyLocation" required />
+  </div>
+  <div class="form-group">
+    <label for="ffARV">Estimated ARV ($)*</label>
+    <input type="number" id="ffARV" name="estimatedARV" required />
+  </div>
+
+  <!-- Loan Amount -->
+<div class="form-group">
+  <label for="loanAmount">Requested Loan Amount ($)*</label>
+  <input type="number" id="loanAmount" name="loanAmount" required />
+</div>
+
+<!-- Repayment Structure -->
+<div class="form-group">
+  <label for="repaymentType">Repayment Type*</label>
+  <select id="repaymentType" name="repaymentType" required>
+    <option value="">- Select -</option>
+    <option value="interestOnly">Interest Only</option>
+    <option value="principalInterest">Principal & Interest</option>
+  </select>
+</div>
+
+<!-- Repayment Frequency -->
+<div class="form-group">
+  <label for="repaymentFrequency">Repayment Frequency*</label>
+  <select id="repaymentFrequency" name="repaymentFrequency" required>
+    <option value="">- Select -</option>
+    <option value="weekly">Weekly</option>
+    <option value="monthly">Monthly</option>
+    <option value="quarterly">Quarterly</option>
+    <option value="semiAnnual">Semi-Annual</option>
+    <option value="annual">Annual</option>
+    <option value="balloon">Balloon Payment</option>
+  </select>
+</div>
+<!-- New Repayment Term Field -->
+<div class="form-group">
+  <label for="repaymentTerm">Repayment Term (up to 25 years)*</label>
+  <input
+    type="number"
+    id="repaymentTerm"
+    name="repaymentTerm"
+    min="1"
+    max="25"
+    required
+    placeholder="Enter number of years"
+  />
+</div>
+
+  <!-- Broker Info -->
+  <div class="form-group">
+    <label for="broker">Broker/Referring Party</label>
+    <input type="text" id="broker" name="broker" />
+  </div>
+
+  <!-- Borrower Info -->
+  <div class="form-group">
+    <label for="firstName">First Name</label>
+    <input type="text" id="firstName" name="firstName" />
+  </div>
+  <div class="form-group">
+    <label for="lastName">Last Name</label>
+    <input type="text" id="lastName" name="lastName" />
+  </div>
+  <div class="form-group">
+    <label for="homePhone">Home Phone</label>
+    <input type="tel" id="homePhone" name="homePhone" placeholder="(xxx) xxx - xxxx Ext xxxx" />
+  </div>
+  <div class="form-group">
+    <label for="cellPhone">Cell Phone</label>
+    <input type="tel" id="cellPhone" name="cellPhone" placeholder="(xxx) xxx - xxxx" />
+  </div>
+  <div class="form-group">
+    <label>Is there a Co-borrower?</label>
+    <select name="coBorrower">
+      <option value="no">No</option>
+      <option value="yes">Yes</option>
+    </select>
+  </div>
+
+  <!-- Personal Info -->
+  <div class="form-group">
+    <label>Citizenship</label>
+    <select name="citizenship">
+      <option value="us">U.S. Citizen</option>
+      <option value="perm">Perm Resident</option>
+      <option value="nonperm">Non-Perm Resident</option>
+      <option value="foreign">Foreign National</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Credit Score Range</label>
+    <select name="creditScore">
+      <option>- Select -</option>
+      <option>600–649</option>
+      <option>650–699</option>
+      <option>700+</option>
+    </select>
+  </div>
+
+  <!-- Borrower Type -->
+  <div class="form-group">
+    <label>Borrower Type</label>
+    <select name="borrowerType">
+      <option>- Select -</option>
+      <option>Individual</option>
+      <option>LLC</option>
+      <option>Corporation</option>
+    </select>
+  </div>
+
+  <!-- Borrower Background -->
+  <div class="form-group">
+    <label>Has the borrower been declared bankrupt within the past 7 years?</label>
+    <select name="bankrupt">
+      <option value="no">No</option>
+      <option value="yes">Yes</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Do you have any active lawsuits against you?</label>
+    <select name="lawsuits">
+      <option value="no">No</option>
+      <option value="yes">Yes</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Have you ever been convicted of a felony or other fraud related crimes?</label>
+    <select name="felony">
+      <option value="no">No</option>
+      <option value="yes">Yes</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Have you had property foreclosed upon in the last 7 years?</label>
+    <select name="foreclosure">
+      <option value="no">No</option>
+      <option value="yes">Yes</option>
+    </select>
+  </div>
+
+  <!-- Borrower Experience -->
+  <div class="form-group">
+    <label>Does borrower have Fix & Flip or Buy & Hold experience?</label>
+    <select name="experience">
+      <option value="no">No</option>
+      <option value="yes">Yes</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Does borrower have ground up construction experience?</label>
+    <select name="constructionExperience">
+      <option value="no">No</option>
+      <option value="yes">Yes</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Do you have any professional licenses?</label>
+    <select name="licenses">
+      <option value="no">No</option>
+      <option value="yes">Yes</option>
+    </select>
+  </div>
+
+  <!-- Transaction Details -->
+  <div class="form-group">
+    <label>Is there an accepted purchase agreement?</label>
+    <select name="purchaseAgreement">
+      <option value="no">No</option>
+      <option value="yes">Yes</option>
+    </select>
+  </div>
+
+  <button type="submit" class="ps-btn-primary">Submit New Construction</button>
+</form>
+
+
+
+<!-- Rental Loan Form -->
+    <form id="rental" class="loan-form" action="/submit-rental" method="POST">
+      <input type="hidden" name="loanType" value="Rental Loan" />
+      <h2>Rental Loan</h2>
+      <!-- Basic Info -->
+  <div class="form-group">
+    <label for="ffName">Full Name*</label>
+    <input type="text" id="ffName" name="fullName" required />
+  </div>
+  <div class="form-group">
+    <label for="ffEmail">Email*</label>
+    <input type="email" id="ffEmail" name="email" required />
+  </div>
+  <div class="form-group">
+    <label for="ffLocation">Property Location*</label>
+    <input type="text" id="ffLocation" name="propertyLocation" required />
+  </div>
+  <div class="form-group">
+    <label for="ffARV">Estimated ARV ($)*</label>
+    <input type="number" id="ffARV" name="estimatedARV" required />
+  </div>
+
+  <!-- Loan Amount -->
+<div class="form-group">
+  <label for="loanAmount">Requested Loan Amount ($)*</label>
+  <input type="number" id="loanAmount" name="loanAmount" required />
+</div>
+
+<!-- Repayment Structure -->
+<div class="form-group">
+  <label for="repaymentType">Repayment Type*</label>
+  <select id="repaymentType" name="repaymentType" required>
+    <option value="">- Select -</option>
+    <option value="interestOnly">Interest Only</option>
+    <option value="principalInterest">Principal & Interest</option>
+  </select>
+</div>
+<!-- Repayment Frequency -->
+<div class="form-group">
+  <label for="repaymentFrequency">Repayment Frequency*</label>
+  <select id="repaymentFrequency" name="repaymentFrequency" required>
+    <option value="">- Select -</option>
+    <option value="weekly">Weekly</option>
+    <option value="monthly">Monthly</option>
+    <option value="quarterly">Quarterly</option>
+    <option value="semiAnnual">Semi-Annual</option>
+    <option value="annual">Annual</option>
+    <option value="balloon">Balloon Payment</option>
+  </select>
+</div>
+<!-- New Repayment Term Field -->
+<div class="form-group">
+  <label for="repaymentTerm">Repayment Term (up to 25 years)*</label>
+  <input
+    type="number"
+    id="repaymentTerm"
+    name="repaymentTerm"
+    min="1"
+    max="25"
+    required
+    placeholder="Enter number of years"
+  />
+</div>
+
+  <!-- Broker Info -->
+  <div class="form-group">
+    <label for="broker">Broker/Referring Party</label>
+    <input type="text" id="broker" name="broker" />
+  </div>
+
+  <!-- Borrower Info -->
+  <div class="form-group">
+    <label for="firstName">First Name</label>
+    <input type="text" id="firstName" name="firstName" />
+  </div>
+  <div class="form-group">
+    <label for="lastName">Last Name</label>
+    <input type="text" id="lastName" name="lastName" />
+  </div>
+  <div class="form-group">
+    <label for="homePhone">Home Phone</label>
+    <input type="tel" id="homePhone" name="homePhone" placeholder="(xxx) xxx - xxxx Ext xxxx" />
+  </div>
+  <div class="form-group">
+    <label for="cellPhone">Cell Phone</label>
+    <input type="tel" id="cellPhone" name="cellPhone" placeholder="(xxx) xxx - xxxx" />
+  </div>
+  <div class="form-group">
+    <label>Is there a Co-borrower?</label>
+    <select name="coBorrower">
+      <option value="no">No</option>
+      <option value="yes">Yes</option>
+    </select>
+  </div>
+
+  <!-- Personal Info -->
+  <div class="form-group">
+    <label>Citizenship</label>
+    <select name="citizenship">
+      <option value="us">U.S. Citizen</option>
+      <option value="perm">Perm Resident</option>
+      <option value="nonperm">Non-Perm Resident</option>
+      <option value="foreign">Foreign National</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Credit Score Range</label>
+    <select name="creditScore">
+      <option>- Select -</option>
+      <option>600–649</option>
+      <option>650–699</option>
+      <option>700+</option>
+    </select>
+  </div>
+
+  <!-- Borrower Type -->
+  <div class="form-group">
+    <label>Borrower Type</label>
+    <select name="borrowerType">
+      <option>- Select -</option>
+      <option>Individual</option>
+      <option>LLC</option>
+      <option>Corporation</option>
+    </select>
+  </div>
+
+  <!-- Borrower Background -->
+  <div class="form-group">
+    <label>Has the borrower been declared bankrupt within the past 7 years?</label>
+    <select name="bankrupt">
+      <option value="no">No</option>
+      <option value="yes">Yes</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Do you have any active lawsuits against you?</label>
+    <select name="lawsuits">
+      <option value="no">No</option>
+      <option value="yes">Yes</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Have you ever been convicted of a felony or other fraud related crimes?</label>
+    <select name="felony">
+      <option value="no">No</option>
+      <option value="yes">Yes</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Have you had property foreclosed upon in the last 7 years?</label>
+    <select name="foreclosure">
+      <option value="no">No</option>
+      <option value="yes">Yes</option>
+    </select>
+  </div>
+
+  <!-- Borrower Experience -->
+  <div class="form-group">
+    <label>Does borrower have Fix & Flip or Buy & Hold experience?</label>
+    <select name="experience">
+      <option value="no">No</option>
+      <option value="yes">Yes</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Does borrower have ground up construction experience?</label>
+    <select name="constructionExperience">
+      <option value="no">No</option>
+      <option value="yes">Yes</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Do you have any professional licenses?</label>
+    <select name="licenses">
+      <option value="no">No</option>
+      <option value="yes">Yes</option>
+    </select>
+  </div>
+
+  <!-- Transaction Details -->
+  <div class="form-group">
+    <label>Is there an accepted purchase agreement?</label>
+    <select name="purchaseAgreement">
+      <option value="no">No</option>
+      <option value="yes">Yes</option>
+    </select>
+  </div>
+
+  <button type="submit" class="ps-btn-primary">Submit Rental</button>
+</form>
+
+
+<!-- Personal Loan Form -->
+<form id="personal" class="loan-form" action="/submit-personal" method="POST" enctype="multipart/form-data">
+  <input type="hidden" name="loanType" value="Personal Loan" />
+  <h2>Personal Loan</h2>
+
+  <!-- Loan Details -->
+  <div class="form-group">
+    <label>Requested Loan Amount ($)*</label>
+    <input type="number" name="loanAmount" placeholder="e.g., 25000" required />
+  </div>
+  <div class="form-group">
+    <label>Purpose of Loan*</label>
+    <textarea name="loanPurpose" rows="4" placeholder="Describe what the loan will be used for..." required></textarea>
+  </div>
+  <div class="form-group">
+    <label>Repayment Term (Years)*</label>
+    <input type="number" name="repaymentTerm" placeholder="e.g., 5" required />
+  </div>
+
+  <!-- Financial Info -->
+  <div class="form-group">
+    <label>Annual Income ($)*</label>
+    <input type="number" name="annualIncome" placeholder="e.g., 85000" required />
+  </div>
+  <div class="form-group">
+    <label>Employment Status*</label>
+    <select name="employmentStatus" required>
+      <option value="">- Select -</option>
+      <option value="Employed Full-Time">Employed Full-Time</option>
+      <option value="Employed Part-Time">Employed Part-Time</option>
+      <option value="Self-Employed">Self-Employed</option>
+      <option value="Unemployed">Unemployed</option>
+      <option value="Retired">Retired</option>
+      <option value="Student">Student</option>
+      <option value="Other">Other</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Credit Score Range*</label>
+    <select name="creditScore" required>
+      <option value="">- Select -</option>
+      <option value="Excellent (750+)">Excellent (750+)</option>
+      <option value="Good (700–749)">Good (700–749)</option>
+      <option value="Fair (650–699)">Fair (650–699)</option>
+      <option value="Poor (<650)">Poor (&lt;650)</option>
+    </select>
+  </div>
+
+  <!-- Personal Info -->
+  <div class="form-group">
+    <label>Full Name*</label>
+    <input type="text" name="fullName" required />
+  </div>
+  <div class="form-group">
+    <label>Email Address*</label>
+    <input type="email" name="email" required />
+  </div>
+  <div class="form-group">
+    <label>Phone Number*</label>
+    <input type="tel" name="phone" required />
+  </div>
+  <div class="form-group">
+    <label>Date of Birth*</label>
+    <input type="date" name="dob" required />
+  </div>
+  <div class="form-group">
+    <label>Social Security Number (SSN)*</label>
+    <input type="text" name="ssn" placeholder="XXX-XX-XXXX" required />
+  </div>
+
+  <!-- Address -->
+  <div class="form-group">
+    <label>Street Address*</label>
+    <input type="text" name="address" required />
+  </div>
+  <div class="form-group">
+    <label>City*</label>
+    <input type="text" name="city" required />
+  </div>
+  <div class="form-group">
+    <label>State*</label>
+    <input type="text" name="state" required />
+  </div>
+  <div class="form-group">
+    <label>Zip Code*</label>
+    <input type="text" name="zip" required />
+  </div>
+
+  <!-- Submit -->
+  <button type="submit" class="ps-btn-primary">Submit Personal Loan</button>
+</form>
+
+
+<!-- Auto Loan Form -->
+<form id="auto" class="loan-form" action="/submit-auto" method="POST" enctype="multipart/form-data">
+  <input type="hidden" name="loanType" value="Auto Loan" />
+  <h2>Auto Loan</h2>
+
+  <!-- Vehicle Details -->
+  <div class="form-group">
+    <label>Vehicle Type*</label>
+    <select name="vehicleType" required>
+      <option value="">- Select -</option>
+      <option value="New Car">New Car</option>
+      <option value="Used Car">Used Car</option>
+      <option value="Truck">Truck</option>
+      <option value="SUV">SUV</option>
+      <option value="Van">Van</option>
+      <option value="Motorcycle">Motorcycle</option>
+      <option value="Other">Other</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Vehicle Make & Model*</label>
+    <input type="text" name="vehicleMakeModel" required />
+  </div>
+  <div class="form-group">
+    <label>Vehicle Year*</label>
+    <input type="number" name="vehicleYear" required />
+  </div>
+  <div class="form-group">
+    <label>Vehicle Price ($)*</label>
+    <input type="number" name="vehiclePrice" required />
+  </div>
+  <div class="form-group">
+    <label>Down Payment ($)</label>
+    <input type="number" name="downPayment" />
+  </div>
+
+  <!-- Loan Details -->
+  <div class="form-group">
+    <label>Requested Loan Amount ($)*</label>
+    <input type="number" name="loanAmount" required />
+  </div>
+  <div class="form-group">
+    <label>Repayment Term (Years)*</label>
+    <input type="number" name="repaymentTerm" required />
+  </div>
+
+  <!-- Financial Info -->
+  <div class="form-group">
+    <label>Annual Income ($)*</label>
+    <input type="number" name="annualIncome" required />
+  </div>
+  <div class="form-group">
+    <label>Employment Status*</label>
+    <select name="employmentStatus" required>
+      <option value="">- Select -</option>
+      <option value="Employed Full-Time">Employed Full-Time</option>
+      <option value="Employed Part-Time">Employed Part-Time</option>
+      <option value="Self-Employed">Self-Employed</option>
+      <option value="Unemployed">Unemployed</option>
+      <option value="Retired">Retired</option>
+      <option value="Student">Student</option>
+      <option value="Other">Other</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Credit Score Range*</label>
+    <select name="creditScore" required>
+      <option value="">- Select -</option>
+      <option value="Excellent (750+)">Excellent (750+)</option>
+      <option value="Good (700–749)">Good (700–749)</option>
+      <option value="Fair (650–699)">Fair (650–699)</option>
+      <option value="Poor (<650)">Poor (&lt;650)</option>
+    </select>
+  </div>
+
+  <!-- Personal Info -->
+  <div class="form-group">
+    <label>Full Name*</label>
+    <input type="text" name="fullName" required />
+  </div>
+  <div class="form-group">
+    <label>Email Address*</label>
+    <input type="email" name="email" required />
+  </div>
+  <div class="form-group">
+    <label>Phone Number*</label>
+    <input type="tel" name="phone" required />
+  </div>
+  <div class="form-group">
+    <label>Date of Birth*</label>
+    <input type="date" name="dob" required />
+  </div>
+  <div class="form-group">
+    <label>Social Security Number (SSN)*</label>
+    <input type="text" name="ssn" placeholder="XXX-XX-XXXX" required />
+  </div>
+
+  <!-- Address -->
+  <div class="form-group">
+    <label>Street Address*</label>
+    <input type="text" name="address" required />
+  </div>
+  <div class="form-group">
+    <label>City*</label>
+    <input type="text" name="city" required />
+  </div>
+  <div class="form-group">
+    <label>State*</label>
+    <input type="text" name="state" required />
+  </div>
+  <div class="form-group">
+    <label>Zip Code*</label>
+    <input type="text" name="zip" required />
+  </div>
+
+  <!-- Submit -->
+  <button type="submit" class="ps-btn-primary">Submit Auto Loan</button>
+</form>
+
+
+<!-- Business Loan Form -->
+<form id="business" class="loan-form" action="/submit-business" method="POST" enctype="multipart/form-data">
+  <input type="hidden" name="loanType" value="Business Loan" />
+  <h2>Business Loan</h2>
+
+  <!-- Funding Request -->
+  <div class="form-group">
+    <label>How much do you need?*</label>
+    <input type="number" name="loanAmount" placeholder="e.g., 500000" required />
+  </div>
+
+  <div class="form-group">
+    <label>What are you seeking funding for?</label>
+    <div class="checkbox-group">
+      <label><input type="checkbox" name="fundingPurpose" value="Expansion" /> Expansion</label>
+      <label><input type="checkbox" name="fundingPurpose" value="Equipment Purchase" /> Equipment Purchase</label>
+      <label><input type="checkbox" name="fundingPurpose" value="Finance Accounts Receivable" /> Finance Accounts Receivable</label>
+      <label><input type="checkbox" name="fundingPurpose" value="Inventory" /> Inventory</label>
+      <label><input type="checkbox" name="fundingPurpose" value="Marketing / Sales" /> Marketing / Sales</label>
+      <label><input type="checkbox" name="fundingPurpose" value="Payroll" /> Payroll</label>
+      <label><input type="checkbox" name="fundingPurpose" value="Purchase Vehicle(s)" /> Purchase Vehicle(s)</label>
+      <label><input type="checkbox" name="fundingPurpose" value="Remodel Building" /> Remodel Building</label>
+      <label><input type="checkbox" name="fundingPurpose" value="Working Capital / Cash Flow" /> Working Capital / Cash Flow</label>
+      <label><input type="checkbox" name="fundingPurpose" value="Refinance Debt" /> Refinance Debt</label>
+      <label><input type="checkbox" name="fundingPurpose" value="Other" /> Other</label>
+    </div>
+  </div>
+
+  <!-- Repayment Term -->
+  <div class="form-group">
+    <label>Repayment Term*</label>
+    <select name="repaymentTerm" required>
+      <option value="">- Select -</option>
+      <option value="Weekly">Weekly</option>
+      <option value="Monthly">Monthly</option>
+      <option value="Quarterly">Quarterly</option>
+      <option value="Semi-annual">Semi-annual</option>
+      <option value="Annual">Annual</option>
+      <option value="Balloon">Balloon</option>
+      <option value="Other">Other</option>
+    </select>
+  </div>
+
+  <!-- Business Financials -->
+  <div class="form-group">
+    <label>What's your annual revenue?*</label>
+    <input type="number" name="annualRevenue" placeholder="e.g., 100000" required />
+  </div>
+
+  <!-- Personal Credit -->
+  <div class="form-group">
+    <label>What is your personal credit score?</label>
+    <select name="creditScore">
+      <option value="">- Select -</option>
+      <option value="Excellent (750+)">Excellent (750+)</option>
+      <option value="Good (700–749)">Good (700–749)</option>
+      <option value="Fair (650–699)">Fair (650–699)</option>
+      <option value="Poor (<650)">Poor (&lt;650)</option>
+    </select>
+  </div>
+
+  <!-- Contact Info -->
+  <div class="form-group">
+    <label>What is your name?*</label>
+    <input type="text" name="fullName" required />
+  </div>
+  <div class="form-group">
+    <label>What is your email address?*</label>
+    <input type="email" name="email" required />
+  </div>
+  <div class="form-group">
+    <label>What is the name of your company?*</label>
+    <input type="text" name="companyName" required />
+  </div>
+  <div class="form-group">
+    <label>What is your phone number?*</label>
+    <input type="tel" name="companyPhone" required />
+  </div>
+
+  <!-- Business Identity -->
+  <div class="form-group">
+    <label>Is your 'Doing Business As' (DBA) Name the same as your Legal Business Name?*</label>
+    <select name="dbaSame" required>
+      <option value="">- Select -</option>
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+    </select>
+  </div>
+
+  <!-- Location -->
+  <div class="form-group">
+    <label>Country/Region*</label>
+    <input type="text" name="country" required />
+  </div>
+  <div class="form-group">
+    <label>Address*</label>
+    <input type="text" name="address" required />
+  </div>
+  <div class="form-group">
+    <label>City*</label>
+    <input type="text" name="city" required />
+  </div>
+  <div class="form-group">
+    <label>Zip / Postal Code*</label>
+    <input type="text" name="zip" required />
+  </div>
+  <div class="form-group">
+    <label>What is your business website?</label>
+    <input type="url" name="website" placeholder="https://www.mysite.com" />
+  </div>
+
+  <!-- Business Details -->
+  <div class="form-group">
+    <label>Industry Type*</label>
+    <input type="text" name="industryType" required />
+  </div>
+  <div class="form-group">
+    <label>Legal Entity Type*</label>
+    <select name="legalEntityType" required>
+      <option value="">- Select -</option>
+      <option value="Corp">Corp</option>
+      <option value="LLC">LLC</option>
+      <option value="PLLC">PLLC</option>
+      <option value="Partnership">Partnership</option>
+      <option value="Public">Public</option>
+      <option value="S-Corp">S-Corp</option>
+      <option value="Sole Proprietorship">Sole Proprietorship</option>
+      <option value="Other">Other</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Length of Ownership (Years)*</label>
+    <input type="number" name="ownershipLength" required />
+  </div>
+  <div class="form-group">
+    <label>Federal Tax ID*</label>
+    <input type="text" name="taxId" placeholder="xx-xxxxxxx" required />
+  </div>
+  <div class="form-group">
+    <label>Estimated Business Start Date*</label>
+    <div class="date-group">
+      <select name="startMonth" required>
+        <option value="">Month</option>
+        <option value="January">January</option>
+        <option value="February">February</option>
+        <option value="March">March</option>
+        <option value="April">April</option>
+        <option value="May">May</option>
+        <option value="June">June</option>
+        <option value="July">July</option>
+        <option value="August">August</option>
+        <option value="September">September</option>
+        <option value="October">October</option>
+        <option value="November">November</option>
+        <option value="December">December</option>
+      </select>
+      <input type="number" name="startDay" placeholder="Day" required />
+      <input type="number" name="startYear" placeholder="Year" required />
+    </div>
+  </div>
+  <div class="form-group">
+    <label>State of Incorporation*</label>
+    <input type="text" name="stateOfIncorporation" required />
+  </div>
+
+  <!-- Submit -->
+  <button type="submit" class="ps-btn-primary">Submit Business Loan</button>
+</form>
+
+
+<!-- Equity Loan Form -->
+<form id="equity" class="loan-form" action="/submit-equity" method="POST" enctype="multipart/form-data">
+  <input type="hidden" name="loanType" value="Equity Loan" />
+  <h2>Equity Loan</h2>
+
+  <!-- Company Details -->
+  <div class="form-group">
+    <label>Company Name*</label>
+    <input type="text" name="companyName" required />
+  </div>
+  <div class="form-group">
+    <label>Legal Structure (LLC, C-Corp, etc.)*</label>
+    <input type="text" name="legalStructure" required />
+  </div>
+  <div class="form-group">
+    <label>Email Address*</label>
+    <input type="email" name="companyEmail" required />
+  </div>
+  <div class="form-group">
+    <label>Phone Number*</label>
+    <input type="tel" name="companyPhone" required />
+  </div>
+  <div class="form-group">
+    <label>Contact Person*</label>
+    <input type="text" name="contactPerson" required />
+  </div>
+  <div class="form-group">
+    <label>Title*</label>
+    <input type="text" name="contactTitle" required />
+  </div>
+  <div class="form-group">
+    <label>Website URL</label>
+    <input type="url" name="website" placeholder="https://www.example.com" />
+  </div>
+
+  <!-- Business Description -->
+<div class="form-group">
+  <label for="businessDescription">Business Description*</label>
+  <textarea
+    id="businessDescription"
+    name="businessDescription"
+    rows="6"
+    style="resize: vertical; min-height: 150px;"
+    placeholder="Briefly describe your business concept, value proposition, and the problem you're solving..."
+    required
+  ></textarea>
+</div>
+
+
+  <!-- Financial Information -->
+  <div class="form-group">
+    <label>Current Revenue (Annual)</label>
+    <input type="number" name="currentRevenue" />
+  </div>
+  <div class="form-group">
+    <label>Current Profit Margin (%)</label>
+    <input type="number" step="0.01" name="currentMargin" />
+  </div>
+  <div class="form-group">
+    <label>Projected Revenue (Next 12 Months)</label>
+    <input type="number" name="projectedRevenue" />
+  </div>
+  <div class="form-group">
+    <label>Projected Profit Margin (%)</label>
+    <input type="number" step="0.01" name="projectedMargin" />
+  </div>
+
+  <!-- Investment Request -->
+  <div class="form-group">
+    <label>Investment Amount Requested ($)*</label>
+    <input type="number" name="investmentAmount" required />
+  </div>
+  <div class="form-group">
+    <label>Intended Use of Funds*</label>
+    <textarea name="useOfFunds" required></textarea>
+  </div>
+  <div class="form-group">
+    <label>Equity Stake Offered (%)*</label>
+    <input type="number" step="0.01" name="equityStake" required />
+  </div>
+
+  <!-- Market Analysis -->
+  <div class="form-group">
+    <label>Market Position & Competitors*</label>
+    <textarea name="marketPosition" required></textarea>
+  </div>
+  <div class="form-group">
+    <label>Key Factors Driving Market Growth</label>
+    <textarea name="marketGrowthFactors"></textarea>
+  </div>
+  <div class="form-group">
+    <label>Competitive Advantages</label>
+    <textarea name="competitiveAdvantages"></textarea>
+  </div>
+
+  <!-- Exit Strategy -->
+<div class="form-group">
+  <label for="exitStrategy">Exit Strategy*</label>
+  <textarea
+    id="exitStrategy"
+    name="exitStrategy"
+    rows="6"
+    style="resize: vertical; min-height: 150px;"
+    placeholder="Describe how investors will realize their return (e.g., acquisition, IPO, buyback)..."
+    required
+  ></textarea>
+</div>
+  <div class="form-group">
+    <label>Timeframe for Potential Exit</label>
+    <input type="text" name="exitTimeframe" />
+  </div>
+
+  <!-- Supporting Documents -->
+  <div class="form-group">
+    <label>Upload Business Plan</label>
+    <input type="file" name="businessPlan" />
+  </div>
+  <div class="form-group">
+    <label>Upload Financial Projections</label>
+    <input type="file" name="financialProjections" />
+  </div>
+  <div class="form-group">
+    <label>Upload Market Research Data</label>
+    <input type="file" name="marketResearch" />
+  </div>
+
+  <!-- Legal and Regulatory -->
+  <div class="form-group">
+    <label>Have you filed all necessary regulatory documents?*</label>
+    <select name="regulatoryFiled" required>
+      <option value="">- Select -</option>
+      <option value="yes">Yes</option>
+      <option value="no">No</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Are there any legal issues currently impacting your business?*</label>
+    <select name="legalIssues" required>
+      <option value="">- Select -</option>
+      <option value="yes">Yes</option>
+      <option value="no">No</option>
+    </select>
+  </div>
+
+  <!-- Signature and Date -->
+<div class="form-group">
+  <label for="signature">Signature of Authorized Representative*</label>
+  <input
+    type="text"
+    id="signature"
+    name="signature"
+    required
+    placeholder="Enter your full name as signature"
+  />
+</div>
+  <div class="form-group">
+    <label>Date*</label>
+    <input type="date" name="signatureDate" required />
+  </div>
+
+  <!-- Issue Selection -->
+  <div class="form-group">
+    <label>Choose an Issue</label>
+    <select name="issueType">
+      <option value="">- Select -</option>
+      <option value="funding">Funding</option>
+      <option value="legal">Legal</option>
+      <option value="compliance">Compliance</option>
+      <option value="other">Other</option>
+    </select>
+  </div>
+
+  <!-- Submit -->
+  <button type="submit" class="ps-btn-primary">Submit Equity Loan</button>
+</form>
+
+  </div>
+
+  <script>
+    function showForm(formId) {
+      document.querySelectorAll('.loan-form').forEach(form => {
+        form.classList.remove('active');
+      });
+      document.getElementById(formId).classList.add('active');
+    }
+  </script>
+
+  <!-- Company Signature -->
+<div class="form-signature">
+  <img src="app/assets/assets/images/logo.png" alt="Powered by Investors Group of East Gate LLC" />
+  <p>Powered By <strong>Investors Group of East Gate</strong></p>
+</div>
+
+
+</body>
+</html>

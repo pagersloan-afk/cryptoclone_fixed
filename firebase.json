@@ -4,6 +4,19 @@
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
       { "source": "/app/**", "destination": "/app/index.html" },
+      { "source": "/fix-and-flip", "destination": "/fix-and-flip.html" },
+      { "source": "/dscr-rental", "destination": "/dscr-rental.html" },
+      { "source": "/new-construction", "destination": "/new-construction.html" },
+      { "source": "/recent-deals", "destination": "/recent-deals.html" },
+      { "source": "/home-loans", "destination": "/home-loans.html" },
+      { "source": "/personal-loans", "destination": "/personal-loans.html" },
+      { "source": "/about", "destination": "/about.html" },
+      { "source": "/investing", "destination": "/investing.html" },
+      { "source": "/commercial", "destination": "/commercial.html" },
+      { "source": "/contact", "destination": "/contact.html" },
+      { "source": "/mutual-funds", "destination": "/mutual-funds.html" },
+      { "source": "/auto-loans", "destination": "/auto-loans.html" },
+      { "source": "/apply", "destination": "/apply.html" },
       { "source": "**", "destination": "/index.html" }
     ]
   },

@@ -1,0 +1,70 @@
+/* 🔴 Sub Navigation Styles — IGEG Vault */
+
+.sub-nav {
+  position: sticky;
+  top: 0;
+  background-color: #c20000;
+  padding: 1rem 2rem;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+}
+
+.sub-nav-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sub-nav-brand {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #fff;
+  margin-right: 2rem;
+  white-space: nowrap;
+}
+
+.sub-nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.sub-nav-links a {
+  color: #fff;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.sub-nav-links a:hover {
+  background-color: #a00000;
+  color: #fff;
+}
+
+.sub-nav-links a.active {
+  background-color: #fff;
+  color: #c20000;
+  font-weight: bold;
+}
+
+/* 📱 Responsive Sub Nav */
+@media (max-width: 768px) {
+  .sub-nav-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .sub-nav-links {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .sub-nav-links a {
+    width: 100%;
+    text-align: left;
+  }
+}

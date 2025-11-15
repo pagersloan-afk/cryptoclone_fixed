@@ -1,0 +1,149 @@
+/* 🌐 Global Styles */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+}
+
+/* 🧭 Wrapper */
+.app-wrapper {
+  max-width: 900px;
+  margin: 4rem auto;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+/* 🧭 Header */
+.app-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.app-header h1 {
+  font-size: 2rem;
+  color: #c20000;
+}
+
+.app-header p {
+  font-size: 1rem;
+  color: #333;
+}
+
+/* 🎯 Loan Selector */
+.loan-selector {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.loan-selector button {
+  padding: 0.75rem 1.5rem;
+  border: 1px solid #c20000;
+  background-color: #fff;
+  color: #c20000;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.loan-selector button:hover {
+  background-color: #c20000;
+  color: #fff;
+}
+
+/* 📄 Loan Forms */
+.loan-form {
+  max-height: 600px; /* Adjust height as needed */
+  overflow-y: auto;
+  padding-right: 1rem; /* Prevent scrollbar overlap */
+  display: none;
+}
+
+.loan-form.active {
+  display: block;
+}
+
+.loan-form h2 {
+  color: #c20000;
+  margin-bottom: 1rem;
+}
+
+/* 🧾 Form Fields */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+input, select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+/* 🚀 CTA Button */
+.ps-btn-primary {
+  background-color: #c20000;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.ps-btn-primary:hover {
+  background-color: #a00000;
+}
+
+.form-signature {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.form-signature img {
+  width: 50px;
+  height: auto;
+  margin-bottom: 0.5rem;
+}
+
+.form-signature p {
+  margin: 0;
+  font-weight: 500;
+}
+
+
+/* 📱 Responsive */
+@media (max-width: 600px) {
+  .app-wrapper {
+    margin: 2rem 1rem;
+    padding: 1.5rem;
+  }
+
+  .loan-selector {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .loan-selector button {
+    width: 100%;
+    max-width: 300px;
+  }
+}

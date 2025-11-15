@@ -1,0 +1,116 @@
+/* 🔴 Header Styles — IGEG Vault */
+
+.top-header {
+  background-color: #c20000;
+  border-bottom: 1px solid #ddd;
+  padding: 1rem 2rem;
+}
+
+.header-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.brand-logo {
+  width: 40px;
+  height: auto;
+}
+
+.brand-text {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin: 0;
+}
+
+.brand-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+/* 🔗 Navigation Links */
+
+.nav-links ul {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.nav-links a:hover {
+  color: #fbeaea;
+}
+
+
+/* 🔐 Sign-In Button */
+
+.signon-button {
+  background-color: #ffffff;
+  color: #c20000 !important; /* Force red text */
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 0.95rem;
+  text-decoration: none;
+  box-shadow: 0 0 0 1px #fff inset;
+  transition: background 0.3s ease, color 0.3s ease;
+  display: inline-block;
+}
+
+
+.signon-button:hover {
+  background-color: #fbeaea;         /* Light red hover */
+  color: #a00000;
+}
+
+/* 🍔 Hamburger Menu */
+
+.hamburger-menu {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.hamburger-menu .bar {
+  width: 20px;
+  height: 2px;
+  background-color: #fff;
+  margin: 4px 0;
+}
+
+.menu-label {
+  font-size: 0.85rem;
+  margin-top: 4px;
+  color: #fff;
+}
+
+/* 📱 Responsive Toggle */
+
+@media (max-width: 768px) {
+  .nav-links ul {
+    display: none;
+  }
+
+  .hamburger-menu {
+    display: block;
+  }
+}

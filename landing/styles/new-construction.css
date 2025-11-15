@@ -1,0 +1,161 @@
+/* 🏗️ Full-Width Image Card */
+.hero-image-card {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  overflow-x: hidden;
+}
+
+.hero-image-container {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.hero-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+
+/* 🧾 Text Card Styling */
+.hero-text-card {
+  background-color: #fff;
+  padding: 3rem 2rem;
+}
+
+.hero-text-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.hero-text-wrapper h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #1a1a1a;
+}
+
+.hero-text-wrapper p {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.ps-btn-primary {
+  background-color: #e63946;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.ps-btn-primary:hover {
+  background-color: #d62828;
+}
+/* 💰 Promo Section Layout */
+.ps-large-promo-full-container {
+  width: 100%;
+  background-color: #f9f9f9;
+  padding: 4rem 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.ps-large-promo-full {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  max-width: 1200px;
+  width: 100%;
+  gap: 3rem;
+}
+
+/* 📐 Image Styling */
+.ps-promo-full-item img {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* 📝 Text Styling */
+.ps-promo-full-content {
+  flex: 1;
+  text-align: left;
+}
+
+.ps-promo-full-content h2 {
+  font-size: 2.25rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #1a1a1a;
+}
+
+.ps-promo-full-content p {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.ps-btn-secondary {
+  background-color: #e63946;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.ps-btn-secondary:hover {
+  background-color: #d62828;
+}
+
+/* 📱 Responsive Layout */
+@media (max-width: 768px) {
+  .ps-large-promo-full {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .ps-promo-full-content {
+    text-align: center;
+  }
+
+  .ps-promo-full-item img {
+    max-width: 100%;
+  }
+}
+
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .hero-text-wrapper h1 {
+    font-size: 2rem;
+  }
+
+  .hero-text-wrapper p {
+    font-size: 1rem;
+  }
+
+  .ps-btn-primary {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.95rem;
+  }
+
+  .hero-text-card {
+    padding: 2rem 1rem;
+  }
+}

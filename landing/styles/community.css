@@ -1,0 +1,113 @@
+/* 🏛️ Community Section */
+.community-section {
+  max-width: 1200px;
+  margin: auto;
+  padding: 64px 32px;
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+.community-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.community-header h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #b31b1b;
+  margin-bottom: 16px;
+}
+
+.community-header p {
+  font-size: 1.1rem;
+  color: #444;
+}
+
+.community-columns {
+  display: flex;
+  gap: 48px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.community-card {
+  flex: 1;
+  min-width: 280px;
+  max-width: 560px;
+  background-color: #f9f9f9;
+  padding: 32px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  text-align: left;
+}
+
+.community-card img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 24px;
+  object-fit: cover;
+}
+
+.community-card h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #b31b1b;
+  margin-bottom: 12px;
+}
+
+.community-card p {
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 24px;
+}
+
+.cta-button {
+  display: inline-block;
+  background-color: #b31b1b;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #8e1414;
+  transform: scale(1.05);
+}
+
+/* 🧩 Help Icons */
+.community-help {
+  margin-top: 64px;
+  text-align: center;
+}
+
+.community-help h4 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 24px;
+  color: #333;
+}
+
+.help-icons {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+
+.help-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.help-item img {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 8px;
+}

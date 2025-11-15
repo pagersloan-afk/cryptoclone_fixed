@@ -1,0 +1,213 @@
+/* 🔴 DSCR Rental Loans Styles — IGEG Vault */
+
+/* 🔵 Hero Banner */
+.rsk-marquee-container {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  overflow: hidden;
+}
+
+.rsk-marquee-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-background-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.rsk-marquee-overlay-card {
+  position: absolute;
+  bottom: -15%;  /* ↓ Lower the card by reducing this value */
+  left: 5%;
+  background: rgba(255,255,255,0.95);
+  padding: 2rem;
+  max-width: 480px;
+  border-radius: 8px;
+  animation: fadeInUp 1.2s ease-out;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 🧭 Section Layouts */
+.card-background-white {
+  background-color: #fff;
+  padding: 4rem 2rem;
+}
+
+.card-background-gray {
+  background-color: #eee;
+  padding: 4rem 2rem;
+}
+
+.text-aligned-center {
+  text-align: center;
+}
+
+.ps-mid-page-title-wrapper {
+  margin-bottom: 2rem;
+}
+
+.ps-mid-page-title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: #c20000;
+}
+
+/* 🧭 Card Grid */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.enhanced-txt-cm {
+  flex: 1 1 220px;
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  text-align: center;
+}
+
+.enhanced-txt-cm h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.enhanced-txt-cm .headline {
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+/* 💰 Promo Section */
+.ps-large-promo-full-container {
+  background-color: #f5f5f5;
+  padding: 4rem 2rem;
+}
+
+.ps-promo-full-item {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  max-width: 1000px;
+  margin: auto;
+  align-items: center;
+}
+
+.ps-promo-full-item img {
+  width: 400px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.ps-promo-full-content h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.ps-promo-full-content p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.ps-promo-full-links {
+  margin-top: 1rem;
+}
+
+/* 🔘 Buttons */
+.ps-btn-primary {
+  background-color: #c20000;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-weight: bold;
+  display: inline-block;
+  transition: background 0.3s ease;
+}
+
+.ps-btn-primary:hover {
+  background-color: #a00000;
+}
+
+.ps-btn-secondary {
+  border: 2px solid #c20000;
+  color: #c20000;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-weight: bold;
+  display: inline-block;
+  background: #fff;
+  transition: background 0.3s ease;
+}
+
+.ps-btn-secondary:hover {
+  background-color: #fbeaea;
+}
+
+/* ❓ FAQ Section */
+details {
+  margin: 1rem auto;
+  max-width: 800px;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.05);
+  padding: 1rem;
+}
+
+summary {
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1.1rem;
+  position: relative;
+  padding-right: 1.5rem;
+}
+
+summary::after {
+  content: "+";
+  position: absolute;
+  right: 0;
+  font-weight: bold;
+}
+
+details[open] summary::after {
+  content: "−";
+}
+
+.show-hide-content-text-wrapper-collapsible {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .ps-promo-full-item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .ps-promo-full-item img {
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .rsk-marquee-overlay-card {
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 5%;
+    width: 90%;
+  }
+}

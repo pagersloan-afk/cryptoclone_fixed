@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DSCR Rental Loans – Investors Group of East Gate</title>
+  <link rel="icon" href="/app/assets/assets/images/favicon.png" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="styles/header.css" />
+  <link rel="stylesheet" href="styles/navigation.css" />
+  <link rel="stylesheet" href="styles/dscr-rental.css" />
+  <link rel="stylesheet" href="styles/footer.css" />
+</head>
+<body>
+
+ <!-- 🔴 Top Header -->
+<header class="top-header" role="banner">
+  <div class="header-wrapper">
+    <div class="logo-container">
+      <a href="/" class="brand-link">
+        <h1 class="brand-text">INVESTORS GROUP OF EAST GATE</h1>
+      </a>
+    </div>
+    <nav class="nav-links" aria-label="Header Navigation">
+      <ul>
+        <li><a href="#">ATM/Locations</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="#" class="search-icon" aria-label="Search"></a></li>
+        <li><a href="/app/#/welcome" class="signon-button">Sign In</a></li>
+      </ul>
+    </nav>
+    <button class="hamburger-menu" aria-label="Toggle Navigation" aria-expanded="false">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="menu-label">MENU</span>
+    </button>
+  </div>
+</header>
+
+
+  <!-- ⚪ Main Navigation -->
+<nav class="main-nav" aria-label="Main Categories" role="navigation">
+  <ul class="main-nav-links">
+    <li><a href="/personal">Personal</a></li>
+    <li><a href="/investing">Investing & Wealth</a></li>
+    <li><a href="/business">Business</a></li>
+    <li><a href="/commercial">Commercial</a></li>
+    <li><a href="/corporate-banking">Corporate Banking</a></li>
+    <li><a href="/about">About IGEG</a></li>
+  </ul>
+</nav>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const currentPath = window.location.pathname.replace(/\/$/, "");
+    document.querySelectorAll(".main-nav-links a").forEach(link => {
+      const linkPath = link.getAttribute("href").replace(/\/$/, "");
+      if (linkPath === currentPath) {
+        link.classList.add("active");
+      }
+    });
+  });
+</script>
+
+  <!-- 🔵 Sub Navigation -->
+<nav class="sub-nav" aria-label="Product Links" role="navigation">
+  <div class="sub-nav-wrapper">
+    <div class="sub-nav-links">
+      <a href="/checking">Checking</a>
+      <a href="/savings">Savings & CDs</a>
+      <a href="/credit-cards">Credit Cards</a>
+      <a href="/premier">Premier</a>
+      <a href="/mutual-funds">Mutual Funds</a>
+      <a href="/personal-loans">Personal Loans</a>
+      <a href="/home-loans">Home Loans</a>
+      <a href="/auto-loans">Auto Loans</a>
+      <a href="/fix-and-flip">Fix and Flip Loans</a>
+      <a href="/dscr-rental">DSCR Rental Loans</a>
+      <a href="/new-construction">New Construction Loans</a>
+      <a href="/recent-deals">Recent Deals</a>
+    </div>
+  </div>
+</nav>
+
+<!-- 🔧 Subnav Active Script -->
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const currentPath = window.location.pathname.replace(/\/$/, "");
+    document.querySelectorAll(".sub-nav-links a").forEach(link => {
+      const linkPath = link.getAttribute("href").replace(/\/$/, "");
+      if (linkPath === currentPath) {
+        link.classList.add("active");
+      }
+    });
+  });
+</script>
+
+
+
+  <!-- 🔵 Hero Banner with Overlay Card -->
+  <section class="rsk-marquee-container">
+    <div class="rsk-marquee-card">
+      <img src="https://www17.wellsfargomedia.com/assets/images/contextual/responsive/marquee-ctr/personal-loans/PersonalLoanHub_Marquee-1700x600.png" alt="Rental property investment" class="hero-background-img">
+      <div class="rsk-marquee-overlay-card presentedElement">
+        <h2>DSCR Loans Built for Momentum</h2>
+        <p>Up to 80% LTV. No income docs. Just cash flow and speed.</p>
+        <a href="/apply.html" class="ps-btn-primary">Apply Now</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- 🧭 Rental Strategy -->
+  <section id="strategy" class="card-background-white text-aligned-center">
+    <div class="ps-mid-page-title-wrapper">
+      <h2 class="ps-mid-page-title">Your Rental Strategy, Step-by-Step</h2>
+    </div>
+    <div class="card-container">
+      <div class="enhanced-txt-cm">
+        <h3>Step 1</h3>
+        <div class="headline">Submit Your Property</div>
+        <p><a href="/apply" class="ps-btn-text">Upload address and rent roll &gt;</a></p>
+      </div>
+      <div class="enhanced-txt-cm">
+        <h3>Step 2</h3>
+        <div class="headline">DSCR Calculation</div>
+        <p><a href="/apply" class="ps-btn-text">We analyze cash flow vs debt &gt;</a></p>
+      </div>
+      <div class="enhanced-txt-cm">
+        <h3>Step 3</h3>
+        <div class="headline">Appraisal & Closing</div>
+        <p><a href="/apply" class="ps-btn-text">Fast appraisal + 48hr underwriting &gt;</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 💰 Promo Section -->
+  <section class="ps-large-promo-full-container">
+    <div class="ps-large-promo-full">
+      <div class="ps-promo-full-item">
+        <img src="/app/assets/assets/images/dscr-promo.png" alt="Investor reviewing rental portfolio">
+        <div class="ps-promo-full-content">
+          <h2>Cash Flow Drives Approval</h2>
+          <p>No tax returns. No W2s. Just rental income and property performance.</p>
+          <a href="/apply" class="ps-btn-secondary">Get the details</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 📊 Terms -->
+  <section id="terms" class="card-background-white text-aligned-center">
+    <div class="ps-mid-page-title-wrapper">
+      <h2 class="ps-mid-page-title">Terms</h2>
+    </div>
+    <div class="card-container">
+      <div class="enhanced-txt-cm">
+        <h3>Loan Structure</h3>
+        <p>Up to 80% LTV Purchase / Rate & Term<br>Up to 75% LTV Cash-Out</p>
+      </div>
+      <div class="enhanced-txt-cm">
+        <h3>Loan Types</h3>
+        <p>5, 7, 10, 30-year fixed<br>Interest-only options available</p>
+      </div>
+      <div class="enhanced-txt-cm">
+        <h3>Property Types</h3>
+        <p>1–4 Family, Condos, Townhomes, PUDs<br>Mixed-use & Multifamily (5+ units)</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🔄 Process -->
+  <section id="process" class="card-background-gray text-aligned-center">
+    <div class="ps-mid-page-title-wrapper">
+      <h2 class="ps-mid-page-title">Process</h2>
+    </div>
+    <div class="card-container">
+      <div class="enhanced-txt-cm">
+        <h3>Step 1</h3>
+        <p>You select your loan term</p>
+      </div>
+      <div class="enhanced-txt-cm">
+        <h3>Step 2</h3>
+        <p>You provide basic property info</p>
+      </div>
+      <div class="enhanced-txt-cm">
+        <h3>Step 3</h3>
+        <p>We order appraisal and begin underwriting</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🧾 Borrower Requirements -->
+  <section id="requirements" class="card-background-white text-aligned-center">
+    <div class="ps-mid-page-title-wrapper">
+      <h2 class="ps-mid-page-title">Borrower Requirements</h2>
+    </div>
+    <div class="card-container">
+      <div class="enhanced-txt-cm">
+        <h3>Entity Ownership</h3>
+        <p>Loans must be made to an LLC or corporate entity</p>
+      </div>
+      <div class="enhanced-txt-cm">
+        <h3>Credit Score</h3>
+        <p>Minimum FICO score of 680</p>
+      </div>
+      <div class="enhanced-txt-cm">
+        <h3>Experience</h3>
+        <p>You must own at least one property (primary residence qualifies)</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ❓ FAQ Section -->
+  <section id="faq" class="card-background-white text-aligned-center">
+    <div class="ps-mid-page-title-wrapper">
+      <h2 class="ps-mid-page-title">DSCR Loan FAQs</h2>
+    </div>
+    <details class="show-hide-content-wrapper">
+      <summary class="show-hide-content-title"><span>What is DSCR?</span></summary>
+      <div class="show-hide-content-text-wrapper-collapsible">
+        <p>DSCR stands for Debt Service Coverage Ratio. It compares rental income to loan payments.</p>
+      </div>
+    </details>
+    <details class="show-hide-content-wrapper">
+      <summary class="show-hide-content-title"><span>Do I need personal income docs?</span></summary>
+      <div class="show-hide-content-text-wrapper-collapsible">
+        <p>No. DSCR loans are based on property cash flow, not personal income.</p>
+      </div>
+    </details>
+    <details class="show-hide-content-wrapper">
+      <summary class="show-hide-content-title"><span>Can I use this for short-term rentals?</span></summary>
+      <div class="show-hide-content-text-wrapper-collapsible">
+        <p>Yes. DSCR loans can be used for Airbnb, VRBO, and other short-term rental properties.</p>
+      </div>
+    </details>
+  </section>
+
+ <!-- 🟥 Structured Compliance Footer -->
+<footer class="footer">
+  <div class="footer-inner">
+    <!-- Footer Navigation Menu -->
+    <nav class="footer-menu" aria-label="Footer Navigation">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="#">Accessibility</a>
+      <a href="#">Security</a>
+      <a href="#">Legal</a>
+    </nav>
+
+    <!-- Legal Disclaimers -->
+    <div class="footer-disclaimer">
+      <p><strong>Investment and Insurance Products are:</strong></p>
+      <ul>
+        <li>Not Insured by the FDIC or Any Federal Government Agency</li>
+        <li>Not a Deposit or Other Obligation of, or Guaranteed by, the Bank or Any Bank Affiliate</li>
+        <li>Subject to Investment Risks, Including Possible Loss of the Principal Amount Invested</li>
+      </ul>
+      <p>Investment and insurance products are offered through IGEG LLC Advisors, a non-bank affiliate of Investors Group of East Gate LLC.</p>
+    </div>
+
+    <!-- Accessibility & Compatibility -->
+    <div class="footer-accessibility">
+      <p>Mobile banking accessibility may vary by device. Compatible with iPhone®, iPad®, Android™, and other supported platforms.</p>
+    </div>
+
+    <!-- Trademark Acknowledgments -->
+    <div class="footer-trademarks">
+      <p>Android, Google Pay and the Google Play logo are trademarks of Google LLC. Chrome is a trademark of Google LLC.</p>
+      <p>Apple, the Apple logo, iPhone, iPad, Mac and Safari are trademarks of Apple Inc., registered in the U.S. and other countries.</p>
+    </div>
+
+    <!-- Regulatory Codes & Copyright -->
+    <div class="footer-meta">
+      <p>PM-09282026-7798034.1.1 &nbsp; | &nbsp; LRC-0325</p>
+      <p>© 2025 IGEG LLC. All rights reserved. Member FDIC. Equal Housing Lender</p>
+      <img src="app/assets/assets/icons/equal-housing-logo.png" alt="Equal Housing Lender" class="footer-logo" />
+    </div>
+  </div>
+</footer>
+
+
+</body>
+</html>
+

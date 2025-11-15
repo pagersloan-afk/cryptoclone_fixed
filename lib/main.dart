@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
       create: (_) => SplashCubit()..appStarted(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Your App',
+        title: 'IGEG Vault',
         theme: ThemeData.dark(),
         home: const SplashScreen(),
         routes: {

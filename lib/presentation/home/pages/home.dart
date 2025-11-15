@@ -51,6 +51,13 @@ class _HomePageState extends State<HomePage> {
   String _balance = '0.00';
   int _selectedIndex = 0;
 
+  String getInterval(int days) {
+    if (days == 1) return '1h';
+    if (days == 7) return '4h';
+    if (days == 30) return '1d';
+    return '1d'; // fallback
+  }
+
   DateTime? _lastMarketFetch;
   String? _marketData;
   List<TradeData> btcData = [];
@@ -173,23 +180,38 @@ class _HomePageState extends State<HomePage> {
 
   Future<void> _loadChartData() async {
     try {
-      final data = await _chartService.fetchOHLCV(selectedCoin, '1h', 100);
+      final interval = getInterval(selectedDays);
+      final data = await _chartService.fetchOHLCV(selectedCoin, interval, 100);
+
+      debugPrint('Fetched ${data.length} candles for $selectedCoin');
+
       if (data.isNotEmpty) {
-        final open = data.first.open;
-        final close = data.last.close;
-        final changePercent = open != 0 ? ((close - open) / open) * 100 : 0.0;
+        debugPrint(
+          'First candle: open=${data.first.open}, close=${data.first.close}',
+        );
+        debugPrint(
+          'Last candle: open=${data.last.open}, close=${data.last.close}',
+        );
+
+        final changePercent = await _chartService.fetchDynamicChange(
+          selectedCoin,
+        );
+        debugPrint(
+          'Dynamic 24h change for $selectedCoin: ${changePercent?.toStringAsFixed(2)}%',
+        );
 
         if (!mounted) return;
         setState(() {
           chartData = data;
-          _changePercent = changePercent;
+          _changePercent = changePercent ?? 0.0;
         });
       } else {
+        debugPrint('No OHLCV data returned for $selectedCoin');
         if (!mounted) return;
         setState(() => chartData = []);
       }
     } catch (e) {
-      debugPrint('Chart load error: $e');
+      debugPrint('Chart load error for $selectedCoin: $e');
       if (!mounted) return;
       setState(() => chartData = []);
     }
@@ -393,6 +415,20 @@ class _HomePageState extends State<HomePage> {
                   ),
 
                 const SizedBox(height: 24),
+
+                if (chartData.isNotEmpty)
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 8),
+                    child: Text(
+                      '24h Change: ${_changePercent.toStringAsFixed(2)}%',
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
 
                 if (chartData.isEmpty)
                   const Padding(

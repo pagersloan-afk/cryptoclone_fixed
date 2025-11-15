@@ -1,0 +1,128 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  background-color: #fff;
+  color: #333;
+}
+
+.contact-hero {
+  background-image: url('../app/assets/assets/images/contact.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 40px;
+}
+
+.hero-overlay-card {
+  background-color: #fff;
+  padding: 32px;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+  max-width: 400px;
+  text-align: left;
+}
+
+.cta-button {
+  background-color: #c4001d;
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 16px;
+}
+
+.contact-form-section {
+  padding: 60px 24px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.contact-form-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 24px;
+  color: #00704A;
+}
+
+.contact-form label {
+  display: block;
+  margin-top: 16px;
+  font-weight: 600;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.contact-support {
+  background-color: #f8f4ef;
+  padding: 40px 24px;
+  text-align: center;
+}
+
+.contact-support h3 {
+  font-size: 1.4rem;
+  margin-bottom: 16px;
+}
+
+.contact-support ul {
+  list-style: none;
+  padding: 0;
+}
+
+.contact-support li {
+  margin-bottom: 8px;
+}
+
+.contact-support a {
+  color: #6A1B9A;
+  text-decoration: none;
+  font-weight: 600;
+}
+.contact-location {
+  padding: 40px 24px;
+  background-color: #f9f9f9;
+}
+
+.location-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+.map-container {
+  flex: 1 1 400px;
+  min-width: 300px;
+}
+
+.office-info {
+  flex: 1 1 300px;
+  min-width: 280px;
+}
+
+.office-info h3 {
+  font-size: 1.4rem;
+  margin-bottom: 16px;
+  color: #00704A;
+}
+
+.office-info p {
+  font-size: 1rem;
+  margin-bottom: 8px;
+  color: #333;
+}
+a {
+  text-decoration: none;
+}
+
