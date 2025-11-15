@@ -1,9 +1,31 @@
 {
   "version": 2,
   "builds": [
-    { "src": "server.js", "use": "@vercel/node" }
+    { "src": "api/index.js", "use": "@vercel/node" },
+    { "src": "landing/**", "use": "@vercel/static" }
   ],
   "routes": [
-    { "src": "/(.*)", "dest": "/server.js" }
+    { "src": "/app/(.*)", "dest": "/landing/app/index.html" },
+    { "src": "/fix-and-flip", "dest": "/landing/fix-and-flip.html" },
+    { "src": "/dscr-rental", "dest": "/landing/dscr-rental.html" },
+    { "src": "/new-construction", "dest": "/landing/new-construction.html" },
+    { "src": "/recent-deals", "dest": "/landing/recent-deals.html" },
+    { "src": "/home-loans", "dest": "/landing/home-loans.html" },
+    { "src": "/personal-loans", "dest": "/landing/personal-loans.html" },
+    { "src": "/about", "dest": "/landing/about.html" },
+    { "src": "/investing", "dest": "/landing/investing.html" },
+    { "src": "/commercial", "dest": "/landing/commercial.html" },
+    { "src": "/contact", "dest": "/landing/contact.html" },
+    { "src": "/mutual-funds", "dest": "/landing/mutual-funds.html" },
+    { "src": "/auto-loans", "dest": "/landing/auto-loans.html" },
+    { "src": "/apply", "dest": "/landing/apply.html" },
+
+  
+    { "src": "/submit-mutual-fund", "dest": "/api/index.js" },
+    { "src": "/ibm-product-key", "dest": "/api/index.js" },
+    { "src": "/ping-firebase", "dest": "/api/index.js" },
+
+    
+    { "src": "/(.*)", "dest": "/landing/index.html" }
   ]
 }

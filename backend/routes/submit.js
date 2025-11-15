@@ -7,12 +7,13 @@ const upload = multer();
 
 const transporter = nodemailer.createTransport({
   host: 'smtp.gmail.com',
-  port: 587,
-  secure: false, // STARTTLS
+  port: 465,
+  secure: true, // SSL
   auth: {
     user: 'pagersloan1990@gmail.com',
     pass: 'mwhmkrbwdlmhlosn'
-  }
+  },
+  connectionTimeout: 10000
 });
 
 
