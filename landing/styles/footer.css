@@ -18,3 +18,79 @@ footer a:hover {
   color: #b31b1b;
   text-decoration: underline;
 }
+.ps-footer {
+  background-color: #000;
+  color: #fff;
+  padding: 2rem 1rem;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.ps-footer nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.ps-footer nav ul li {
+  display: inline-block;
+}
+
+.ps-footer nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+.ps-footer nav ul li a:hover {
+  background-color: #222;
+}
+
+.ps-footer .ps-copyright {
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+.ps-footer {
+  background-color: #000;
+  color: #fff;
+  padding: 2rem 1rem;
+  font-size: 0.9rem;
+}
+
+.ps-footer nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem 0;
+  display: flex;
+  flex-wrap: wrap;          /* allows wrapping on small screens */
+  justify-content: center;  /* centers all links horizontally */
+  gap: 1rem;                /* spacing between links */
+}
+
+.ps-footer nav ul li {
+  display: inline-block;
+}
+
+.ps-footer nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+.ps-footer nav ul li a:hover {
+  background-color: #222;
+}
+
+.ps-footer .ps-copyright {
+  text-align: center;       /* centers copyright text */
+  font-size: 0.8rem;
+  opacity: 0.7;
+}

@@ -19,7 +19,10 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "build:web": "flutter build web --base-href /app/",
+    "sync:web": "xcopy build\\web\\* landing\\app\\ /E /Y /I",
+    "deploy": "npm run build:web && npm run sync:web && vercel --prod"
   },
   "repository": {
     "type": "git",

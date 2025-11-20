@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -12,7 +13,13 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 2), () {
-      Navigator.pushReplacementNamed(context, '/welcome');
+      if (kIsWeb) {
+        // 🌐 Web visitors → Landing page
+        Navigator.pushReplacementNamed(context, '/landing');
+      } else {
+        // 📱 APK/mobile users → Welcome/auth flow
+        Navigator.pushReplacementNamed(context, '/welcome');
+      }
     });
   }
 

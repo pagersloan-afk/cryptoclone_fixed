@@ -1,13 +1,12 @@
 name: ecommerce_app
 description: "A new Flutter project."
 
-publish_to: 'none' 
+publish_to: 'none'
 
 version: 1.0.0+1
 
 environment:
   sdk: ^3.9.2
-
 
 dependencies:
   flutter:
@@ -25,7 +24,6 @@ dependencies:
   flutter_dotenv: ^6.0.0
   xml: ^6.3.0
   url_launcher: ^6.2.5
-  
   cupertino_icons: ^1.0.8
   firebase_core: ^4.1.1
   cloud_firestore: ^6.0.2
@@ -36,27 +34,23 @@ dependencies:
   flutter_svg: ^2.2.1
   flutter_bloc: ^9.1.1
   dartz: ^0.10.1
-  get_it: ^8.2.0
+  get_it: ^9.0.5
   flutter_native_splash: ^2.4.6
   equatable: ^2.0.7
   lib: ^0.2.1
-  
+  webview_flutter: ^4.0.0
+  web: ^1.1.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
-  
   flutter_lints: ^6.0.0
-  flutter_launcher_icons: ^0.13.1
-
+  flutter_launcher_icons: ^0.14.4
 
 flutter:
-
   uses-material-design: true
 
   #...............LOCAL ASSETS...................#
-
   assets:
     - lib/core/configs/assets/vectors/logo.svg
     - lib/core/configs/assets/vectors/email_sent.svg
@@ -78,6 +72,66 @@ flutter:
     - assets/data/countries.json
     - assets/data/states.json
     - assets/data/states-cities.json
+    - assets/images/igeg_app_ui.png
+    - assets/images/financial-app-promo.webp
+    - assets/icons/icon-house.png
+    - assets/icons/icon-document.png
+    - assets/icons/icon-creditcard.png
+    - assets/icons/icon-percent.png
+    - assets/images/mortgage-banner.jpg
+    - assets/icons/apple.svg
+    - assets/images/igeg_app_ui2.png
+    - assets/images/who-we-are.jpg
+    - assets/images/why-committed.jpg
+    - assets/icons/icon-appointment.png
+    - assets/icons/icon-location.png
+    - assets/icons/icon-feedback.png
+    - assets/images/goal-setting.jpg
+    - assets/images/borrowing-options.jpg
+    - assets/images/fraud-alert.jpg
+    - assets/images/goal-setting.jpg
+    - assets/images/borrowing-options.jpg
+    - assets/images/fraud-alert.jpg
+    - assets/icons/equal-housing-logo.png
+    - assets/images/mutual-fund-hero.png
+    - assets/icons/management.png
+    - assets/icons/diversification.png
+    - assets/icons/flexibility.png
+    - assets/icons/low-entry.png
+    - assets/images/fund-performance-chart.png
+    - assets/icons/career-promo.png
+    - assets/icons/career-promo.png
+    - assets/images/about-hero-lg.jpg
+    - assets/images/auto-loans-hero.webp
+    - assets/icons/car-search.png
+    - assets/icons/rate-check.png
+    - assets/icons/loan-calculator.png
+    - assets/icons/apply-now.png
+    - assets/images/tool-arv.webp
+    - assets/images/tool-budget.webp
+    - assets/images/tool-compare.png
+    - assets/images/commercial-hero.jpg
+    - assets/images/next-horizon.jpg
+    - assets/images/charlie-scharf.jpg
+    - assets/images/powerful-women.jpg
+    - assets/images/deal-feature.jpeg
+    - assets/images/bridge-report.jpg
+    - assets/images/year-end.jpg
+    - assets/images/retirement.jpg
+    - assets/images/scam-protection.jpg
+    - assets/images/digital-assets.jpg
+    - assets/images/contact.jpg
+
+
+
+
+  #...............LOCAL FONTS...................#
+  fonts:
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/Inter-VariableFont.ttf
+        - asset: assets/fonts/Inter-Italic-VariableFont.ttf
+          style: italic
 
 flutter_launcher_icons:
   android: true
@@ -85,9 +139,7 @@ flutter_launcher_icons:
   web: true
   image_path: "assets/images/app_logo.png"
   android_adaptive_icon_background: "#2A52BE"
-   
-    
+
 color: "#2A52BE"
 android: true
 ios: true
-  

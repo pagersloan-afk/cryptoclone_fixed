@@ -213,4 +213,47 @@ body {
   .ps-promo-full-content {
     padding-left: 0;
   }
+  .ps-right-nav ul {
+    display: none; /* hide full nav */
+  }
+  .hamburger-menu {
+    display: block; /* show hamburger */
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  .rsk-marquee-container {
+    height: auto; /* don’t force full viewport height */
+  }
+
+  .rsk-marquee-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .rsk-marquee-wrap picture,
+  .rsk-marquee-wrap img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .rsk-marquee-content {
+    position: static; /* remove absolute */
+    transform: none;
+    background: none; /* optional: remove overlay box */
+    padding: 0.5rem 1rem;
+    max-width: 100%;
+  }
+
+  .rsk-marquee-content h2 {
+    font-size: 1.25rem;
+    line-height: 1.4;
+  }
+  .ps-footer {
+  background-color: red;
+}
 }

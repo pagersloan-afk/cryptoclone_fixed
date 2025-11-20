@@ -1,7 +1,27 @@
+# Flutter build caches
 build/
 .dart_tool/
-.idea/
-.git/
-node_modules/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.flutter-versions
+
+# Mobile platform folders
 ios/
 android/
+
+# IDE and system files
+.idea/
+.vscode/
+*.iml
+
+# Git and node_modules
+.git/
+node_modules/
+
+# Tests and configs not needed in deploy
+test/
+pubspec.lock
+pubspec.yaml
+analysis_options.yaml

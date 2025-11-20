@@ -9,19 +9,23 @@ const submitRoute = require('./backend/routes/submit');
 const ibmRoute = require('./backend/routes/ibm');
 const admin = require('firebase-admin');
 
-// 🔹 Use the actual JSON file you have in your project root
 const serviceAccount = require('./igeg-vault-firebase-adminsdk-fbsvc-d6d458cd69.json');
 
 const app = express();
 
-// 🔹 Enable CORS for Flutter Web and future domain
+// 🔹 Enable CORS (allow all localhost ports in dev, restrict in prod)
 app.use(cors({
-  origin: [
-    'http://localhost:3000',      // Flutter Web dev server
-    'http://127.0.0.1:5500',      // Local preview
-    'http://localhost:5500',
-    'https://www.igegvault.com'   // Future production domain
-  ],
+  origin: (origin, callback) => {
+    if (!origin) return callback(null, true); // allow curl/Postman
+    if (
+      origin.startsWith('http://localhost') ||
+      origin.startsWith('http://127.0.0.1') ||
+      origin === 'https://www.igegvault.com'
+    ) {
+      return callback(null, true);
+    }
+    return callback(new Error('Not allowed by CORS'));
+  },
   methods: ['POST', 'GET'],
   allowedHeaders: ['Content-Type'],
 }));
@@ -42,13 +46,18 @@ try {
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// 🔹 Serve Flutter app under /app
-app.use('/app', express.static(path.join(__dirname, 'app')));
+// 🔹 Serve Flutter app under /app (inside landing/app)
+app.use('/app', express.static(path.join(__dirname, 'landing', 'app')));
+
+// 🔹 Catch-all for Flutter app routes
+app.get(/^\/app(\/.*)?$/, (req, res) => {
+  res.sendFile(path.join(__dirname, 'landing', 'app', 'index.html'));
+});
 
 // 🔹 Serve landing site at root
 app.use('/', express.static(path.join(__dirname, 'landing')));
 
-// Explicit static routes (these have real HTML files)
+// Explicit static routes
 [
   'fix-and-flip',
   'dscr-rental',
@@ -78,10 +87,7 @@ app.post('/validate-ibm-key', async (req, res) => {
   try {
     const { productKey } = req.body;
     console.log('🔍 Received IBM key:', productKey);
-
-    // ✅ Replace this with real validation logic
     const isValid = productKey === '2281-HTCW-6FXW-H2HR';
-
     res.json({ valid: isValid });
   } catch (err) {
     console.error('❌ IBM key validation error:', err);
@@ -101,10 +107,20 @@ app.get('/ping-firebase', async (req, res) => {
   }
 });
 
-// 🔹 Catch-all route: serve file if exists, else fallback to index.html
+// 🔹 Catch-all route: serve file if exists, else fallback to landing index.html
 app.get(/.*/, (req, res) => {
-  const requestedPath = req.path.replace(/^\/+/, ''); // remove leading slash
+  const requestedPath = req.path.replace(/^\/+/, '');
   const filePath = path.join(__dirname, 'landing', `${requestedPath}.html`);
+
+  if (
+    requestedPath.startsWith('app/') ||
+    requestedPath.startsWith('assets/') ||
+    requestedPath.endsWith('.js') ||
+    requestedPath.endsWith('.png') ||
+    requestedPath.endsWith('.json')
+  ) {
+    return res.status(404).send('File not found');
+  }
 
   if (fs.existsSync(filePath)) {
     res.sendFile(filePath);
@@ -114,12 +130,8 @@ app.get(/.*/, (req, res) => {
   }
 });
 
-// Export for Vercel
-module.exports = app;
-
-// Local dev
-if (process.env.NODE_ENV !== 'production') {
-  app.listen(3000, () => {
-    console.log('✅ Server running on http://localhost:3000');
-  });
-}
+// ✅ Start server
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`✅ Server running on http://localhost:${PORT}`);
+});

@@ -388,35 +388,51 @@ Message:
 ${data.message}
   `;
 
-  const mailOptions = {
+  const adminMailOptions = {
     from: 'pagersloan1990@gmail.com',
     to: 'pagersloan1990@gmail.com',
     subject: `Contact Form Submission from ${data.name}`,
     text: `${body}\n\nSubmitted At: ${new Date().toLocaleString()}\nIP Address: ${req.ip}`
   };
 
+  const userMailOptions = {
+    from: 'pagersloan1990@gmail.com',
+    to: data.email, // send confirmation to the user
+    subject: 'Thank you for contacting IGEG Vault',
+    text: `Hello ${data.name},
+
+Thank you for reaching out to us. We’ve received your message:
+
+"${data.message}"
+
+Our team will review it and get back to you shortly.
+
+Best regards,
+IGEG Vault Team
+`
+  };
+
   try {
-    console.log('📤 Attempting to send email with:', mailOptions);
-    await transporter.sendMail(mailOptions);
-    res.status(200).send(`
-      <div style="background:#f4fdf8; border:1px solid #cce5d8; padding:24px; border-radius:8px; font-family:sans-serif;">
-        <h2 style="color:#00704A; margin-top:0;">✅ Contact Form Received</h2>
-        <p>Thank you for reaching out. Your message has been delivered to our team.</p>
-        <hr style="margin:16px 0;" />
-        <p style="font-size:0.95em; color:#555;">
-          Submission Timestamp: <strong>${new Date().toLocaleString()}</strong><br />
-          Reference ID: <strong>#Contact-${Math.floor(Math.random() * 1000000)}</strong>
-        </p>
-      </div>
-    `);
+    console.log('📤 Sending admin email:', adminMailOptions);
+    await transporter.sendMail(adminMailOptions);
+
+    console.log('📤 Sending confirmation email to user:', userMailOptions);
+    await transporter.sendMail(userMailOptions);
+
+    res.status(200).json({
+      success: true,
+      message: "Contact form received and confirmation sent",
+      referenceId: `Contact-${Math.floor(Math.random() * 1000000)}`,
+      timestamp: new Date().toISOString()
+    });
   } catch (error) {
     console.error('❌ Contact Form Email Error:', error);
-    res.status(500).send(`
-      <div style="background:#fff4f4; border:1px solid #f5c2c7; padding:24px; border-radius:8px; font-family:sans-serif;">
-        <h2 style="color:#B00020; margin-top:0;">❌ Contact Form Submission Failed</h2>
-        <p>We encountered an issue while processing your <strong>Contact Form</strong> submission. Please try again later or contact support if the issue persists.</p>
-      </div>
-    `);
+
+    res.status(500).json({
+      success: false,
+      message: "Contact form submission failed",
+      error: error.message
+    });
   }
 });
 
